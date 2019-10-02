@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from './TitleBar'
-import InputSet from './RangeBar'
+import RangeBar from './RangeBar'
 import Prizes from './Prizes'
 import AddPrize from './AddPrize'
 
-export default class Raffles extends React.Component {
+export default class Raffle extends React.Component {
    state = {
       prizes: [`Moto`, `Patinete`, `Mochila`]
    }
@@ -26,7 +26,9 @@ export default class Raffles extends React.Component {
          <div>
             <Header />
             <div>
-               <InputSet />
+               <RangeBar
+                  prizes={this.state.prizes}
+               />
                <Prizes
                   prizes={this.state.prizes}
                   handleDeletePrize={this.handleDeletePrize}
