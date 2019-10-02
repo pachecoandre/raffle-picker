@@ -21,13 +21,35 @@ export default class Raffle extends React.Component {
          prizes: prevState.prizes.filter((element) => prizeToRemove !== element)
       }))
    }
+   handlePickWinner = (event) => {
+      event.preventDefault()
+      const lowerNumber = parseInt(event.target.elements.lowerNumber.value)
+      const superiorNumber = parseInt(event.target.elements.superiorNumber.value)
+      if (!lowerNumber || !superiorNumber) {
+         return alert(`Por favor informe o número inferior e superior`)
+      }
+      if (lowerNumber >= superiorNumber) {
+         return alert(`O número superior não pode ser menor que o inferior`)
+      }
+      let result = []
+      this.state.prizes.forEach(element => {
+         const rafNum = Math.floor(Math.random() *(superiorNumber - lowerNumber + 1) + lowerNumber)
+         result.push({prize: element, number: rafNum})
+      })
+      let resultStr = ``
+      result.forEach(element => {
+        resultStr += `${element.prize} - ${element.number}\n`
+      })      
+      alert(resultStr)   
+   }
+   
    render() {
       return (
          <div>
             <Header />
             <div>
                <RangeBar
-                  prizes={this.state.prizes}
+                  handlePickWinner={this.handlePickWinner}
                />
                <Prizes
                   prizes={this.state.prizes}
