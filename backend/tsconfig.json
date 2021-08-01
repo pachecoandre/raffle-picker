@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"declaration": true,
+		"target": "es2017",
+		"module": "commonjs",
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"resolveJsonModule": true,
+		"rootDirs": ["./src", "./resources"],
+		"sourceMap": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"esModuleInterop": true
+  }
+}
