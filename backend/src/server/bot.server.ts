@@ -1,5 +1,4 @@
 import express from 'express'
-import bodyParser from 'body-parser'
 import cors from 'cors'
 import V1Routes from '../routes'
 
@@ -10,8 +9,8 @@ export default class Server {
 
     constructor(port) {
         this.app = express()
-        this.app.use(bodyParser.json())
-        this.app.use(bodyParser.urlencoded({ extended: true }))
+        this.app.use(express.json())
+        this.app.use(express.urlencoded({ extended: true }))
         this.app.use(cors())
         this.port = port
     }
