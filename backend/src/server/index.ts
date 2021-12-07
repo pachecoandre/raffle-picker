@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import V1Routes from '../routes/v1'
+import v1Routes from '../router/v1'
 
 export default class Server {
     private app: express.Application
@@ -15,7 +15,7 @@ export default class Server {
         this.port = port
     }
     route = () => {
-        this.app.use('/v1', V1Routes)
+        this.app.use('/v1', v1Routes)
     }
     listen = () => {
         this.app.listen(this.port, () => console.log(`Server running on port ${this.port}`))
