@@ -7,7 +7,7 @@ const env = process.env.NODE_ENV || "development";
 config({ path: `./config/${env}.env` });
 console.log(`Env mode: ${env}.`);
 
-// database connection
+// database
 DB.connect()
 
 // start server
