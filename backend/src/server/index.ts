@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import V1Routes from '../routes'
+import V1Routes from '../routes/v1'
 
 export default class Server {
     private app: express.Application
