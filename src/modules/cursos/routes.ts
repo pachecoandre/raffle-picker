@@ -1,19 +1,18 @@
 import { Router } from "express";
 import db from "../../db";
 
-const prizeRouter = Router();
+const cursosRouter = Router();
 
-prizeRouter.get("/", async (req, res) => {
-  await new Promise((resolve, reject) => {
-    db.query("SELECT * FROM cursos", (error, results, fields) => {
+cursosRouter.get("/", async (req, res) => {
+  const result = await new Promise((resolve, reject) => {
+    db.execute("SELECT * FROM cursos", (error, results, fields) => {
       if (error) {
-        throw error;
+        reject(error);
       }
-      console.log(results);
       resolve(results);
     });
   });
-  res.sendStatus(200);
+  res.send(result);
 });
 
-export default prizeRouter;
+export default cursosRouter;
