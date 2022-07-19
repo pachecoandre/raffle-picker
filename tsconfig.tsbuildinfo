@@ -381,11 +381,6 @@
         "signature": "ef631a14611e5f3697f79d9222634131112a998aa0ad0e85b77aaf45b9ca04ab",
         "affectsGlobalScope": false
       },
-      "./node_modules/dotenv/types/index.d.ts": {
-        "version": "40b741dd397d635ee3df8b4880f30f15fa7394b9da31d4454805e47692438ff3",
-        "signature": "40b741dd397d635ee3df8b4880f30f15fa7394b9da31d4454805e47692438ff3",
-        "affectsGlobalScope": false
-      },
       "./node_modules/@types/range-parser/index.d.ts": {
         "version": "16d51f964ec125ad2024cf03f0af444b3bc3ec3614d9345cc54d09bab45c9a4c",
         "signature": "16d51f964ec125ad2024cf03f0af444b3bc3ec3614d9345cc54d09bab45c9a4c",
@@ -426,6 +421,111 @@
         "signature": "587b9ba944f50038226049381e9c44389c3f720eb2ca6774e7d58dbc43109826",
         "affectsGlobalScope": false
       },
+      "./src/modules/prize/routes.ts": {
+        "version": "47eeb0be442fefc6912ad1767c843bce3767899c0edb8f2d625982637f9fb04d",
+        "signature": "b544867e11770c4020553ad3b492bdf17fab5e0c51fe650e2c7724ed1687117a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/promise.d.ts": {
+        "version": "0b15545be7aacfbbf364443eeec8508c9565771149ed6ca5edef17fdbc62d740",
+        "signature": "0b15545be7aacfbbf364443eeec8508c9565771149ed6ca5edef17fdbc62d740",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Sequence.d.ts": {
+        "version": "0506328b96bdd546742da97b70a92514b1e4847b9387758f44c7e7052443f98e",
+        "signature": "0506328b96bdd546742da97b70a92514b1e4847b9387758f44c7e7052443f98e",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/OkPacket.d.ts": {
+        "version": "5ba455ec6f0b9b40e71225a835df1c4830eabbc661c0bcdcae29b62b5dce7deb",
+        "signature": "5ba455ec6f0b9b40e71225a835df1c4830eabbc661c0bcdcae29b62b5dce7deb",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/RowDataPacket.d.ts": {
+        "version": "4dce711bd3eb8ef017e35ff1ed0957cf748c2f504777bfa935382f376932fd3a",
+        "signature": "4dce711bd3eb8ef017e35ff1ed0957cf748c2f504777bfa935382f376932fd3a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/FieldPacket.d.ts": {
+        "version": "d5df920a5da67836acb16e8a4db65135351be93302fb0072d657e671e2d92220",
+        "signature": "d5df920a5da67836acb16e8a4db65135351be93302fb0072d657e671e2d92220",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/Field.d.ts": {
+        "version": "4c749621a8903239d5d8b683a23816198135456b1d07c6bb208edc9d490e5b9e",
+        "signature": "4c749621a8903239d5d8b683a23816198135456b1d07c6bb208edc9d490e5b9e",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/ResultSetHeader.d.ts": {
+        "version": "8253131bf88afa306c4b2a3c0e10f25b4a8ca4cc7fc8f132a5a76f15650a7932",
+        "signature": "8253131bf88afa306c4b2a3c0e10f25b4a8ca4cc7fc8f132a5a76f15650a7932",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts": {
+        "version": "0a496ad0243a1a24d109ca5d318cdded7f402e7e80e56bb6bd7c9e30f32b6254",
+        "signature": "0a496ad0243a1a24d109ca5d318cdded7f402e7e80e56bb6bd7c9e30f32b6254",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts": {
+        "version": "4ddbbe8806de87e667eb37d59387c3ccc87e83776bb9a4f297adc94af1c09943",
+        "signature": "4ddbbe8806de87e667eb37d59387c3ccc87e83776bb9a4f297adc94af1c09943",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts": {
+        "version": "9e09ae08416e7ed20a0808ad762e4b53e2cacaeb2bc911614a17ef5444d6891b",
+        "signature": "9e09ae08416e7ed20a0808ad762e4b53e2cacaeb2bc911614a17ef5444d6891b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts": {
+        "version": "617a866591d14eafd5f4d4d02b5e144d58fec2ea863a8399736e6769273c616d",
+        "signature": "617a866591d14eafd5f4d4d02b5e144d58fec2ea863a8399736e6769273c616d",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/Pool.d.ts": {
+        "version": "870c0af6962c426fd9418ba3134b95a55d8ab72f46fbd97447e831d65b14586f",
+        "signature": "870c0af6962c426fd9418ba3134b95a55d8ab72f46fbd97447e831d65b14586f",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/lib/PoolCluster.d.ts": {
+        "version": "411f5ee863896acd5ce198869f8394c7dc541bbf363cde2d4f4124471b1ca6dd",
+        "signature": "411f5ee863896acd5ce198869f8394c7dc541bbf363cde2d4f4124471b1ca6dd",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/typings/mysql/index.d.ts": {
+        "version": "61f03616b31fd67e19be9872092238ed2b443b0e1a5bda7c61be52c34ec68e89",
+        "signature": "61f03616b31fd67e19be9872092238ed2b443b0e1a5bda7c61be52c34ec68e89",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/mysql2/index.d.ts": {
+        "version": "cf6fac609be0981c2af23ed25d77edfd4d0a141e38a44efe876e1e1d869d4ecc",
+        "signature": "cf6fac609be0981c2af23ed25d77edfd4d0a141e38a44efe876e1e1d869d4ecc",
+        "affectsGlobalScope": false
+      },
+      "./src/db/index.ts": {
+        "version": "f7a13f4eef2f9b68529679e9d3a98fbc2640875a05cb9d7ac67a74f370dbcd04",
+        "signature": "c937bab7efce2d27d0f5b3234f72c39b990ab6fb334b5fed90dfdaf56a0c0c7b",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/cursos/routes.ts": {
+        "version": "8e7383c092efcc5153bf8e56bb0f2237a801935963c4b3c2bd955a98c4b01a28",
+        "signature": "182f52ee0c31f39560a1c0edc912a2a3425bcb971409e9e4491f335d0a93ca2d",
+        "affectsGlobalScope": false
+      },
+      "./src/router/index.ts": {
+        "version": "82845b9c21a787be019b20f913df661e006f492d135e99ea17898d0131eb9ef8",
+        "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
+        "affectsGlobalScope": false
+      },
+      "./src/server/index.ts": {
+        "version": "06f778d086c3bca03ff213eab0dd230c4555376ed6bea70292a3f66d69e5f51b",
+        "signature": "0406338ef8de6e309c1a4022e61f6e19bb59c5bd1e3ef9b745424ae8cde7c5b7",
+        "affectsGlobalScope": false
+      },
+      "./src/index.ts": {
+        "version": "0eda25ba3cb0bca7b852a056b8591821782e61700c2c8f68945d2d76443fc184",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
       "./node_modules/@types/bson/index.d.ts": {
         "version": "1da731703f961e2cbf64049f07eb837b9f33a3e6b2133be6275ffa7902a45b7d",
         "signature": "1da731703f961e2cbf64049f07eb837b9f33a3e6b2133be6275ffa7902a45b7d",
@@ -446,29 +546,9 @@
         "signature": "2841cd6c941c93e3794849ad40f841aa1ff7f22d7a729da484a37846083c19b5",
         "affectsGlobalScope": false
       },
-      "./src/modules/prize/routes.ts": {
-        "version": "be35e4345a54a83465219a47ab635b396b33ddacb1c1188ceaa7689a542d2c6a",
-        "signature": "b544867e11770c4020553ad3b492bdf17fab5e0c51fe650e2c7724ed1687117a",
-        "affectsGlobalScope": false
-      },
-      "./src/router/index.ts": {
-        "version": "798736c5918cb59e8dc286a53ea5041632be5881ec5f39a842ac099c57805927",
-        "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
-        "affectsGlobalScope": false
-      },
-      "./src/server/index.ts": {
-        "version": "06f778d086c3bca03ff213eab0dd230c4555376ed6bea70292a3f66d69e5f51b",
-        "signature": "0406338ef8de6e309c1a4022e61f6e19bb59c5bd1e3ef9b745424ae8cde7c5b7",
-        "affectsGlobalScope": false
-      },
-      "./src/db/index.ts": {
-        "version": "5c3123ed422af42c0e95df2058b0c547c5ff5b5c220ef2150a5168139cdb3731",
-        "signature": "883d8bfbf6dd4870cd68449cbd18149c082fd597791cc6b9cfed984c959899de",
-        "affectsGlobalScope": false
-      },
-      "./src/index.ts": {
-        "version": "68bb97d0fac7d311d2c12ea37914339afeaf07e7f7f1841c32be45e13d8570f1",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+      "./node_modules/@types/mysql/index.d.ts": {
+        "version": "d7664fe1e0a367747fc27420a554c2e7431188add9bf8c4223bd4a5142ae238f",
+        "signature": "d7664fe1e0a367747fc27420a554c2e7431188add9bf8c4223bd4a5142ae238f",
         "affectsGlobalScope": false
       }
     },
@@ -523,230 +603,7 @@
         "./node_modules/@types/node/stream.d.ts",
         "./node_modules/@types/node/tls.d.ts"
       ],
-      "./node_modules/@types/node/base.d.ts": [
-        "./node_modules/@types/node/assert.d.ts",
-        "./node_modules/@types/node/ts3.6/base.d.ts"
-      ],
-      "./node_modules/@types/node/child_process.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/net.d.ts",
-        "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./node_modules/@types/node/cluster.d.ts": [
-        "./node_modules/@types/node/child_process.d.ts",
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/net.d.ts"
-      ],
-      "./node_modules/@types/node/constants.d.ts": [
-        "./node_modules/@types/node/crypto.d.ts",
-        "./node_modules/@types/node/fs.d.ts",
-        "./node_modules/@types/node/os.d.ts"
-      ],
-      "./node_modules/@types/node/crypto.d.ts": [
-        "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./node_modules/@types/node/dgram.d.ts": [
-        "./node_modules/@types/node/dns.d.ts",
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/net.d.ts"
-      ],
-      "./node_modules/@types/node/domain.d.ts": [
-        "./node_modules/@types/node/events.d.ts"
-      ],
-      "./node_modules/@types/node/events.d.ts": [
-        "./node_modules/@types/node/events.d.ts"
-      ],
-      "./node_modules/@types/node/fs.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/stream.d.ts",
-        "./node_modules/@types/node/url.d.ts"
-      ],
-      "./node_modules/@types/node/http.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/net.d.ts",
-        "./node_modules/@types/node/stream.d.ts",
-        "./node_modules/@types/node/url.d.ts"
-      ],
-      "./node_modules/@types/node/http2.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/fs.d.ts",
-        "./node_modules/@types/node/http.d.ts",
-        "./node_modules/@types/node/net.d.ts",
-        "./node_modules/@types/node/stream.d.ts",
-        "./node_modules/@types/node/tls.d.ts",
-        "./node_modules/@types/node/url.d.ts"
-      ],
-      "./node_modules/@types/node/https.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/http.d.ts",
-        "./node_modules/@types/node/tls.d.ts",
-        "./node_modules/@types/node/url.d.ts"
-      ],
-      "./node_modules/@types/node/index.d.ts": [
-        "./node_modules/@types/node/base.d.ts"
-      ],
-      "./node_modules/@types/node/inspector.d.ts": [
-        "./node_modules/@types/node/events.d.ts"
-      ],
-      "./node_modules/@types/node/module.d.ts": [
-        "./node_modules/@types/node/url.d.ts"
-      ],
-      "./node_modules/@types/node/net.d.ts": [
-        "./node_modules/@types/node/dns.d.ts",
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./node_modules/@types/node/perf_hooks.d.ts": [
-        "./node_modules/@types/node/async_hooks.d.ts"
-      ],
-      "./node_modules/@types/node/process.d.ts": [
-        "./node_modules/@types/node/tty.d.ts"
-      ],
-      "./node_modules/@types/node/readline.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./node_modules/@types/node/repl.d.ts": [
-        "./node_modules/@types/node/readline.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/vm.d.ts"
-      ],
-      "./node_modules/@types/node/stream.d.ts": [
-        "./node_modules/@types/node/events.d.ts"
-      ],
-      "./node_modules/@types/node/tls.d.ts": [
-        "./node_modules/@types/node/crypto.d.ts",
-        "./node_modules/@types/node/dns.d.ts",
-        "./node_modules/@types/node/net.d.ts",
-        "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./node_modules/@types/node/ts3.6/base.d.ts": [
-        "./node_modules/@types/node/async_hooks.d.ts",
-        "./node_modules/@types/node/buffer.d.ts",
-        "./node_modules/@types/node/child_process.d.ts",
-        "./node_modules/@types/node/cluster.d.ts",
-        "./node_modules/@types/node/console.d.ts",
-        "./node_modules/@types/node/constants.d.ts",
-        "./node_modules/@types/node/crypto.d.ts",
-        "./node_modules/@types/node/dgram.d.ts",
-        "./node_modules/@types/node/dns.d.ts",
-        "./node_modules/@types/node/domain.d.ts",
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/fs.d.ts",
-        "./node_modules/@types/node/globals.d.ts",
-        "./node_modules/@types/node/globals.global.d.ts",
-        "./node_modules/@types/node/http.d.ts",
-        "./node_modules/@types/node/http2.d.ts",
-        "./node_modules/@types/node/https.d.ts",
-        "./node_modules/@types/node/inspector.d.ts",
-        "./node_modules/@types/node/module.d.ts",
-        "./node_modules/@types/node/net.d.ts",
-        "./node_modules/@types/node/os.d.ts",
-        "./node_modules/@types/node/path.d.ts",
-        "./node_modules/@types/node/perf_hooks.d.ts",
-        "./node_modules/@types/node/process.d.ts",
-        "./node_modules/@types/node/punycode.d.ts",
-        "./node_modules/@types/node/querystring.d.ts",
-        "./node_modules/@types/node/readline.d.ts",
-        "./node_modules/@types/node/repl.d.ts",
-        "./node_modules/@types/node/stream.d.ts",
-        "./node_modules/@types/node/string_decoder.d.ts",
-        "./node_modules/@types/node/timers.d.ts",
-        "./node_modules/@types/node/tls.d.ts",
-        "./node_modules/@types/node/trace_events.d.ts",
-        "./node_modules/@types/node/tty.d.ts",
-        "./node_modules/@types/node/url.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/v8.d.ts",
-        "./node_modules/@types/node/vm.d.ts",
-        "./node_modules/@types/node/wasi.d.ts",
-        "./node_modules/@types/node/worker_threads.d.ts",
-        "./node_modules/@types/node/zlib.d.ts"
-      ],
-      "./node_modules/@types/node/tty.d.ts": [
-        "./node_modules/@types/node/net.d.ts"
-      ],
-      "./node_modules/@types/node/url.d.ts": [
-        "./node_modules/@types/node/querystring.d.ts"
-      ],
-      "./node_modules/@types/node/v8.d.ts": [
-        "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./node_modules/@types/node/worker_threads.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/stream.d.ts",
-        "./node_modules/@types/node/url.d.ts",
-        "./node_modules/@types/node/vm.d.ts"
-      ],
-      "./node_modules/@types/node/zlib.d.ts": [
-        "./node_modules/@types/node/stream.d.ts"
-      ],
-      "./node_modules/@types/serve-static/index.d.ts": [
-        "./node_modules/@types/mime/index.d.ts",
-        "./node_modules/@types/node/http.d.ts",
-        "./node_modules/@types/node/index.d.ts"
-      ],
-      "./node_modules/dotenv/types/index.d.ts": [
-        "./node_modules/@types/node/index.d.ts"
-      ],
-      "./node_modules/mongoose/index.d.ts": [
-        "./node_modules/@types/mongodb/index.d.ts",
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/stream.d.ts",
-        "./node_modules/mongoose/index.d.ts"
-      ],
-      "./src/db/index.ts": [
-        "./node_modules/mongoose/index.d.ts"
-      ],
-      "./src/index.ts": [
-        "./node_modules/dotenv/types/index.d.ts",
-        "./src/db/index.ts",
-        "./src/server/index.ts"
-      ],
-      "./src/modules/prize/model.ts": [
-        "./node_modules/mongoose/index.d.ts"
-      ],
-      "./src/modules/prize/routes.ts": [
-        "./node_modules/@types/express/ts4.0/index.d.ts",
-        "./src/modules/prize/model.ts"
-      ],
-      "./src/router/index.ts": [
-        "./node_modules/@types/express/ts4.0/index.d.ts",
-        "./src/modules/prize/routes.ts"
-      ],
-      "./src/server/index.ts": [
-        "./node_modules/@types/express/ts4.0/index.d.ts",
-        "./src/router/index.ts"
-      ]
-    },
-    "exportedModulesMap": {
-      "./node_modules/@types/body-parser/index.d.ts": [
-        "./node_modules/@types/connect/index.d.ts",
-        "./node_modules/@types/node/http.d.ts",
-        "./node_modules/@types/node/index.d.ts"
-      ],
-      "./node_modules/@types/bson/index.d.ts": [
-        "./node_modules/@types/node/index.d.ts"
-      ],
-      "./node_modules/@types/connect/index.d.ts": [
-        "./node_modules/@types/node/http.d.ts",
-        "./node_modules/@types/node/index.d.ts"
-      ],
-      "./node_modules/@types/express-serve-static-core/ts4.0/index.d.ts": [
-        "./node_modules/@types/node/events.d.ts",
-        "./node_modules/@types/node/http.d.ts",
-        "./node_modules/@types/node/index.d.ts",
-        "./node_modules/@types/qs/index.d.ts",
-        "./node_modules/@types/range-parser/index.d.ts"
-      ],
-      "./node_modules/@types/express/ts4.0/index.d.ts": [
-        "./node_modules/@types/body-parser/index.d.ts",
-        "./node_modules/@types/express-serve-static-core/ts4.0/index.d.ts",
-        "./node_modules/@types/qs/index.d.ts",
-        "./node_modules/@types/serve-static/index.d.ts"
-      ],
-      "./node_modules/@types/mongodb/index.d.ts": [
-        "./node_modules/@types/bson/index.d.ts",
+      "./node_modules/@types/mysql/index.d.ts": [
         "./node_modules/@types/node/events.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/@types/node/stream.d.ts",
@@ -915,7 +772,290 @@
         "./node_modules/@types/node/http.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
-      "./node_modules/dotenv/types/index.d.ts": [
+      "./node_modules/mongoose/index.d.ts": [
+        "./node_modules/@types/mongodb/index.d.ts",
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/mysql2/index.d.ts": [
+        "./node_modules/mysql2/promise.d.ts",
+        "./node_modules/mysql2/typings/mysql/index.d.ts"
+      ],
+      "./node_modules/mysql2/promise.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/index.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/index.d.ts": [
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/Pool.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolCluster.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/Pool.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/PoolCluster.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts": [
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts": [
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/Field.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/FieldPacket.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/OkPacket.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/ResultSetHeader.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/RowDataPacket.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts": [
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Sequence.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Sequence.d.ts": [
+        "./node_modules/@types/node/events.d.ts"
+      ],
+      "./src/db/index.ts": [
+        "./node_modules/mysql2/index.d.ts"
+      ],
+      "./src/index.ts": [
+        "./src/db/index.ts",
+        "./src/server/index.ts"
+      ],
+      "./src/modules/cursos/routes.ts": [
+        "./node_modules/@types/express/ts4.0/index.d.ts",
+        "./src/db/index.ts"
+      ],
+      "./src/modules/prize/model.ts": [
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./src/modules/prize/routes.ts": [
+        "./node_modules/@types/express/ts4.0/index.d.ts"
+      ],
+      "./src/router/index.ts": [
+        "./node_modules/@types/express/ts4.0/index.d.ts",
+        "./src/modules/cursos/routes.ts",
+        "./src/modules/prize/routes.ts"
+      ],
+      "./src/server/index.ts": [
+        "./node_modules/@types/express/ts4.0/index.d.ts",
+        "./src/router/index.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "./node_modules/@types/body-parser/index.d.ts": [
+        "./node_modules/@types/connect/index.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/bson/index.d.ts": [
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/connect/index.d.ts": [
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/express-serve-static-core/ts4.0/index.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/@types/qs/index.d.ts",
+        "./node_modules/@types/range-parser/index.d.ts"
+      ],
+      "./node_modules/@types/express/ts4.0/index.d.ts": [
+        "./node_modules/@types/body-parser/index.d.ts",
+        "./node_modules/@types/express-serve-static-core/ts4.0/index.d.ts",
+        "./node_modules/@types/qs/index.d.ts",
+        "./node_modules/@types/serve-static/index.d.ts"
+      ],
+      "./node_modules/@types/mongodb/index.d.ts": [
+        "./node_modules/@types/bson/index.d.ts",
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/@types/node/tls.d.ts"
+      ],
+      "./node_modules/@types/mysql/index.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/@types/node/tls.d.ts"
+      ],
+      "./node_modules/@types/node/base.d.ts": [
+        "./node_modules/@types/node/assert.d.ts",
+        "./node_modules/@types/node/ts3.6/base.d.ts"
+      ],
+      "./node_modules/@types/node/child_process.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/net.d.ts",
+        "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/node/cluster.d.ts": [
+        "./node_modules/@types/node/child_process.d.ts",
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/net.d.ts"
+      ],
+      "./node_modules/@types/node/constants.d.ts": [
+        "./node_modules/@types/node/crypto.d.ts",
+        "./node_modules/@types/node/fs.d.ts",
+        "./node_modules/@types/node/os.d.ts"
+      ],
+      "./node_modules/@types/node/crypto.d.ts": [
+        "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/node/dgram.d.ts": [
+        "./node_modules/@types/node/dns.d.ts",
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/net.d.ts"
+      ],
+      "./node_modules/@types/node/domain.d.ts": [
+        "./node_modules/@types/node/events.d.ts"
+      ],
+      "./node_modules/@types/node/events.d.ts": [
+        "./node_modules/@types/node/events.d.ts"
+      ],
+      "./node_modules/@types/node/fs.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/@types/node/url.d.ts"
+      ],
+      "./node_modules/@types/node/http.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/net.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/@types/node/url.d.ts"
+      ],
+      "./node_modules/@types/node/http2.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/fs.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/net.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/@types/node/tls.d.ts",
+        "./node_modules/@types/node/url.d.ts"
+      ],
+      "./node_modules/@types/node/https.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/tls.d.ts",
+        "./node_modules/@types/node/url.d.ts"
+      ],
+      "./node_modules/@types/node/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts"
+      ],
+      "./node_modules/@types/node/inspector.d.ts": [
+        "./node_modules/@types/node/events.d.ts"
+      ],
+      "./node_modules/@types/node/module.d.ts": [
+        "./node_modules/@types/node/url.d.ts"
+      ],
+      "./node_modules/@types/node/net.d.ts": [
+        "./node_modules/@types/node/dns.d.ts",
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/node/perf_hooks.d.ts": [
+        "./node_modules/@types/node/async_hooks.d.ts"
+      ],
+      "./node_modules/@types/node/process.d.ts": [
+        "./node_modules/@types/node/tty.d.ts"
+      ],
+      "./node_modules/@types/node/readline.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/node/repl.d.ts": [
+        "./node_modules/@types/node/readline.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/vm.d.ts"
+      ],
+      "./node_modules/@types/node/stream.d.ts": [
+        "./node_modules/@types/node/events.d.ts"
+      ],
+      "./node_modules/@types/node/tls.d.ts": [
+        "./node_modules/@types/node/crypto.d.ts",
+        "./node_modules/@types/node/dns.d.ts",
+        "./node_modules/@types/node/net.d.ts",
+        "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/node/ts3.6/base.d.ts": [
+        "./node_modules/@types/node/async_hooks.d.ts",
+        "./node_modules/@types/node/buffer.d.ts",
+        "./node_modules/@types/node/child_process.d.ts",
+        "./node_modules/@types/node/cluster.d.ts",
+        "./node_modules/@types/node/console.d.ts",
+        "./node_modules/@types/node/constants.d.ts",
+        "./node_modules/@types/node/crypto.d.ts",
+        "./node_modules/@types/node/dgram.d.ts",
+        "./node_modules/@types/node/dns.d.ts",
+        "./node_modules/@types/node/domain.d.ts",
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/fs.d.ts",
+        "./node_modules/@types/node/globals.d.ts",
+        "./node_modules/@types/node/globals.global.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/http2.d.ts",
+        "./node_modules/@types/node/https.d.ts",
+        "./node_modules/@types/node/inspector.d.ts",
+        "./node_modules/@types/node/module.d.ts",
+        "./node_modules/@types/node/net.d.ts",
+        "./node_modules/@types/node/os.d.ts",
+        "./node_modules/@types/node/path.d.ts",
+        "./node_modules/@types/node/perf_hooks.d.ts",
+        "./node_modules/@types/node/process.d.ts",
+        "./node_modules/@types/node/punycode.d.ts",
+        "./node_modules/@types/node/querystring.d.ts",
+        "./node_modules/@types/node/readline.d.ts",
+        "./node_modules/@types/node/repl.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/@types/node/string_decoder.d.ts",
+        "./node_modules/@types/node/timers.d.ts",
+        "./node_modules/@types/node/tls.d.ts",
+        "./node_modules/@types/node/trace_events.d.ts",
+        "./node_modules/@types/node/tty.d.ts",
+        "./node_modules/@types/node/url.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/v8.d.ts",
+        "./node_modules/@types/node/vm.d.ts",
+        "./node_modules/@types/node/wasi.d.ts",
+        "./node_modules/@types/node/worker_threads.d.ts",
+        "./node_modules/@types/node/zlib.d.ts"
+      ],
+      "./node_modules/@types/node/tty.d.ts": [
+        "./node_modules/@types/node/net.d.ts"
+      ],
+      "./node_modules/@types/node/url.d.ts": [
+        "./node_modules/@types/node/querystring.d.ts"
+      ],
+      "./node_modules/@types/node/v8.d.ts": [
+        "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/node/worker_threads.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/@types/node/url.d.ts",
+        "./node_modules/@types/node/vm.d.ts"
+      ],
+      "./node_modules/@types/node/zlib.d.ts": [
+        "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/serve-static/index.d.ts": [
+        "./node_modules/@types/mime/index.d.ts",
+        "./node_modules/@types/node/http.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
       "./node_modules/mongoose/index.d.ts": [
@@ -923,6 +1063,63 @@
         "./node_modules/@types/node/events.d.ts",
         "./node_modules/@types/node/stream.d.ts",
         "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/mysql2/index.d.ts": [
+        "./node_modules/mysql2/promise.d.ts",
+        "./node_modules/mysql2/typings/mysql/index.d.ts"
+      ],
+      "./node_modules/mysql2/promise.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/index.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/index.d.ts": [
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/Pool.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolCluster.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/Pool.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/PoolCluster.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts": [
+        "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts": [
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/Field.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/FieldPacket.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/OkPacket.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/ResultSetHeader.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/RowDataPacket.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts": [
+        "./node_modules/@types/node/stream.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+        "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Sequence.d.ts"
+      ],
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Sequence.d.ts": [
+        "./node_modules/@types/node/events.d.ts"
+      ],
+      "./src/db/index.ts": [
+        "./node_modules/mysql2/index.d.ts"
+      ],
+      "./src/modules/cursos/routes.ts": [
+        "./node_modules/@types/express-serve-static-core/ts4.0/index.d.ts"
       ],
       "./src/modules/prize/model.ts": [
         "./node_modules/mongoose/index.d.ts"
@@ -942,6 +1139,7 @@
       "./node_modules/@types/express/ts4.0/index.d.ts",
       "./node_modules/@types/mime/index.d.ts",
       "./node_modules/@types/mongodb/index.d.ts",
+      "./node_modules/@types/mysql/index.d.ts",
       "./node_modules/@types/node/assert.d.ts",
       "./node_modules/@types/node/async_hooks.d.ts",
       "./node_modules/@types/node/base.d.ts",
@@ -990,8 +1188,22 @@
       "./node_modules/@types/qs/index.d.ts",
       "./node_modules/@types/range-parser/index.d.ts",
       "./node_modules/@types/serve-static/index.d.ts",
-      "./node_modules/dotenv/types/index.d.ts",
       "./node_modules/mongoose/index.d.ts",
+      "./node_modules/mysql2/index.d.ts",
+      "./node_modules/mysql2/promise.d.ts",
+      "./node_modules/mysql2/typings/mysql/index.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/Connection.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/Pool.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/PoolCluster.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/PoolConnection.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/Field.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/FieldPacket.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/OkPacket.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/ResultSetHeader.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/RowDataPacket.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/packets/index.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Query.d.ts",
+      "./node_modules/mysql2/typings/mysql/lib/protocol/sequences/Sequence.d.ts",
       "./node_modules/typescript/lib/lib.d.ts",
       "./node_modules/typescript/lib/lib.dom.d.ts",
       "./node_modules/typescript/lib/lib.es2015.collection.d.ts",
@@ -1025,6 +1237,7 @@
       "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
       "./src/db/index.ts",
       "./src/index.ts",
+      "./src/modules/cursos/routes.ts",
       "./src/modules/prize/model.ts",
       "./src/modules/prize/routes.ts",
       "./src/router/index.ts",

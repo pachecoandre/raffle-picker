@@ -1,20 +1,9 @@
-import { Router } from 'express'
-import Prize from './model'
+import { Router } from "express";
 
-const prizeRouter = Router()
+const prizeRouter = Router();
 
-prizeRouter.get('/', async (req, res) => {
-    const prizes = await Prize.find()
-    res.send(prizes)
-})
+prizeRouter.get("/", async (req, res) => {
+  res.send([]);
+});
 
-prizeRouter.post('/', async (req, res) => {
-    const prize = new Prize({
-        name: req.body.name,
-        description: req.body.description
-    })
-    const { _id } = await prize.save()
-    res.status(200).send({ _id })
-})
-
-export default prizeRouter
+export default prizeRouter;
