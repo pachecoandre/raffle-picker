@@ -1,15 +1,14 @@
-import mongoose from "mongoose";
+import mysql from "mysql";
+import { config } from "dotenv";
 
-class DB {
-    static connect () {
-        mongoose
-          .connect(process.env.MONGO_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-          })
-          .then(() => console.log("Connected to database"));
-    }
-}
+const env = process.env.NODE_ENV || "development";
+config({ path: `./config/${env}.env` });
 
-export default DB
+const db = mysql.createConnection({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASS,
+  database: process.env.MYSQL_DB,
+});
+
+export default db;

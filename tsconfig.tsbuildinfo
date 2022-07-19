@@ -386,21 +386,6 @@
         "signature": "40b741dd397d635ee3df8b4880f30f15fa7394b9da31d4454805e47692438ff3",
         "affectsGlobalScope": false
       },
-      "./node_modules/@types/bson/index.d.ts": {
-        "version": "1da731703f961e2cbf64049f07eb837b9f33a3e6b2133be6275ffa7902a45b7d",
-        "signature": "1da731703f961e2cbf64049f07eb837b9f33a3e6b2133be6275ffa7902a45b7d",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/mongodb/index.d.ts": {
-        "version": "a3e7005501f68c921594997dd39c00153c07f20e87d97de276a73535a1e75f88",
-        "signature": "a3e7005501f68c921594997dd39c00153c07f20e87d97de276a73535a1e75f88",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/mongoose/index.d.ts": {
-        "version": "cd90983f2b5aa9ec7b932a92c46f8abef1daf2d096d03ec5accfeab450b61644",
-        "signature": "cd90983f2b5aa9ec7b932a92c46f8abef1daf2d096d03ec5accfeab450b61644",
-        "affectsGlobalScope": false
-      },
       "./node_modules/@types/range-parser/index.d.ts": {
         "version": "16d51f964ec125ad2024cf03f0af444b3bc3ec3614d9345cc54d09bab45c9a4c",
         "signature": "16d51f964ec125ad2024cf03f0af444b3bc3ec3614d9345cc54d09bab45c9a4c",
@@ -441,28 +426,48 @@
         "signature": "587b9ba944f50038226049381e9c44389c3f720eb2ca6774e7d58dbc43109826",
         "affectsGlobalScope": false
       },
-      "./src/services/info.service.ts": {
-        "version": "16c354684002c139df55a8e380932541fbb56afcbd3c861a8b7b21e5c2c4b128",
-        "signature": "13b1573a1046c0cfa131dd17316651bc5cd05fb1f8167c69834b235e6fad656f",
+      "./node_modules/@types/bson/index.d.ts": {
+        "version": "1da731703f961e2cbf64049f07eb837b9f33a3e6b2133be6275ffa7902a45b7d",
+        "signature": "1da731703f961e2cbf64049f07eb837b9f33a3e6b2133be6275ffa7902a45b7d",
         "affectsGlobalScope": false
       },
-      "./src/controllers/status.controller.ts": {
-        "version": "965b441ad8cd8986a78959c7ea8c4e44872cf3fa952db95d1c3ab730a70ba222",
-        "signature": "64ee7f8af0429e309778552c04d33c99e34b8920d79e1bbbd0e3dd920f0ce89a",
+      "./node_modules/@types/mongodb/index.d.ts": {
+        "version": "a3e7005501f68c921594997dd39c00153c07f20e87d97de276a73535a1e75f88",
+        "signature": "a3e7005501f68c921594997dd39c00153c07f20e87d97de276a73535a1e75f88",
         "affectsGlobalScope": false
       },
-      "./src/routes/index.ts": {
-        "version": "0e713b86eb337e5fec5d7240f2f91f5be7587d95ebe3be6f1ea5c1697eced2bd",
+      "./node_modules/mongoose/index.d.ts": {
+        "version": "425917f891c2563a9eaafe382823c33368c76134061f88ac614442961f740527",
+        "signature": "425917f891c2563a9eaafe382823c33368c76134061f88ac614442961f740527",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/prize/model.ts": {
+        "version": "efc084e8760e9474e64a817689fe8c6c3a63c9e3cfa7da1e00e02ce7e476b76e",
+        "signature": "2841cd6c941c93e3794849ad40f841aa1ff7f22d7a729da484a37846083c19b5",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/prize/routes.ts": {
+        "version": "be35e4345a54a83465219a47ab635b396b33ddacb1c1188ceaa7689a542d2c6a",
+        "signature": "b544867e11770c4020553ad3b492bdf17fab5e0c51fe650e2c7724ed1687117a",
+        "affectsGlobalScope": false
+      },
+      "./src/router/index.ts": {
+        "version": "798736c5918cb59e8dc286a53ea5041632be5881ec5f39a842ac099c57805927",
         "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
         "affectsGlobalScope": false
       },
-      "./src/server/bot.server.ts": {
-        "version": "1d205f755d9dbfc7b94fabc156ae2c567828ae549dff2986f0254ddaa95f80ac",
+      "./src/server/index.ts": {
+        "version": "06f778d086c3bca03ff213eab0dd230c4555376ed6bea70292a3f66d69e5f51b",
         "signature": "0406338ef8de6e309c1a4022e61f6e19bb59c5bd1e3ef9b745424ae8cde7c5b7",
         "affectsGlobalScope": false
       },
+      "./src/db/index.ts": {
+        "version": "5c3123ed422af42c0e95df2058b0c547c5ff5b5c220ef2150a5168139cdb3731",
+        "signature": "883d8bfbf6dd4870cd68449cbd18149c082fd597791cc6b9cfed984c959899de",
+        "affectsGlobalScope": false
+      },
       "./src/index.ts": {
-        "version": "5e6d3dd4bd8382fca31a3ee7cbbcc98ef0536877c6645e769c07e7a788c02fcc",
+        "version": "68bb97d0fac7d311d2c12ea37914339afeaf07e7f7f1841c32be45e13d8570f1",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       }
@@ -690,22 +695,28 @@
         "./node_modules/@types/node/stream.d.ts",
         "./node_modules/mongoose/index.d.ts"
       ],
-      "./src/controllers/status.controller.ts": [
-        "./src/services/info.service.ts"
+      "./src/db/index.ts": [
+        "./node_modules/mongoose/index.d.ts"
       ],
       "./src/index.ts": [
         "./node_modules/dotenv/types/index.d.ts",
-        "./node_modules/mongoose/index.d.ts",
-        "./src/server/bot.server.ts"
+        "./src/db/index.ts",
+        "./src/server/index.ts"
       ],
-      "./src/routes/index.ts": [
-        "./node_modules/@types/express/ts4.0/index.d.ts",
-        "./src/controllers/status.controller.ts"
+      "./src/modules/prize/model.ts": [
+        "./node_modules/mongoose/index.d.ts"
       ],
-      "./src/server/bot.server.ts": [
-        "./node_modules/@types/body-parser/index.d.ts",
+      "./src/modules/prize/routes.ts": [
         "./node_modules/@types/express/ts4.0/index.d.ts",
-        "./src/routes/index.ts"
+        "./src/modules/prize/model.ts"
+      ],
+      "./src/router/index.ts": [
+        "./node_modules/@types/express/ts4.0/index.d.ts",
+        "./src/modules/prize/routes.ts"
+      ],
+      "./src/server/index.ts": [
+        "./node_modules/@types/express/ts4.0/index.d.ts",
+        "./src/router/index.ts"
       ]
     },
     "exportedModulesMap": {
@@ -913,7 +924,13 @@
         "./node_modules/@types/node/stream.d.ts",
         "./node_modules/mongoose/index.d.ts"
       ],
-      "./src/routes/index.ts": [
+      "./src/modules/prize/model.ts": [
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./src/modules/prize/routes.ts": [
+        "./node_modules/@types/express-serve-static-core/ts4.0/index.d.ts"
+      ],
+      "./src/router/index.ts": [
         "./node_modules/@types/express-serve-static-core/ts4.0/index.d.ts"
       ]
     },
@@ -1006,11 +1023,12 @@
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "./node_modules/typescript/lib/lib.scripthost.d.ts",
       "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
-      "./src/controllers/status.controller.ts",
+      "./src/db/index.ts",
       "./src/index.ts",
-      "./src/routes/index.ts",
-      "./src/server/bot.server.ts",
-      "./src/services/info.service.ts"
+      "./src/modules/prize/model.ts",
+      "./src/modules/prize/routes.ts",
+      "./src/router/index.ts",
+      "./src/server/index.ts"
     ]
   },
   "version": "3.9.10"
