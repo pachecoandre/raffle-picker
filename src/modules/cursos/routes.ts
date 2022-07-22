@@ -4,15 +4,8 @@ import db from "../../db";
 const cursosRouter = Router();
 
 cursosRouter.get("/", async (req, res) => {
-  const result = await new Promise((resolve, reject) => {
-    db.execute("SELECT * FROM cursos", (error, results, fields) => {
-      if (error) {
-        reject(error);
-      }
-      resolve(results);
-    });
-  });
-  res.send(result);
+  const [rows] = await db.query("SELECT * FROM cursos");
+  res.send(rows);
 });
 
 export default cursosRouter;

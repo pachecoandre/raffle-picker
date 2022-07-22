@@ -1,7 +1,9 @@
-import Server from "./server";
-import db from './db'
+import "dotenv/config";
 
-db.connect(() => console.log('Connected to database'))
+import Server from "./server";
+import db from "./db";
+
+db.getConnection().then(() => console.log("connected to database"));
 
 const server = new Server(process.env.PORT);
 server.route();
