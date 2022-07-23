@@ -15,12 +15,22 @@ campaignRoutes.post("/", async (req, res) => {
   const userId = token;
   const { name, estimatedDrawDate, rafflePrice } = req.body;
 
-  if (!name || !estimatedDrawDate || !rafflePrice) {
-    res.status(400).send("Missing fields")
+  if (!userId) {
+    return res.status(401);
   }
 
+  if (!name || !estimatedDrawDate || !rafflePrice) {
+    return res.status(400).send("Missing fields");
+  }
+
+  const [campaignRow] = await db.query<any>(
+    `insert into campaigns (name, estimated_draw_date, raffle_price) values ("${name}", "${estimatedDrawDate}", "${rafflePrice}")`
+  );
+
+  const campaignId = campaignRow.insertId;
+
   await db.query(
-    `INSERT INTO campaigns (name, estimated_draw_date, raffle_price) values ("${name}", "${estimatedDrawDate}", "${rafflePrice}")`
+    `insert into user_relationships (user_id, campaign_id, role) values (${userId}, ${campaignId}, "admin")`
   );
   res.send([]);
 });
