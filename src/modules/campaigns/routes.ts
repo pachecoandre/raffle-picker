@@ -1,6 +1,6 @@
 import { Request, Router } from "express";
 import db from "../../db";
-import { createCampaign } from "./service";
+import { createCampaign, getCampaigns } from "./service";
 
 interface CampaignsReq extends Request {
   userId: string;
@@ -20,12 +20,8 @@ campaignRoutes.use((req: CampaignsReq, res, next) => {
 });
 
 campaignRoutes.get("/", async (req: CampaignsReq, res) => {
-  const [rows] = await db.query(
-    `SELECT c.id, c.name, c.estimated_draw_date, c.draw_date, c.raffle_price, user_id, role
-    FROM campaigns c JOIN user_relationships
-    ON user_relationships.campaign_id=id where role="admin" AND user_id=${req.userId};`
-  );
-  res.send(rows);
+  const campaigns = await getCampaigns(req.userId);
+  res.send(campaigns);
 });
 
 campaignRoutes.post("/", async (req: CampaignsReq, res) => {
