@@ -1,30 +1,42 @@
-import { Router } from "express";
+import { Request, Router } from "express";
 import db from "../../db";
 import { createCampaign } from "./service";
 
+interface CampaignsReq extends Request {
+  userId: string;
+}
+
 const campaignRoutes = Router();
 
-campaignRoutes.get("/", async (req, res) => {
-  const [rows] = await db.query("SELECT * FROM campaigns");
+campaignRoutes.use((req: CampaignsReq, res, next) => {
+  const bearerToken = req.headers.authorization || "";
+  const token = bearerToken.split(" ")[1];
+  req.userId = token;
+
+  if (!req.userId) {
+    return res.sendStatus(401);
+  }
+  next();
+});
+
+campaignRoutes.get("/", async (req: CampaignsReq, res) => {
+  const [rows] = await db.query(
+    `SELECT c.id, c.name, c.estimated_draw_date, c.draw_date, c.raffle_price, user_id, role
+    FROM campaigns c JOIN user_relationships
+    WHERE role="admin" AND user_id="${req.userId}"`
+  );
   res.send(rows);
 });
 
-campaignRoutes.post("/", async (req, res) => {
-  const bearerToken = req.headers.authorization || "";
-  const token = bearerToken.split(" ")[1];
-  const userId = token;
+campaignRoutes.post("/", async (req: CampaignsReq, res) => {
   const { name, estimatedDrawDate, rafflePrice } = req.body;
-
-  if (!userId) {
-    return res.status(401);
-  }
 
   if (!name || !estimatedDrawDate || !rafflePrice) {
     return res.status(400).send("Missing fields");
   }
 
   const campaignId = await createCampaign(
-    userId,
+    req.userId,
     name,
     estimatedDrawDate,
     rafflePrice
