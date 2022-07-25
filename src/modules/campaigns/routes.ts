@@ -1,6 +1,6 @@
-import { Console } from "console";
 import { Router } from "express";
 import db from "../../db";
+import { createCampaign } from "./service";
 
 const campaignRoutes = Router();
 
@@ -23,16 +23,14 @@ campaignRoutes.post("/", async (req, res) => {
     return res.status(400).send("Missing fields");
   }
 
-  const [campaignRow] = await db.query<any>(
-    `insert into campaigns (name, estimated_draw_date, raffle_price) values ("${name}", "${estimatedDrawDate}", "${rafflePrice}")`
+  const campaignId = await createCampaign(
+    userId,
+    name,
+    estimatedDrawDate,
+    rafflePrice
   );
 
-  const campaignId = campaignRow.insertId;
-
-  await db.query(
-    `insert into user_relationships (user_id, campaign_id, role) values (${userId}, ${campaignId}, "admin")`
-  );
-  res.send([]);
+  res.status(201).send({ id: campaignId });
 });
 
 export default campaignRoutes;
