@@ -1,12 +1,12 @@
 import { Router } from "express";
 import { createCampaign, getCampaigns } from "./service";
 import prizeRoutes from "../prize/routes";
-import raffleRoutes from '../raffles/routes'
-import { authMiddleware, AuthRequest } from "../../server/middlewares";
-
-interface CampaignsReq extends AuthRequest {
-  campaignId?: string;
-}
+import raffleRoutes from "../raffles/routes";
+import {
+  authMiddleware,
+  attachCampaign,
+  CampaignsReq,
+} from "../../server/middlewares";
 
 const campaignRouter = Router();
 
@@ -34,22 +34,8 @@ campaignRouter.post("/", async (req: CampaignsReq, res) => {
   res.status(201).send({ id: campaignId });
 });
 
-campaignRouter.use(
-  "/:campaignId/prizes",
-  (req: CampaignsReq, _, next) => {
-    req.campaignId = req.params.campaignId;
-    next();
-  },
-  prizeRoutes
-);
+campaignRouter.use("/:campaignId/prizes", attachCampaign, prizeRoutes);
 
-campaignRouter.use(
-  "/:campaignId/raffles",
-  (req: CampaignsReq, _, next) => {
-    req.campaignId = req.params.campaignId;
-    next();
-  },
-  raffleRoutes
-);
+campaignRouter.use("/:campaignId/raffles", attachCampaign, raffleRoutes);
 
 export default campaignRouter;

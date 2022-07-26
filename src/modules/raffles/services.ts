@@ -7,22 +7,22 @@ const getRaffles = async (campaignId) => {
     JOIN user_relationships ur ON u.id=ur.user_id
     JOIN raffles r ON ur.id=r.seller_id
     JOIN participants p ON r.participant_id=p.id
-    WHERE r.campaign_id=8`
+    WHERE r.campaign_id=${campaignId}`
   );
   return prizes;
 };
 
 const createRaffle = async (name, phone, email, userId, campaignId) => {
+  const [uRelationships] = await db.query<any>(
+    `SELECT * FROM user_relationships
+    WHERE user_id=${userId} AND campaign_id=${campaignId}`
+  );
   const [participant] = await db.query<any>(
     `INSERT INTO participants (name, phone, email)
     VALUES ("${name}", "${phone}", "${email}")`
   );
   const participantId = participant.insertId;
 
-  const [uRelationships] = await db.query<any>(
-    `SELECT * FROM user_relationships
-    WHERE user_id=${userId} AND campaign_id=${campaignId}`
-  );
   const sellerId = uRelationships[0]?.id;
 
   return db.query(
