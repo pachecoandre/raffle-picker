@@ -18,7 +18,7 @@ const createRaffle = async (name, phone, email, userId, campaignId) => {
     `SELECT * FROM user_relationships
     WHERE user_id=${userId} AND campaign_id=${campaignId}`
   );
-  const sellerId = uRelationships[0].id;
+  const sellerId = uRelationships[0]?.id;
 
   return db.query(
     `INSERT INTO raffles (participant_id, seller_id, campaign_id)

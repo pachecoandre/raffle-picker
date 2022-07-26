@@ -4,7 +4,7 @@ const getCampaigns = async (userId) => {
   const [campaigns] = await db.query(
     `SELECT c.id, c.name, c.estimated_draw_date, c.draw_date, c.raffle_price, user_id, role
     FROM campaigns c JOIN user_relationships
-    ON user_relationships.campaign_id=id where role="admin" AND user_id=${userId};`
+    ON user_relationships.campaign_id=c.id where role="admin" AND user_id=${userId};`
   );
   return campaigns;
 };
