@@ -2,7 +2,12 @@ import db from "../../db";
 
 const getPrizes = async (campaignId) => {
   const [prizes] = await db.query(
-    `SELECT p.id, p.name, p.description, p.imageUrl FROM campaigns JOIN prizes p ON campaigns.id=campaign_id WHERE campaign_id=${campaignId}`
+    `SELECT p.id, p.name, p.description, p.imageUrl, count(pi.id) AS quantity
+    FROM campaigns
+    JOIN prizes AS p ON campaigns.id=campaign_id
+    JOIN prize_items AS pi ON pi.prize_id=p.id
+    WHERE campaign_id=${campaignId}
+    GROUP BY pi.prize_id;`
   );
   return prizes;
 };
