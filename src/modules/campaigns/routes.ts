@@ -1,14 +1,15 @@
 import { Request, Router } from "express";
-import db from "../../db";
 import { createCampaign, getCampaigns } from "./service";
+import prizeRoutes from "../prize/routes";
 
 interface CampaignsReq extends Request {
   userId: string;
+  campaignId?: string;
 }
 
-const campaignRoutes = Router();
+const campaignRouter = Router();
 
-campaignRoutes.use((req: CampaignsReq, res, next) => {
+campaignRouter.use((req: CampaignsReq, res, next) => {
   const bearerToken = req.headers.authorization || "";
   const token = bearerToken.split(" ")[1];
   req.userId = token;
@@ -19,12 +20,12 @@ campaignRoutes.use((req: CampaignsReq, res, next) => {
   next();
 });
 
-campaignRoutes.get("/", async (req: CampaignsReq, res) => {
+campaignRouter.get("/", async (req: CampaignsReq, res) => {
   const campaigns = await getCampaigns(req.userId);
   res.send(campaigns);
 });
 
-campaignRoutes.post("/", async (req: CampaignsReq, res) => {
+campaignRouter.post("/", async (req: CampaignsReq, res) => {
   const { name, estimatedDrawDate, rafflePrice } = req.body;
 
   if (!name || !estimatedDrawDate || !rafflePrice) {
@@ -41,4 +42,13 @@ campaignRoutes.post("/", async (req: CampaignsReq, res) => {
   res.status(201).send({ id: campaignId });
 });
 
-export default campaignRoutes;
+campaignRouter.use(
+  "/:campaignId/prizes",
+  (req: CampaignsReq, _, next) => {
+    req.campaignId = req.params.campaignId;
+    next();
+  },
+  prizeRoutes
+);
+
+export default campaignRouter;
