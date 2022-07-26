@@ -2,7 +2,12 @@ import db from "../../db";
 
 const getRaffles = async (campaignId) => {
   const [prizes] = await db.query(
-    `SELECT * FROM raffles WHERE campaign_id=${campaignId}`
+    `SELECT p.name AS participant_name, p.phone AS participant_phone, p.email AS participant_email, u.name AS seller_name, r.created_at AS date
+    FROM users u
+    JOIN user_relationships ur ON u.id=ur.user_id
+    JOIN raffles r ON ur.id=r.seller_id
+    JOIN participants p ON r.participant_id=p.id
+    WHERE r.campaign_id=8`
   );
   return prizes;
 };
