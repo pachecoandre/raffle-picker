@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createCampaign, getCampaigns } from "./service";
 import prizeRoutes from "../prize/routes";
+import raffleRoutes from '../raffles/routes'
 import { authMiddleware, AuthRequest } from "../../server/middlewares";
 
 interface CampaignsReq extends AuthRequest {
@@ -40,6 +41,15 @@ campaignRouter.use(
     next();
   },
   prizeRoutes
+);
+
+campaignRouter.use(
+  "/:campaignId/raffles",
+  (req: CampaignsReq, _, next) => {
+    req.campaignId = req.params.campaignId;
+    next();
+  },
+  raffleRoutes
 );
 
 export default campaignRouter;
