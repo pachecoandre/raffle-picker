@@ -1,24 +1,15 @@
-import { Request, Router } from "express";
+import { Router } from "express";
 import { createCampaign, getCampaigns } from "./service";
 import prizeRoutes from "../prize/routes";
+import { authMiddleware, AuthRequest } from "../../server/middlewares";
 
-interface CampaignsReq extends Request {
-  userId: string;
+interface CampaignsReq extends AuthRequest {
   campaignId?: string;
 }
 
 const campaignRouter = Router();
 
-campaignRouter.use((req: CampaignsReq, res, next) => {
-  const bearerToken = req.headers.authorization || "";
-  const token = bearerToken.split(" ")[1];
-  req.userId = token;
-
-  if (!req.userId) {
-    return res.sendStatus(401);
-  }
-  next();
-});
+campaignRouter.use(authMiddleware);
 
 campaignRouter.get("/", async (req: CampaignsReq, res) => {
   const campaigns = await getCampaigns(req.userId);
