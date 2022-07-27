@@ -1,11 +1,8 @@
 import { Router } from "express";
-import db from "../../db";
+import userControllers from "./controllers";
 
-const cursosRouter = Router();
+const usersRouter = Router();
 
-cursosRouter.get("/", async (req, res) => {
-  const [rows] = await db.query("SELECT * FROM users");
-  res.send(rows);
-});
+usersRouter.get("/", userControllers.getUserController);
 
-export default cursosRouter;
+export default usersRouter;

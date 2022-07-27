@@ -1,7 +1,7 @@
 import db from "../../db";
 
-const getRaffles = async (campaignId) => {
-  const [prizes] = await db.query(
+const find = async ({ campaignId }) => {
+  const [raffles] = await db.query(
     `SELECT p.name AS participant_name, p.phone AS participant_phone, p.email AS participant_email, u.name AS seller_name, r.created_at AS date
     FROM users u
     JOIN user_relationships ur ON u.id=ur.user_id
@@ -9,10 +9,10 @@ const getRaffles = async (campaignId) => {
     JOIN participants p ON r.participant_id=p.id
     WHERE r.campaign_id=${campaignId}`
   );
-  return prizes;
+  return raffles;
 };
 
-const createRaffle = async (name, phone, email, userId, campaignId) => {
+const create = async ({ name, phone, email, userId, campaignId }) => {
   const [uRelationships] = await db.query<any>(
     `SELECT * FROM user_relationships
     WHERE user_id=${userId} AND campaign_id=${campaignId}`
@@ -31,4 +31,4 @@ const createRaffle = async (name, phone, email, userId, campaignId) => {
   );
 };
 
-export { getRaffles, createRaffle };
+export default { find, create };

@@ -1,6 +1,6 @@
 import db from "../../db";
 
-const getPrizes = async (campaignId) => {
+const find = async (campaignId) => {
   const [prizes] = await db.query(
     `SELECT p.id, p.name, p.description, p.imageUrl, count(pi.id) AS quantity
     FROM campaigns
@@ -12,7 +12,7 @@ const getPrizes = async (campaignId) => {
   return prizes;
 };
 
-const createPrize = async (name, description, campaignId) => {
+const insert = async (name, description, campaignId) => {
   const [prize] = await db.query<any>(
     `INSERT INTO prizes (name, description, campaign_id) values ("${name}", "${description}", ${campaignId})`
   );
@@ -21,4 +21,4 @@ const createPrize = async (name, description, campaignId) => {
   return db.query(`INSERT INTO prize_items (prize_id) values (${prizeId})`);
 };
 
-export { getPrizes, createPrize };
+export default { find, insert };

@@ -1,5 +1,5 @@
 import { Router, Request } from "express";
-import { getPrizes, createPrize } from "./services";
+import prizeControllers from "./controllers";
 
 interface PrizeReq extends Request {
   campaignId?: string;
@@ -7,17 +7,8 @@ interface PrizeReq extends Request {
 
 const prizeRouter = Router();
 
-prizeRouter.get("/", async (req: PrizeReq, res) => {
-  const campaignId = req.campaignId;
-  const prizes = await getPrizes(campaignId);
-  res.send(prizes);
-});
+prizeRouter.get("/", prizeControllers.getPrizeController);
 
-prizeRouter.post("/", async (req: PrizeReq, res) => {
-  const campaignId = req.campaignId;
-  const { name, description } = req.body;
-  await createPrize(name, description, campaignId);
-  res.sendStatus(200);
-});
+prizeRouter.post("/", prizeControllers.postPrizeController);
 
 export default prizeRouter;
