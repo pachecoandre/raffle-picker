@@ -4,21 +4,24 @@ import raffleRoutes from "../raffles/routes";
 import campaignControllers from "./controllers";
 import { authMiddleware, attachCampaign } from "../../server/middlewares";
 
-const campaignRouter = Router();
+const campaignsRouter = Router();
 
-campaignRouter.use(authMiddleware);
+campaignsRouter.use(authMiddleware);
 
-campaignRouter.get("/", campaignControllers.getCampaignsController);
+campaignsRouter.get("/", campaignControllers.getCampaignsController);
 
-campaignRouter.post("/", campaignControllers.postCampaignsController);
+campaignsRouter.post("/", campaignControllers.postCampaignsController);
 
-campaignRouter.get(
+campaignsRouter
+
+
+campaignsRouter.get(
   "/:campaignId",
   campaignControllers.getCampaignByIdController
 );
 
-campaignRouter.use("/:campaignId/prizes", attachCampaign, prizeRoutes);
+campaignsRouter.use("/:campaignId/prizes", attachCampaign, prizeRoutes);
 
-campaignRouter.use("/:campaignId/raffles", attachCampaign, raffleRoutes);
+campaignsRouter.use("/:campaignId/raffles", attachCampaign, raffleRoutes);
 
-export default campaignRouter;
+export default campaignsRouter;

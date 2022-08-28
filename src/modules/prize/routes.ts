@@ -1,10 +1,10 @@
-import { Router, Request } from "express";
+import { Router } from "express";
 import prizeControllers from "./controllers";
 
-const prizeRouter = Router();
+const prizesRouter = Router();
 
-prizeRouter.get("/", prizeControllers.getPrizeController);
+prizesRouter.get("/", prizeControllers.getPrizeController);
 
-prizeRouter.post("/", prizeControllers.postPrizeController);
+prizesRouter.post("/", prizeControllers.postPrizeController);
 
-export default prizeRouter;
+export default prizesRouter;

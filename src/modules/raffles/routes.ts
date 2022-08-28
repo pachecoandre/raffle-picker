@@ -1,9 +1,9 @@
 import { Router } from "express";
 import raffleControllers from "./controllers";
 
-const raffleRouter = Router();
+const rafflesRouter = Router();
 
-raffleRouter.get("/", raffleControllers.getRafflesController);
-raffleRouter.post("/", raffleControllers.postRafflesController);
+rafflesRouter.get("/", raffleControllers.getRafflesController);
+rafflesRouter.post("/", raffleControllers.postRafflesController);
 
-export default raffleRouter;
+export default rafflesRouter;
