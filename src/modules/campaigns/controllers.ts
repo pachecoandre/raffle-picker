@@ -1,5 +1,11 @@
 import { CampaignsReq } from "../../server/middlewares";
-import { getCampaigns, createCampaign } from "./service";
+import {
+  getCampaigns,
+  createCampaign,
+  getCampaignById,
+  getRafflesCount,
+  getPrizesCount,
+} from "./service";
 
 const getCampaignsController = async (req: CampaignsReq, res) => {
   const campaigns = await getCampaigns(req.userId);
@@ -24,7 +30,19 @@ const postCampaignsController = async (req: CampaignsReq, res) => {
 };
 
 const getCampaignByIdController = async (req: CampaignsReq, res) => {
-  const { campaignId } = req.params
-}
+  const { campaignId } = req.params;
+  const campaign = await getCampaignById(campaignId);
+  const rafflesCount = await getRafflesCount(campaignId);
+  const prizesCount = await getPrizesCount(campaignId);
+  res.send({
+    ...campaign[0],
+    rafflesCount: rafflesCount[0]?.count,
+    prizesCount: prizesCount[0]?.count,
+  });
+};
 
-export { getCampaignsController, postCampaignsController };
+export default {
+  getCampaignsController,
+  postCampaignsController,
+  getCampaignByIdController,
+};

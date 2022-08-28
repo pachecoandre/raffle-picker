@@ -1,7 +1,6 @@
 import db from "../../db";
 
 const getCampaigns = async (userId) => {
-  
   const [campaigns] = await db.query(
     `SELECT c.id, c.name, c.estimated_draw_date, c.draw_date, c.raffle_price, user_id, role
     FROM campaigns c JOIN user_relationships
@@ -24,4 +23,31 @@ const createCampaign = async (userId, name, estimatedDrawDate, rafflePrice) => {
   return campaignId;
 };
 
-export { getCampaigns, createCampaign };
+const getCampaignById = async (campaignId) => {
+  const [campaign] = await db.query(
+    `SELECT name, raffle_price, estimated_draw_date FROM campaigns WHERE id=${campaignId}`
+  );
+  return campaign;
+};
+
+const getRafflesCount = async (campaignId) => {
+  const [campaignsCount] = await db.query(
+    `SELECT count(*) AS count FROM raffles WHERE campaign_id=${campaignId};`
+  );
+  return campaignsCount;
+};
+
+const getPrizesCount = async (campaignId) => {
+  const [prizesCount] = await db.query(
+    `SELECT count(*) AS count FROM prizes WHERE campaign_id=${campaignId}`
+  );
+  return prizesCount;
+};
+
+export {
+  getCampaigns,
+  createCampaign,
+  getCampaignById,
+  getRafflesCount,
+  getPrizesCount,
+};
