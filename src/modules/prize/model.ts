@@ -12,13 +12,15 @@ const find = async (campaignId) => {
   return prizes;
 };
 
-const insert = async (name, description, campaignId) => {
+const createMany = async (name, description, quantity, campaignId) => {
   const [prize] = await db.query<any>(
     `INSERT INTO prizes (name, description, campaign_id) values ("${name}", "${description}", ${campaignId})`
   );
-  const prizeId = prize.insertId;
-
-  return db.query(`INSERT INTO prize_items (prize_id) values (${prizeId})`);
+  for (let i = 0; i < quantity; i++) {
+    await db.query(
+      `INSERT INTO prize_items (prize_id) values (${prize.insertId})`
+    );
+  }
 };
 
-export default { find, insert };
+export default { find, createMany };
