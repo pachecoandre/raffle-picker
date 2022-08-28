@@ -30,6 +30,24 @@ const getCampaignById = async (campaignId) => {
   return campaign;
 };
 
+const updateCampaign = async (campaignId, updates) => {
+  const setArguments = [];
+
+  if (updates.name) {
+    setArguments.push(`name="${updates.name}"`);
+  }
+  if (updates.estimatedDrawDate) {
+    setArguments.push(`estimated_draw_date="${updates.estimatedDrawDate}"`);
+  }
+  const query = `UPDATE campaigns SET ${setArguments.join(
+    ", "
+  )} WHERE id=${campaignId}`;
+
+  console.log(query);
+  
+  await db.query(query);
+};
+
 const getRafflesCount = async (campaignId) => {
   const [campaignsCount] = await db.query(
     `SELECT count(*) AS count FROM raffles WHERE campaign_id=${campaignId};`
@@ -48,6 +66,7 @@ export {
   getCampaigns,
   createCampaign,
   getCampaignById,
+  updateCampaign,
   getRafflesCount,
   getPrizesCount,
 };

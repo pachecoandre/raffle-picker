@@ -12,12 +12,14 @@ campaignsRouter.get("/", campaignControllers.getCampaignsController);
 
 campaignsRouter.post("/", campaignControllers.postCampaignsController);
 
-campaignsRouter
-
-
 campaignsRouter.get(
   "/:campaignId",
   campaignControllers.getCampaignByIdController
+);
+
+campaignsRouter.patch(
+  "/:campaignId",
+  campaignControllers.updateCampaignController
 );
 
 campaignsRouter.use("/:campaignId/prizes", attachCampaign, prizeRoutes);

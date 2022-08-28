@@ -7,4 +7,6 @@ prizesRouter.get("/", prizeControllers.getPrizeController);
 
 prizesRouter.post("/", prizeControllers.postPrizeController);
 
+prizesRouter.patch("/", prizeControllers.patchPrizeController);
+
 export default prizesRouter;
