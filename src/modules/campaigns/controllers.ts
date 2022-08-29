@@ -34,13 +34,28 @@ const postCampaignsController = async (req: CampaignsReq, res: Response) => {
 
 const getCampaignByIdController = async (req: CampaignsReq, res: Response) => {
   const { campaignId } = req.params;
-  const campaign = await getCampaignById(campaignId);
-  const rafflesCount = await getRafflesCount(campaignId);
-  const prizesCount = await getPrizesCount(campaignId);
+
+  const campaignResult = await getCampaignById(campaignId);
+  const campaign = campaignResult[0];
+  const name = campaign?.name;
+  const estimatedDrawDate = campaign?.estimated_draw_date;
+  const rafflePrice = campaign?.raffle_price || 0;
+
+  const rafflesCountResult = await getRafflesCount(campaignId);
+  const rafflesCount = rafflesCountResult[0]?.count || 0;
+
+  const revenue = rafflePrice * rafflesCount;
+
+  const prizesCountResult = await getPrizesCount(campaignId);
+  const prizesCount = prizesCountResult[0]?.count;
+
   res.send({
-    ...campaign[0],
-    rafflesCount: rafflesCount[0]?.count,
-    prizesCount: prizesCount[0]?.count,
+    name,
+    estimatedDrawDate,
+    rafflePrice,
+    rafflesCount,
+    revenue,
+    prizesCount,
   });
 };
 
