@@ -7,7 +7,7 @@ interface PrizeReq extends Request {
 
 const getPrizeController = async (req: PrizeReq, res) => {
   const campaignId = req.campaignId;
-  const prizes = await PrizeModel.find(campaignId);
+  const prizes = await PrizeModel.findOne(campaignId);
   res.send(prizes);
 };
 
@@ -23,14 +23,14 @@ const postPrizeController = async (req: PrizeReq, res) => {
   res.sendStatus(201);
 };
 
-const patchPrizeController = async (req: PrizeReq, res) => {
-  const campaignId = req.campaignId;
-  const { name, description } = req.body;
-  res.sendStatus(201);
+const deletePrizeController = async (req: PrizeReq, res) => {
+  const { prizeId } = req.params;
+  await PrizeModel.deleteOne(prizeId);
+  res.sendStatus(204);
 };
 
 export default {
   getPrizeController,
   postPrizeController,
-  patchPrizeController,
+  deletePrizeController,
 };

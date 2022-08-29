@@ -1,6 +1,6 @@
 import db from "../../db";
 
-const find = async (campaignId) => {
+const findOne = async (campaignId) => {
   const [prizes] = await db.query(
     `SELECT p.id, p.name, p.description, p.imageUrl, count(pi.id) AS quantity
     FROM campaigns
@@ -23,4 +23,9 @@ const createMany = async (name, description, quantity, campaignId) => {
   }
 };
 
-export default { find, createMany };
+const deleteOne = (prizeId) => {
+  // cascade delete
+  return db.query(`DELETE FROM prizes WHERE id=${prizeId}`);
+};
+
+export default { findOne, createMany, deleteOne };

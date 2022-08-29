@@ -7,6 +7,6 @@ prizesRouter.get("/", prizeControllers.getPrizeController);
 
 prizesRouter.post("/", prizeControllers.postPrizeController);
 
-prizesRouter.patch("/", prizeControllers.patchPrizeController);
+prizesRouter.delete("/:prizeId", prizeControllers.deletePrizeController);
 
 export default prizesRouter;
