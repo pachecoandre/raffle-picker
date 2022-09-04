@@ -3,12 +3,20 @@ import PrizeModel from "./model";
 
 interface PrizeReq extends Request {
   campaignId?: string;
+  query: {
+    page?: string;
+    limit?: string;
+  };
 }
 
 const getPrizeController = async (req: PrizeReq, res) => {
   const campaignId = req.campaignId;
-  const prizes = await PrizeModel.findOne(campaignId);
-  res.send(prizes);
+  const { page = "0", limit = "20" } = req.query;
+  let offset = parseInt(page) * parseInt(limit);
+  const rows = parseInt(limit);
+
+  const data = await PrizeModel.find({ campaignId, offset, rows });
+  res.send(data);
 };
 
 const postPrizeController = async (req: PrizeReq, res) => {

@@ -1,15 +1,21 @@
 import db from "../../db";
 
-const findOne = async (campaignId) => {
+const find = async ({ campaignId, offset, rows }) => {
   const [prizes] = await db.query(
     `SELECT p.id, p.name, p.description, p.imageUrl, count(pi.id) AS quantity
     FROM campaigns
     JOIN prizes AS p ON campaigns.id=campaign_id
     JOIN prize_items AS pi ON pi.prize_id=p.id
     WHERE campaign_id=${campaignId}
-    GROUP BY pi.prize_id;`
+    GROUP BY pi.prize_id
+    LIMIT ${offset}, ${rows}
+    `
   );
-  return prizes;
+  const [totalRows] = await db.query(`
+    SELECT count(*) AS count FROM prizes WHERE campaign_id=${campaignId}
+  `);
+
+  return { totalRows: totalRows[0].count, data: prizes };
 };
 
 const createMany = async (name, description, quantity, campaignId) => {
@@ -28,4 +34,4 @@ const deleteOne = (prizeId) => {
   return db.query(`DELETE FROM prizes WHERE id=${prizeId}`);
 };
 
-export default { findOne, createMany, deleteOne };
+export default { find, createMany, deleteOne };
