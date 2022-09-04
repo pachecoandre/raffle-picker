@@ -1,15 +1,20 @@
 import db from "../../db";
 
-const find = async ({ campaignId }) => {
+const find = async ({ campaignId, offset, rows }) => {
   const [raffles] = await db.query(
-    `SELECT p.name AS participant_name, p.phone AS participant_phone, p.email AS participant_email, u.name AS seller_name, r.created_at AS date
+    `SELECT r.id AS id, p.name AS participantName, p.phone AS participantPhone, p.email AS participantEmail, u.name AS sellerName, r.created_at AS date
     FROM users u
     JOIN user_relationships ur ON u.id=ur.user_id
     JOIN raffles r ON ur.id=r.seller_id
     JOIN participants p ON r.participant_id=p.id
-    WHERE r.campaign_id=${campaignId}`
+    WHERE r.campaign_id=${campaignId}
+    LIMIT ${offset}, ${rows}
+    `
   );
-  return raffles;
+  const [totalRows] = await db.query(`
+    SELECT count(*) AS count FROM raffles WHERE raffles.campaign_id=5;
+  `);
+  return { totalRows: totalRows[0].count, data: raffles };
 };
 
 const create = async ({ name, phone, email, userId, campaignId }) => {

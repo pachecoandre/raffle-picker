@@ -3,12 +3,20 @@ import { AuthRequest } from "../../server/middlewares";
 
 interface RaffleReq extends AuthRequest {
   campaignId?: string;
+  query: {
+    page?: string;
+    limit?: string;
+  };
 }
 
 const getRafflesController = async (req: RaffleReq, res) => {
   const campaignId = req.campaignId;
-  const raffles = await RaffleModel.find({ campaignId });
-  res.send(raffles);
+  const { page = "0", limit = "20" } = req.query;  
+  let offset = parseInt(page) * parseInt(limit);
+  const rows = parseInt(limit);
+
+  const data = await RaffleModel.find({ campaignId, offset, rows });
+  res.send(data);
 };
 
 const postRafflesController = async (req: RaffleReq, res) => {
