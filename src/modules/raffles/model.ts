@@ -12,7 +12,7 @@ const find = async ({ campaignId, offset, rows }) => {
     `
   );
   const [totalRows] = await db.query(`
-    SELECT count(*) AS count FROM raffles WHERE raffles.campaign_id=5;
+    SELECT count(*) AS count FROM raffles WHERE raffles.campaign_id=${campaignId};
   `);
   return { totalRows: totalRows[0].count, data: raffles };
 };
