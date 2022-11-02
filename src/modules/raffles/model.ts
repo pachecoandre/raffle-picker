@@ -36,4 +36,10 @@ const create = async ({ name, phone, email, userId, campaignId }) => {
   );
 };
 
-export default { find, create };
+const deleteOne = async ({ id, campaignId }) => {
+  return db.query(
+    `DELETE FROM raffles WHERE id=${id} AND campaign_id=${campaignId}`
+  )
+}
+
+export default { find, create, deleteOne };

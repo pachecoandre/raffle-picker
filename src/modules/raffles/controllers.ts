@@ -9,6 +9,11 @@ interface RaffleReq extends AuthRequest {
   };
 }
 
+interface DeleteRaffleReq extends AuthRequest {
+  campaignId: string;
+  id: string;
+}
+
 const getRafflesController = async (req: RaffleReq, res) => {
   const campaignId = req.campaignId;
   const { page = "0", limit = "20" } = req.query;
@@ -45,4 +50,11 @@ const postRafflesController = async (req: RaffleReq, res) => {
   res.sendStatus(200);
 };
 
-export default { getRafflesController, postRafflesController };
+const deleteRaffleController = async (req: DeleteRaffleReq, res) => {
+  const campaignId = req.campaignId
+  const { id } = req.params
+  await RaffleModel.deleteOne({ campaignId, id })
+  res.sendStatus(204)
+}
+
+export default { getRafflesController, postRafflesController, deleteRaffleController };
