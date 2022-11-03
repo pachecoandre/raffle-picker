@@ -30,7 +30,7 @@ const createMany = async (name, description, quantity, campaignId) => {
 };
 
 const deleteOne = (prizeId) => {
-  // Cascase delete. This query will delete both the prize and the prize_item
+  // Cascase delete. This query deletes both prize and prize_item
   return db.query(`DELETE FROM prizes WHERE id=${prizeId}`);
 };
 

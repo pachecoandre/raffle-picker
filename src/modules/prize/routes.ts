@@ -1,12 +1,12 @@
 import { Router } from "express";
-import prizeControllers from "./controllers";
+import controllers from "./controllers";
 
 const prizesRouter = Router();
 
-prizesRouter.get("/", prizeControllers.getPrizeController);
+prizesRouter.get("/", controllers.getPrizeController);
 
-prizesRouter.post("/", prizeControllers.postPrizeController);
+prizesRouter.post("/", controllers.postPrizeController);
 
-prizesRouter.delete("/:prizeId", prizeControllers.deletePrizeController);
+prizesRouter.delete("/:prizeId", controllers.deletePrizeController);
 
 export default prizesRouter;

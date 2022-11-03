@@ -2,16 +2,16 @@ import { parseISO, isValid } from "date-fns";
 import { Response } from "express";
 import { CampaignsReq } from "../../server/middlewares";
 import {
-  getCampaigns,
-  createCampaign,
-  getCampaignById,
-  updateCampaign,
+  find,
+  createOne,
+  findById,
+  updateOne,
   getRafflesCount,
   getPrizesCount,
 } from "./model";
 
 const getCampaignsController = async (req: CampaignsReq, res: Response) => {
-  const campaigns = await getCampaigns(req.userId);
+  const campaigns = await find(req.userId);
   res.send(campaigns);
 };
 
@@ -22,7 +22,7 @@ const postCampaignsController = async (req: CampaignsReq, res: Response) => {
     return res.status(400).send("Missing fields");
   }
 
-  const campaignId = await createCampaign(
+  const campaignId = await createOne(
     req.userId,
     name,
     estimatedDrawDate,
@@ -35,7 +35,7 @@ const postCampaignsController = async (req: CampaignsReq, res: Response) => {
 const getCampaignByIdController = async (req: CampaignsReq, res: Response) => {
   const { campaignId } = req.params;
 
-  const campaignResult = await getCampaignById(campaignId);
+  const campaignResult = await findById(campaignId);
   const campaign = campaignResult[0];
   const name = campaign?.name;
   const estimatedDrawDate = campaign?.estimated_draw_date;
@@ -72,7 +72,7 @@ const updateCampaignController = async (req: CampaignsReq, res: Response) => {
       return;
     }
   }
-  await updateCampaign(campaignId, updates);
+  await updateOne(campaignId, updates);
   res.sendStatus(204);
 };
 
