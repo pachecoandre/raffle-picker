@@ -9,6 +9,7 @@ import {
   getRafflesCount,
   getPrizesCount,
 } from "./model";
+import { drawService } from "./service";
 
 const getCampaignsController = async (req: CampaignsReq, res: Response) => {
   const campaigns = await find(req.userId);
@@ -76,9 +77,16 @@ const updateCampaignController = async (req: CampaignsReq, res: Response) => {
   res.sendStatus(204);
 };
 
+const drawController = async (req: CampaignsReq, res: Response) => {
+  const { campaignId } = req.params;
+  const result = drawService(campaignId);
+  res.send(result);
+};
+
 export default {
   getCampaignsController,
   postCampaignsController,
   getCampaignByIdController,
   updateCampaignController,
+  drawController,
 };

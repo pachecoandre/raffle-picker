@@ -43,8 +43,6 @@ const updateOne = async (campaignId, updates) => {
     ", "
   )} WHERE id=${campaignId}`;
 
-  console.log(query);
-
   await db.query(query);
 };
 
