@@ -17,6 +17,13 @@ const find = async ({ campaignId, offset, rows }) => {
   return { totalRows: totalRows[0].count, data: raffles };
 };
 
+const findIds = async () => {
+  const [prizeIds] = await db.query(`
+    SELECT id FROM raffles WHERE campaign_id="9";
+  `);
+  return prizeIds
+}
+
 const create = async ({ name, phone, email, userId, campaignId }) => {
   const [uRelationships] = await db.query<any>(
     `SELECT * FROM user_relationships
@@ -42,4 +49,4 @@ const deleteOne = async ({ id, campaignId }) => {
   )
 }
 
-export default { find, create, deleteOne };
+export default { find, findIds, create, deleteOne };

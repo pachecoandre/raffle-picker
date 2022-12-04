@@ -18,6 +18,13 @@ const find = async ({ campaignId, offset, rows }) => {
   return { totalRows: totalRows[0].count, data: prizes };
 };
 
+const findIds = async (campaignId) => {
+  const [prizeIds] = await db.query(`
+    SELECT pi.id FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id WHERE campaign_id="${campaignId}"
+  `);
+  return prizeIds
+}
+
 const createMany = async (name, description, quantity, campaignId) => {
   const [prize] = await db.query<any>(
     `INSERT INTO prizes (name, description, campaign_id) values ("${name}", "${description}", ${campaignId})`
@@ -30,8 +37,8 @@ const createMany = async (name, description, quantity, campaignId) => {
 };
 
 const deleteOne = (prizeId) => {
-  // Cascase delete. This query deletes both prize and prize_item
+  // Cascade delete. This query deletes both prize and prize_item
   return db.query(`DELETE FROM prizes WHERE id=${prizeId}`);
 };
 
-export default { find, createMany, deleteOne };
+export default { find, findIds, createMany, deleteOne };

@@ -79,7 +79,7 @@ const updateCampaignController = async (req: CampaignsReq, res: Response) => {
 
 const drawController = async (req: CampaignsReq, res: Response) => {
   const { campaignId } = req.params;
-  const result = drawService(campaignId);
+  const result = await drawService(campaignId);
   res.send(result);
 };
 
