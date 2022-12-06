@@ -9,7 +9,6 @@ export interface DrawItemResult {
 }
 
 const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
-  // fetch prize item ids
   const prizeIdsResult = await PrizeModel.findIds(campaignId);
   const prizeIds = Array.isArray(prizeIdsResult)
     ? prizeIdsResult.map((item) => item.id)
@@ -17,7 +16,6 @@ const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
 
   if (prizeIds.length === 0) return [];
 
-  // fetch raffle ids
   const raffleIdsResult = await RaffleModel.findIds(campaignId);
   const raffleIds = Array.isArray(raffleIdsResult)
     ? raffleIdsResult.map((item) => item.id)
@@ -40,8 +38,8 @@ const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
       raffleId: pickedRaffleId,
     });
   });
+
   const prizeItemsBulkUpdate = [];
-  // update prize_items in database
   for (const item of result) {
     prizeItemsBulkUpdate.push(
       PrizeModel.updatePrizeItem(item.prizeId, item.raffleId)
@@ -49,12 +47,10 @@ const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
   }
   await Promise.all(prizeItemsBulkUpdate);
 
-  // update campaign.draw_date
   await updateOne(campaignId, {
     drawDate: new Date().toISOString().split("T")[0],
   });
 
-  // send database result
   const drawResult = await PrizeModel.findDrawResult(campaignId);
   return drawResult;
 };
