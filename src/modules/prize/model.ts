@@ -1,5 +1,4 @@
 import db from "../../db";
-import { DrawItemResult } from "../campaigns/service";
 
 const find = async ({ campaignId, offset, rows }) => {
   const [prizes] = await db.query(

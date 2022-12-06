@@ -1,6 +1,6 @@
 import PrizeModel from "../prize/model";
 import RaffleModel from "../raffles/model";
-import { updateOne } from "./model";
+import * as CampaignModel from "./model";
 
 export interface DrawItemResult {
   prizeName: string;
@@ -13,8 +13,6 @@ const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
   const prizeIds = Array.isArray(prizeIdsRaw)
     ? prizeIdsRaw.map((item) => item.id)
     : [];
-
-  console.log("prizeIdsRaw", prizeIdsRaw);
 
   if (prizeIds.length === 0) return [];
 
@@ -49,7 +47,7 @@ const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
   }
   await Promise.all(prizeItemsBulkUpdate);
 
-  await updateOne(campaignId, {
+  await CampaignModel.updateOne(campaignId, {
     drawDate: new Date().toISOString().split("T")[0],
   });
 

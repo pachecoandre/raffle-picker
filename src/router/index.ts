@@ -1,6 +1,6 @@
 import { Router } from "express";
 import userRoutes from "../modules/users/routes";
-import campaignRoutes from "../modules/campaigns/routes";
+import campaignRoutes from "../modules/campaign/routes";
 
 const router = Router();
 
