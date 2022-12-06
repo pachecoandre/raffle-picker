@@ -7,7 +7,7 @@ import {
   findById,
   updateOne,
   getRafflesCount,
-  getPrizesCount,
+  getPrizeItemsCount,
 } from "./model";
 import { drawService } from "./service";
 
@@ -47,7 +47,7 @@ const getCampaignByIdController = async (req: CampaignsReq, res: Response) => {
 
   const revenue = rafflePrice * rafflesCount;
 
-  const prizesCountResult = await getPrizesCount(campaignId);
+  const prizesCountResult = await getPrizeItemsCount(campaignId);
   const prizesCount = prizesCountResult[0]?.count;
 
   res.send({

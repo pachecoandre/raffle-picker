@@ -9,16 +9,18 @@ export interface DrawItemResult {
 }
 
 const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
-  const prizeIdsResult = await PrizeModel.findIds(campaignId);
-  const prizeIds = Array.isArray(prizeIdsResult)
-    ? prizeIdsResult.map((item) => item.id)
+  const prizeIdsRaw = await PrizeModel.findIds(campaignId);
+  const prizeIds = Array.isArray(prizeIdsRaw)
+    ? prizeIdsRaw.map((item) => item.id)
     : [];
+
+  console.log("prizeIdsRaw", prizeIdsRaw);
 
   if (prizeIds.length === 0) return [];
 
-  const raffleIdsResult = await RaffleModel.findIds(campaignId);
-  const raffleIds = Array.isArray(raffleIdsResult)
-    ? raffleIdsResult.map((item) => item.id)
+  const raffleIdsRaw = await RaffleModel.findIds(campaignId);
+  const raffleIds = Array.isArray(raffleIdsRaw)
+    ? raffleIdsRaw.map((item) => item.id)
     : [];
 
   if (raffleIds.length === 0) return [];

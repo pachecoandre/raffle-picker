@@ -56,9 +56,9 @@ const getRafflesCount = async (campaignId) => {
   return campaignsCount;
 };
 
-const getPrizesCount = async (campaignId) => {
+const getPrizeItemsCount = async (campaignId) => {
   const [prizesCount] = await db.query(
-    `SELECT count(*) AS count FROM prizes WHERE campaign_id=${campaignId}`
+    `SELECT count(*) AS count FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id WHERE campaign_id=${campaignId}`
   );
   return prizesCount;
 };
@@ -69,5 +69,5 @@ export {
   findById,
   updateOne,
   getRafflesCount,
-  getPrizesCount,
+  getPrizeItemsCount,
 };
