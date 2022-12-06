@@ -1,4 +1,5 @@
 import db from "../../db";
+import { DrawItemResult } from "../campaigns/service";
 
 const find = async ({ campaignId, offset, rows }) => {
   const [prizes] = await db.query(
@@ -18,13 +19,6 @@ const find = async ({ campaignId, offset, rows }) => {
   return { totalRows: totalRows[0].count, data: prizes };
 };
 
-const findIds = async (campaignId) => {
-  const [prizeIds] = await db.query(`
-    SELECT pi.id FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id WHERE campaign_id="${campaignId}"
-  `);
-  return prizeIds
-}
-
 const createMany = async (name, description, quantity, campaignId) => {
   const [prize] = await db.query<any>(
     `INSERT INTO prizes (name, description, campaign_id) values ("${name}", "${description}", ${campaignId})`
@@ -41,4 +35,33 @@ const deleteOne = (prizeId) => {
   return db.query(`DELETE FROM prizes WHERE id=${prizeId}`);
 };
 
-export default { find, findIds, createMany, deleteOne };
+const findIds = async (campaignId) => {
+  const [prizeIds] = await db.query(`
+    SELECT pi.id FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id WHERE campaign_id="${campaignId}"
+  `);
+  return prizeIds;
+};
+
+const updatePrizeItem = async (id, raffleId) => {
+  await db.query(
+    `UPDATE prize_items SET raffle_id="${raffleId}" WHERE id=${id}`
+  );
+};
+
+const findDrawResult = async (campaignId) => {
+  const [drawResult] = await db.query<any>(
+    `SELECT p.name as prizeName, pt.name as winnerName, pt.phone as winnerPhone
+    FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id JOIN raffles as r ON r.id=pi.raffle_id JOIN participants as pt ON r.participant_id=pt.id
+    WHERE p.campaign_id="${campaignId}";`
+  );
+  return drawResult;
+};
+
+export default {
+  find,
+  createMany,
+  deleteOne,
+  findIds,
+  updatePrizeItem,
+  findDrawResult,
+};

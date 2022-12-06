@@ -39,6 +39,9 @@ const updateOne = async (campaignId, updates) => {
   if (updates.estimatedDrawDate) {
     setArguments.push(`estimated_draw_date="${updates.estimatedDrawDate}"`);
   }
+  if (updates.drawDate) {
+    setArguments.push(`draw_date="${updates.drawDate}"`);
+  }
   const query = `UPDATE campaigns SET ${setArguments.join(
     ", "
   )} WHERE id=${campaignId}`;
