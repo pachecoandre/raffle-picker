@@ -1,31 +1,51 @@
-import Prize from "../prize/model";
+import PrizeModel from "../prize/model";
+import RaffleModel from "../raffles/model";
 
 interface DrawItemResult {
   prize: {
     id: number;
-    name: string;
+    name?: string;
   };
   winner: {
     id: number;
-    name: string;
-    phone: string;
-    email: string;
+    name?: string;
+    phone?: string;
+    email?: string;
   };
 }
 
 const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
   // fetch prize item ids
-  // if prizes length is zero, return empty result
-  const prizeIdsResult = await Prize.findIds(campaignId);
-  const prizesIds = Array.isArray(prizeIdsResult)
+  const prizeIdsResult = await PrizeModel.findIds(campaignId);
+  const prizeIds = Array.isArray(prizeIdsResult)
     ? prizeIdsResult.map((item) => item.id)
     : [];
-  console.log(prizesIds);
+
+  if (prizeIds.length === 0) return [];
 
   // fetch raffle ids
-  // if raffle_items length is zero, return empty result
+  const raffleIdsResult = await RaffleModel.findIds(campaignId);
+  const raffleIds = Array.isArray(raffleIdsResult)
+    ? raffleIdsResult.map((item) => item.id)
+    : [];
+    
+  if (raffleIds.length === 0) return [];
 
-  // declare result array
+  const result = [];
+
+  if (raffleIds.length < prizeIds.length) return [];
+
+  Math.round(raffleIds.length * Math.random());
+
+  prizeIds.forEach((prizeId) => {
+    const pickedIndex = Math.round((raffleIds.length - 1) * Math.random());
+    const [pickedRaffleId] = raffleIds.splice(pickedIndex, 1);
+
+    result.push({
+      prize: { id: prizeId },
+      winner: { id: pickedRaffleId },
+    });
+  });
 
   // iterate over prizes
   // pick raffle randomly
@@ -33,20 +53,7 @@ const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
   // push to result array
   // remove raffle
 
-  return [
-    {
-      prize: {
-        id: 0,
-        name: "",
-      },
-      winner: {
-        id: 0,
-        name: "",
-        phone: "",
-        email: "",
-      },
-    },
-  ];
+  return result;
 };
 
 export { drawService };

@@ -17,9 +17,9 @@ const find = async ({ campaignId, offset, rows }) => {
   return { totalRows: totalRows[0].count, data: raffles };
 };
 
-const findIds = async () => {
+const findIds = async (campaignId) => {
   const [prizeIds] = await db.query(`
-    SELECT id FROM raffles WHERE campaign_id="9";
+    SELECT id FROM raffles WHERE campaign_id="${campaignId}";
   `);
   return prizeIds
 }
