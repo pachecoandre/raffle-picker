@@ -17,6 +17,13 @@ const find = async ({ campaignId, offset, rows }) => {
   return { totalRows: totalRows[0].count, data: raffles };
 };
 
+const getRafflesCount = async (campaignId) => {
+  const [campaignsCount] = await db.query(
+    `SELECT count(*) AS count FROM raffles WHERE campaign_id=${campaignId};`
+  );
+  return campaignsCount;
+};
+
 const findIds = async (campaignId) => {
   const [prizeIds] = await db.query(`
     SELECT id FROM raffles WHERE campaign_id="${campaignId}";
@@ -49,4 +56,4 @@ const deleteOne = async ({ id, campaignId }) => {
   )
 }
 
-export default { find, findIds, create, deleteOne };
+export default { find, getRafflesCount, findIds, create, deleteOne };

@@ -1,14 +1,9 @@
 import { parseISO, isValid } from "date-fns";
 import { Response } from "express";
 import { CampaignsReq } from "../../server/middlewares";
-import {
-  find,
-  createOne,
-  findById,
-  updateOne,
-  getRafflesCount,
-  getPrizeItemsCount,
-} from "./model";
+import { find, createOne, findById, updateOne } from "./model";
+import PrizeModel from "../prize/model";
+import RaffleModel from "../raffles/model";
 import { drawService } from "./service";
 
 const getCampaignsController = async (req: CampaignsReq, res: Response) => {
@@ -42,12 +37,12 @@ const getCampaignByIdController = async (req: CampaignsReq, res: Response) => {
   const estimatedDrawDate = campaign?.estimated_draw_date;
   const rafflePrice = campaign?.raffle_price || 0;
 
-  const rafflesCountResult = await getRafflesCount(campaignId);
+  const rafflesCountResult = await RaffleModel.getRafflesCount(campaignId);
   const rafflesCount = rafflesCountResult[0]?.count || 0;
 
   const revenue = rafflePrice * rafflesCount;
 
-  const prizesCountResult = await getPrizeItemsCount(campaignId);
+  const prizesCountResult = await PrizeModel.getPrizeItemsCount(campaignId);
   const prizesCount = prizesCountResult[0]?.count;
 
   res.send({

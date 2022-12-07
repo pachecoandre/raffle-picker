@@ -49,27 +49,4 @@ const updateOne = async (campaignId, updates) => {
   await db.query(query);
 };
 
-// TODO: migrate to raffle model
-const getRafflesCount = async (campaignId) => {
-  const [campaignsCount] = await db.query(
-    `SELECT count(*) AS count FROM raffles WHERE campaign_id=${campaignId};`
-  );
-  return campaignsCount;
-};
-
-// TODO: migrate to prize model
-const getPrizeItemsCount = async (campaignId) => {
-  const [prizesCount] = await db.query(
-    `SELECT count(*) AS count FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id WHERE campaign_id=${campaignId}`
-  );
-  return prizesCount;
-};
-
-export {
-  find,
-  createOne,
-  findById,
-  updateOne,
-  getRafflesCount,
-  getPrizeItemsCount,
-};
+export { find, createOne, findById, updateOne };

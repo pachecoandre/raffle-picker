@@ -47,6 +47,13 @@ const updatePrizeItem = async (id, raffleId) => {
   );
 };
 
+const getPrizeItemsCount = async (campaignId) => {
+  const [prizesCount] = await db.query(
+    `SELECT count(*) AS count FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id WHERE campaign_id=${campaignId}`
+  );
+  return prizesCount;
+};
+
 const findDrawResult = async (campaignId) => {
   const [drawResult] = await db.query<any>(
     `SELECT p.name as prizeName, pt.name as winnerName, pt.phone as winnerPhone
@@ -62,5 +69,6 @@ export default {
   deleteOne,
   findIds,
   updatePrizeItem,
+  getPrizeItemsCount,
   findDrawResult,
 };
