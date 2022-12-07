@@ -25,7 +25,7 @@ const createOne = async (userId, name, estimatedDrawDate, rafflePrice) => {
 
 const findById = async (campaignId) => {
   const [campaign] = await db.query(
-    `SELECT name, raffle_price, estimated_draw_date FROM campaigns WHERE id=${campaignId}`
+    `SELECT name, raffle_price, draw_date, estimated_draw_date FROM campaigns WHERE id=${campaignId}`
   );
   return campaign;
 };

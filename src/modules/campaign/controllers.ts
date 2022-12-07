@@ -35,6 +35,7 @@ const getCampaignByIdController = async (req: CampaignsReq, res: Response) => {
   const campaign = campaignResult[0];
   const name = campaign?.name;
   const estimatedDrawDate = campaign?.estimated_draw_date;
+  const drawDate = campaign?.draw_date;
   const rafflePrice = campaign?.raffle_price || 0;
 
   const rafflesCountResult = await RaffleModel.getRafflesCount(campaignId);
@@ -48,6 +49,7 @@ const getCampaignByIdController = async (req: CampaignsReq, res: Response) => {
   res.send({
     name,
     estimatedDrawDate,
+    drawDate,
     rafflePrice,
     rafflesCount,
     revenue,
