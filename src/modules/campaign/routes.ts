@@ -16,7 +16,9 @@ campaignsRouter.get("/:campaignId", controllers.getCampaignByIdController);
 
 campaignsRouter.patch("/:campaignId", controllers.updateCampaignController);
 
-campaignsRouter.get("/:campaignId/draw", controllers.drawController);
+campaignsRouter.post("/:campaignId/draw", controllers.drawController);
+
+campaignsRouter.get("/:campaignId/draw", controllers.getDrawResultController);
 
 campaignsRouter.use("/:campaignId/prizes", attachCampaign, prizeRoutes);
 

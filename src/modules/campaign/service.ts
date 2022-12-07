@@ -8,24 +8,24 @@ export interface DrawItemResult {
   winnerPhone: string;
 }
 
-const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
+const drawService = async (campaignId: string): Promise<void> => {
   const prizeIdsRaw = await PrizeModel.findIds(campaignId);
   const prizeIds = Array.isArray(prizeIdsRaw)
     ? prizeIdsRaw.map((item) => item.id)
     : [];
 
-  if (prizeIds.length === 0) return [];
+  if (prizeIds.length === 0) return;
 
   const raffleIdsRaw = await RaffleModel.findIds(campaignId);
   const raffleIds = Array.isArray(raffleIdsRaw)
     ? raffleIdsRaw.map((item) => item.id)
     : [];
 
-  if (raffleIds.length === 0) return [];
+  if (raffleIds.length === 0) return;
 
   const result = [];
 
-  if (raffleIds.length < prizeIds.length) return [];
+  if (raffleIds.length < prizeIds.length) return;
 
   Math.round(raffleIds.length * Math.random());
 
@@ -50,9 +50,13 @@ const drawService = async (campaignId: string): Promise<DrawItemResult[]> => {
   await CampaignModel.updateOne(campaignId, {
     drawDate: new Date().toISOString().split("T")[0],
   });
+};
 
+const getDrawResultService = async (
+  campaignId: string
+): Promise<DrawItemResult[]> => {
   const drawResult = await PrizeModel.findDrawResult(campaignId);
   return drawResult;
 };
 
-export { drawService };
+export { drawService, getDrawResultService };

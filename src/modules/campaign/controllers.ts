@@ -4,7 +4,7 @@ import { CampaignsReq } from "../../server/middlewares";
 import { find, createOne, findById, updateOne } from "./model";
 import PrizeModel from "../prize/model";
 import RaffleModel from "../raffles/model";
-import { drawService } from "./service";
+import { drawService, getDrawResultService } from "./service";
 
 const getCampaignsController = async (req: CampaignsReq, res: Response) => {
   const campaigns = await find(req.userId);
@@ -74,7 +74,13 @@ const updateCampaignController = async (req: CampaignsReq, res: Response) => {
 
 const drawController = async (req: CampaignsReq, res: Response) => {
   const { campaignId } = req.params;
-  const result = await drawService(campaignId);
+  await drawService(campaignId);
+  res.sendStatus(200);
+};
+
+const getDrawResultController = async (req: CampaignsReq, res: Response) => {
+  const { campaignId } = req.params;
+  const result = await getDrawResultService(campaignId);
   res.send(result);
 };
 
@@ -84,4 +90,5 @@ export default {
   getCampaignByIdController,
   updateCampaignController,
   drawController,
+  getDrawResultController,
 };
