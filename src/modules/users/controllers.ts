@@ -5,19 +5,20 @@ import UserService from "./service";
 const login = async (req, res) => {
   const token = req.body.token;
 
-  // verify token and get payload
   const payload = await UserService.verifyToken(token);
 
-  // get email from token
   const email = payload.email;
 
-  // find user
-  const user = await UserModel.findOne(email);
+  let user = await UserModel.findOne(email);
 
-  // if user does not exist, create user
-  // if exists, send user id
-  
-  res.send(payload);
+  if (user?.id) {
+    return res.send(user);
+  }
+
+  await UserModel.insertOne({ name: payload.given_name, email });
+  user = await UserModel.findOne(email);
+
+  res.send(user);
 };
 
 const getUserController = async (_, res) => {
