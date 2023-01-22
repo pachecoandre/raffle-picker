@@ -1,24 +1,26 @@
+import jwt from "jsonwebtoken";
+import { JWT_PRIVATE_KEY } from "../../common/contants";
 import db from "../../db";
 import UserModel from "./model";
 import UserService from "./service";
 
 const login = async (req, res) => {
-  const token = req.body.token;
+  const googleToken = req.body.googleToken;
 
-  const payload = await UserService.verifyToken(token);
+  const payload = await UserService.verifyToken(googleToken);
 
   const email = payload.email;
 
   let user = await UserModel.findOne(email);
 
-  if (user?.id) {
-    return res.send(user);
+  if (!user?.id) {
+    await UserModel.insertOne({ name: payload.given_name, email });
+    user = await UserModel.findOne(email);
   }
 
-  await UserModel.insertOne({ name: payload.given_name, email });
-  user = await UserModel.findOne(email);
+  const token = jwt.sign(user, JWT_PRIVATE_KEY);
 
-  res.send(user);
+  res.send({ token });
 };
 
 const getUserController = async (_, res) => {

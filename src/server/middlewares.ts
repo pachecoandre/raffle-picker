@@ -1,4 +1,6 @@
 import { NextFunction, Request } from "express";
+import jwt from "jsonwebtoken";
+import { JWT_PRIVATE_KEY } from "../common/contants";
 import db from "../db";
 
 export interface AuthRequest extends Request {
@@ -10,11 +12,16 @@ export interface CampaignsReq extends AuthRequest {
 }
 
 const authMiddleware = (req: AuthRequest, res, next) => {
+  // verificar como obter obter o userId
+  // criar um jwt com o id codificado?
+  // ou usar algum id do jwt do google?
+
   const bearerToken = req.headers.authorization || "";
   const token = bearerToken.split(" ")[1];
-  req.userId = token;
+  const { id } = jwt.verify(token, JWT_PRIVATE_KEY);
+  req.userId = id;
 
-  if (!req.userId) {
+  if (!id) {
     return res.sendStatus(401);
   }
   next();
