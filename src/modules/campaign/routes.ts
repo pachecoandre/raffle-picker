@@ -12,13 +12,29 @@ campaignsRouter.get("/", controllers.getCampaignsController);
 
 campaignsRouter.post("/", controllers.postCampaignsController);
 
-campaignsRouter.get("/:campaignId", controllers.getCampaignByIdController);
+campaignsRouter.get(
+  "/:campaignId",
+  attachCampaign,
+  controllers.getCampaignByIdController
+);
 
-campaignsRouter.patch("/:campaignId", controllers.updateCampaignController);
+campaignsRouter.patch(
+  "/:campaignId",
+  attachCampaign,
+  controllers.updateCampaignController
+);
 
-campaignsRouter.post("/:campaignId/draw", controllers.drawController);
+campaignsRouter.post(
+  "/:campaignId/draw",
+  attachCampaign,
+  controllers.drawController
+);
 
-campaignsRouter.get("/:campaignId/draw", controllers.getDrawResultController);
+campaignsRouter.get(
+  "/:campaignId/draw",
+  attachCampaign,
+  controllers.getDrawResultController
+);
 
 campaignsRouter.use("/:campaignId/prizes", attachCampaign, prizeRoutes);
 

@@ -23,8 +23,8 @@ const login = async (req, res) => {
   res.send({ token });
 };
 
-const getUserController = async (_, res) => {
-  const [rows] = await db.query("SELECT * FROM users");
+const getUserController = async (req, res) => {
+  const [rows] = await db.query(`SELECT * FROM users WHERE id=${req.userId}`);
   res.send(rows);
 };
 
