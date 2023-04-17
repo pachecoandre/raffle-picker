@@ -56,7 +56,7 @@ const getPrizeItemsCount = async (campaignId) => {
 
 const findDrawResult = async (campaignId) => {
   const [drawResult] = await db.query<any>(
-    `SELECT p.name as prizeName, pt.name as winnerName, pt.phone as winnerPhone
+    `SELECT pi.id, p.name as prizeName, pt.name as winnerName, pt.phone as winnerPhone
     FROM prizes AS p JOIN prize_items AS pi ON p.id=pi.prize_id JOIN raffles as r ON r.id=pi.raffle_id JOIN participants as pt ON r.participant_id=pt.id
     WHERE p.campaign_id="${campaignId}";`
   );
