@@ -1,26 +1,29 @@
+import { Request as Req, Response as Res } from "express";
 import jwt from "jsonwebtoken";
 import { JWT_PRIVATE_KEY } from "../../common/contants";
 import db from "../../db";
 import UserModel from "./model";
 import UserService from "./service";
 
-const login = async (req, res) => {
+const login = async (req: Req, res: Res) => {
   const googleToken = req.body.googleToken;
-
-  const payload = await UserService.verifyToken(googleToken);
-
-  const email = payload.email;
-
-  let user = await UserModel.findOne(email);
-
-  if (!user?.id) {
-    await UserModel.insertOne({ name: payload.given_name, email });
-    user = await UserModel.findOne(email);
+  try {
+    const payload = await UserService.login(googleToken);
+    res.send(payload);
+  } catch (error) {
+    res.sendStatus(401);
   }
+};
 
-  const token = jwt.sign(user, JWT_PRIVATE_KEY);
-
-  res.send({ token });
+const verifyJwt = async (req: Req, res: Res) => {
+  const token = req.body.token;
+  try {
+    await UserService.verifyJwt(token);
+    console.log('--> Token verified!')
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(401);
+  }
 };
 
 const getUserController = async (req, res) => {
@@ -28,4 +31,4 @@ const getUserController = async (req, res) => {
   res.send(rows);
 };
 
-export default { login, getUserController };
+export default { login, verifyJwt, getUserController };

@@ -1,5 +1,5 @@
 import { NextFunction, Request } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { JWT_PRIVATE_KEY } from "../common/contants";
 import db from "../db";
 
@@ -11,20 +11,24 @@ export interface CampaignsReq extends AuthRequest {
   campaignId?: string;
 }
 
+type IJwtPayload = JwtPayload & { id: string };
+
 const authMiddleware = (req: AuthRequest, res, next) => {
-  // verificar como obter obter o userId
-  // criar um jwt com o id codificado?
-  // ou usar algum id do jwt do google?
+  try {
+    const bearerToken = req.headers.authorization || "";
+    const token = bearerToken.split(" ")[1];
 
-  const bearerToken = req.headers.authorization || "";
-  const token = bearerToken.split(" ")[1];
-  const { id } = jwt.verify(token, JWT_PRIVATE_KEY);
-  req.userId = id;
-
-  if (!id) {
-    return res.sendStatus(401);
+    jwt.verify(token, JWT_PRIVATE_KEY);
+    const { id } = jwt.decode(token) as IJwtPayload;
+    if (!id) {
+      return res.sendStatus(401);
+    }
+    req.userId = id;
+    next();
+    //
+  } catch (error) {
+    res.sendStatus(401);
   }
-  next();
 };
 
 const attachCampaign = async (req: CampaignsReq, _, next: NextFunction) => {

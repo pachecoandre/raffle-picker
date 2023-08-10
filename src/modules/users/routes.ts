@@ -6,5 +6,6 @@ const usersRouter = Router();
 
 usersRouter.get("/me", authMiddleware, userControllers.getUserController);
 usersRouter.post("/login", userControllers.login);
+usersRouter.post("/verify-token", userControllers.verifyJwt);
 
 export default usersRouter;
