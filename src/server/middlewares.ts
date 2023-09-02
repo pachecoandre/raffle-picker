@@ -31,7 +31,7 @@ const authMiddleware = (req: AuthRequest, res, next) => {
   }
 };
 
-const attachCampaign = async (req: CampaignsReq, _, next: NextFunction) => {
+const attachCampaign = async (req: CampaignsReq, res, next: NextFunction) => {
   const campaignId = req.params.campaignId;
   const userId = req.userId;
   const [uRelationships] = await db.query<any>(
@@ -39,6 +39,7 @@ const attachCampaign = async (req: CampaignsReq, _, next: NextFunction) => {
   );
 
   if (uRelationships.length === 0) {
+    res.statusCode = 404
     next(new Error("Campaign does not belong to user"));
   }
   req.campaignId = campaignId;

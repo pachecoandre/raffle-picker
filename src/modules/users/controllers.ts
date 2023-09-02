@@ -1,8 +1,5 @@
 import { Request as Req, Response as Res } from "express";
-import jwt from "jsonwebtoken";
-import { JWT_PRIVATE_KEY } from "../../common/contants";
 import db from "../../db";
-import UserModel from "./model";
 import UserService from "./service";
 
 const login = async (req: Req, res: Res) => {
@@ -19,7 +16,6 @@ const verifyJwt = async (req: Req, res: Res) => {
   const token = req.body.token;
   try {
     await UserService.verifyJwt(token);
-    console.log('--> Token verified!')
     res.sendStatus(200);
   } catch (error) {
     res.sendStatus(401);
