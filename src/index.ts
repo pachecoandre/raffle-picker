@@ -5,6 +5,6 @@ import db from "./db";
 
 db.getConnection().then(() => console.log("connected to database"));
 
-const server = new Server(process.env.PORT);
+const server = new Server();
 server.route();
-server.listen();
+server.listen(process.env.PORT);
