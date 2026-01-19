@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useGlobalContext } from "../state/index.tsx";
+// import { useGlobalContext } from "../state/index.tsx";
 
 import Loader from "../components/Loader";
 import PrivateRoute from "./PrivateRoute";
@@ -20,13 +20,13 @@ const DrawResultPage = lazy(() => import("../pages/DrawResultPage"));
 const NavBar = lazy(() => import("../components/NavBar"));
 
 function AppRouter() {
-  const {
-    state: { isLogged },
-  } = useGlobalContext();
+  // const {
+  //   state: { isLogged },
+  // } = useGlobalContext();
 
   return (
     <Suspense fallback={<Loader />}>
-      {isLogged && <NavBar />}
+      {/* {isLogged && <NavBar />} */}
       <Routes>
         <Route path={"/login"} element={<LoginPage />} />
         <Route
