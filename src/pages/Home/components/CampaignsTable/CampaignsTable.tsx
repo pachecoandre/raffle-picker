@@ -22,11 +22,6 @@ const CampaignsTable: FC<Props> = ({ title, data }) => {
   const navigate = useNavigate();
   return (
     <Content>
-      <div>
-        <Link to={'/campaigns/new'}>
-          Criar campanha <span style={{ fontSize: 22 }}>+</span>
-        </Link>
-      </div>
       {title && <span>{title}</span>}
       <table>
         <thead>

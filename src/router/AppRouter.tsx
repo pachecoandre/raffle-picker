@@ -17,7 +17,6 @@ const RafflesPage = lazy(() => import("../pages/Raffles"));
 const NewPrizePage = lazy(() => import("../pages/NewPrize"));
 const NewRafflePage = lazy(() => import("../pages/NewRaffle"));
 const DrawResultPage = lazy(() => import("../pages/DrawResultPage"));
-const NavBar = lazy(() => import("../components/NavBar"));
 
 function AppRouter() {
   // const {

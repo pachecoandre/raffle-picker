@@ -1,8 +1,10 @@
 import React from 'react';
 import { Layout, Menu, theme } from 'antd';
 import { PlusOutlined, UnorderedListOutlined } from '@ant-design/icons';
-import NavBar from '../NavBar';
+import AppHeader from '../AppHeader';
+import Logo from '../Logo';
 import './styles.css';
+import { Link } from 'react-router';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -12,28 +14,26 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   } = theme.useToken();
 
   const items = [
-        {
+    {
       key: '1',
       icon: React.createElement(UnorderedListOutlined),
-      label: 'Campaigns'
+      label: <Link to={'/'}>Campaigns</Link>
     },
     {
       key: '2',
       icon: React.createElement(PlusOutlined),
-      label: 'Create Campaign'
+      label: <Link to="/campaigns/new">Create Campaign</Link>
     }
   ];
 
   return (
     <Layout>
       <Sider breakpoint="lg" collapsedWidth="0">
-        <div style={{ minHeight: 70 }} />
+        <Logo />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items} />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
-          <NavBar />
-        </Header>
+        <AppHeader />
         <Content className="content">
           <div
             style={{
@@ -44,7 +44,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          Raffle Picker ©{new Date().getFullYear()}
         </Footer>
       </Layout>
     </Layout>

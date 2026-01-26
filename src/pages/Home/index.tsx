@@ -18,9 +18,6 @@ const HomePage = () => {
   return (
     <MainLayout>
       <Container>
-        <Section mb={4}>
-          <span>Seja bem vindo ao sorteio de rifa</span>
-        </Section>
         <Section>
           <CampaignsTable data={campaigns} />
         </Section>
