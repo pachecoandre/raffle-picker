@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import Content from '../../components/Content';
 import Section from '../../components/Section';
+import MainLayout from '../../components/MainLayout';
 Content;
 
 interface Props {
@@ -57,27 +58,29 @@ const NewCampaign: FC<Props> = ({ isEdit = false }) => {
   // }, []);
 
   return (
-    <Container>
-      <Content justifyCenter>
-        <Section>
-          <h1>{isEdit ? 'Editar campanha' : 'Nova campanha'}</h1>
-        </Section>
-        <Section>
-          <form onSubmit={() => {}}>
-            <label htmlFor="name">Nome</label>
-            <input id="name" name="name" type="text" />
-            <label htmlFor="price">Valor da rifa</label>
-            <input id="price" name="price" type="number" disabled={isEdit} />
-            <label htmlFor="drawDate">Data prevista para o sorteio</label>
-            <input id="drawDate" name="drawDate" type="date" />
-            <button type="button" onClick={handleCancel}>
-              Cancelar
-            </button>
-            <button type="submit">{isEdit ? 'Salvar' : 'Criar'}</button>
-          </form>
-        </Section>
-      </Content>
-    </Container>
+    <MainLayout>
+      <Container>
+        <Content justifyCenter>
+          <Section>
+            <h1>{isEdit ? 'Editar campanha' : 'Nova campanha'}</h1>
+          </Section>
+          <Section>
+            <form onSubmit={() => {}}>
+              <label htmlFor="name">Nome</label>
+              <input id="name" name="name" type="text" />
+              <label htmlFor="price">Valor da rifa</label>
+              <input id="price" name="price" type="number" disabled={isEdit} />
+              <label htmlFor="drawDate">Data prevista para o sorteio</label>
+              <input id="drawDate" name="drawDate" type="date" />
+              <button type="button" onClick={handleCancel}>
+                Cancelar
+              </button>
+              <button type="submit">{isEdit ? 'Salvar' : 'Criar'}</button>
+            </form>
+          </Section>
+        </Content>
+      </Container>
+    </MainLayout>
   );
 };
 
