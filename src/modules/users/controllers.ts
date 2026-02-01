@@ -8,6 +8,7 @@ const login = async (req: Req, res: Res) => {
     const payload = await UserService.login(googleToken);
     res.send(payload);
   } catch (error) {
+    console.error(error)
     res.sendStatus(401);
   }
 };
