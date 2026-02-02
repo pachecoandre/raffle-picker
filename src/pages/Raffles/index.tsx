@@ -4,6 +4,7 @@ import Container from '../../components/Container';
 import Section from '../../components/Section';
 import Title from '../../components/Title';
 import MainLayout from '../../components/MainLayout';
+import RafflesTable from './RafflesTable';
 
 const Raffles: FC = () => {
   const { campaignId } = useParams();
@@ -24,7 +25,9 @@ const Raffles: FC = () => {
             </button>
           </div>
         </Section>
-        <Section>Raffles Table Here</Section>
+        <Section>
+          <RafflesTable  />
+        </Section>
       </Container>
     </MainLayout>
   );
