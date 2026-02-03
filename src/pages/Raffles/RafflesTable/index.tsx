@@ -1,50 +1,70 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Space, Popconfirm, Spin } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Table, Button, Space, Popconfirm, Spin, GetProp, TableProps } from 'antd';
 import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
+import type { SorterResult } from 'antd/es/table/interface';
+import { DeleteOutlined } from '@ant-design/icons';
 import { deleteRaffle, getRaffles } from '../../../client';
 import { Raffle } from '../types';
 import { useParams } from 'react-router-dom';
 
-interface DataType {
-  name: string;
-  phone: string;
+interface TableParams {
+  pagination: TablePaginationConfig;
+  sortField?: SorterResult<any>['field'];
+  sortOrder?: SorterResult<any>['order'];
+  filters?: Parameters<GetProp<TableProps, 'onChange'>>[1];
 }
 
-interface RafflesTableProps {
-  data?: DataType[];
-  loading?: boolean;
-  pagination?: TablePaginationConfig;
-  onEdit?: (record: DataType) => void;
-  onRemove?: (record: DataType) => void;
-}
-
-const RafflesTable: React.FC<RafflesTableProps> = () => {
+const RafflesTable: React.FC = () => {
   const { campaignId } = useParams();
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [page, setPage] = useState<number>(1);
-  const [rowsPerPage, setRowsPerPage] = useState<number>(10);
+  const [tableParams, setTableParams] = useState<TableParams>({
+    pagination: {
+      current: 1,
+      pageSize: 10
+    }
+  });
   const [raffles, setRaffles] = useState<Raffle[]>([]);
-  const [totalRows, setTotalRows] = useState<number>(0);
 
   const handleDelete = (id: number) => {
+    setLoading(true);
     deleteRaffle(campaignId!, id).then(() => {
-      getRaffles(campaignId!, page, rowsPerPage).then(({ data, totalRows }) => {
+      getRaffles(
+        campaignId!,
+        tableParams?.pagination?.current || 1,
+        tableParams?.pagination?.pageSize || 10
+      ).then(({ data, totalRows }) => {
         setRaffles(data);
-        setTotalRows(totalRows);
+        setTableParams({
+          ...tableParams,
+          pagination: {
+            ...tableParams.pagination,
+            total: totalRows
+          }
+        });
         setLoading(false);
       });
     });
   };
 
   useEffect(() => {
-    getRaffles(campaignId!, page, rowsPerPage).then(({ data, totalRows }) => {
+    setLoading(true);
+    getRaffles(
+      campaignId!,
+      tableParams?.pagination?.current || 1,
+      tableParams?.pagination?.pageSize || 10
+    ).then(({ data, totalRows }) => {
       setRaffles(data);
-      setTotalRows(totalRows);
-      setLoading(false)
+      setTableParams({
+        ...tableParams,
+        pagination: {
+          ...tableParams.pagination,
+          total: totalRows
+        }
+      });
+      setLoading(false);
     });
-  }, [campaignId]);
+  }, [campaignId, tableParams?.pagination?.current, tableParams?.pagination?.pageSize]);
 
   const columns: ColumnsType<Raffle> = [
     {
@@ -73,15 +93,29 @@ const RafflesTable: React.FC<RafflesTableProps> = () => {
     }
   ];
 
+  const handleTableChange: TableProps<Raffle>['onChange'] = (pagination, filters, sorter) => {
+    setTableParams({
+      pagination,
+      filters,
+      sortOrder: Array.isArray(sorter) ? undefined : sorter.order,
+      sortField: Array.isArray(sorter) ? undefined : sorter.field
+    });
+
+    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
+      setRaffles([]);
+    }
+  };
+
   return (
-    <Spin spinning={loading}>
-      <Table
-        columns={columns}
-        dataSource={raffles}
-        loading={loading}
-        pagination={{ current: page, pageSize: rowsPerPage, total: totalRows }}
-      />
-    </Spin>
+    <Table
+      columns={columns}
+      dataSource={raffles}
+      rowKey={(record) => record.id}
+      pagination={tableParams.pagination}
+      loading={loading}
+      onChange={handleTableChange}
+      size="small"
+    />
   );
 };
 
