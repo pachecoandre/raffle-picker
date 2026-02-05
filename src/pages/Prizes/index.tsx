@@ -4,6 +4,7 @@ import Container from '../../components/Container';
 import Section from '../../components/Section';
 import Title from '../../components/Title';
 import MainLayout from '../../components/MainLayout';
+import PrizesTable from './PrizesTable';
 
 const Prizes: FC = () => {
   const { campaignId } = useParams();
@@ -22,7 +23,7 @@ const Prizes: FC = () => {
             </button>
           </div>
         </Section>
-        <Section>Prizes Table Here</Section>
+        <PrizesTable />
       </Container>
     </MainLayout>
   );
