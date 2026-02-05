@@ -16,8 +16,8 @@ interface DeleteRaffleReq extends AuthRequest {
 
 const getRafflesController = async (req: RaffleReq, res) => {
   const campaignId = req.campaignId;
-  const { page = "0", limit = "20" } = req.query;
-  let offset = parseInt(page) * parseInt(limit);
+  const { page = "1", limit = "20" } = req.query;
+  let offset = (parseInt(page) - 1) * parseInt(limit);
   const rows = parseInt(limit);
 
   const data = await RaffleModel.find({ campaignId, offset, rows });

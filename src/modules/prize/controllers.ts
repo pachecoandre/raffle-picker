@@ -11,8 +11,8 @@ interface PrizeReq extends Request {
 
 const getPrizeController = async (req: PrizeReq, res) => {
   const campaignId = req.campaignId;
-  const { page = "0", limit = "20" } = req.query;
-  let offset = parseInt(page) * parseInt(limit);
+  const { page = "1", limit = "20" } = req.query;
+  let offset = (parseInt(page) - 1) * parseInt(limit);
   const rows = parseInt(limit);
 
   const data = await PrizeModel.find({ campaignId, offset, rows });
