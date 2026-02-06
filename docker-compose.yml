@@ -16,8 +16,31 @@ services:
       MYSQL_DATABASE: raffle_picker
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
-      SERVICE_TAGS: dev
+      SERVICE_TAGS: prod
       SERVICE_NAME: mysql_raffle
+    networks:
+      - rafflenet
+
+  nodeapp:
+    container_name: nodeapp
+    build: .
+    image: nodeapp:v1
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    environment:
+      SERVICE_TAGS: prod
+      SERVICE_NAME: nodeapp
+      PORT: 3000
+      MYSQL_HOST: 'mysqldb'
+      MYSQL_USER: 'root'
+      MYSQL_PASS: 'root'
+      MYSQL_DB: 'raffle_picker'
+      MYSQL_CONN_LIMIT: '20'
+      CLIENT_ID: '355402033198-7nu6fn5qv2a6p6pcgv33chcpll8qlkdk.apps.googleusercontent.com'
+    depends_on:
+      - mysqldb
     networks:
       - rafflenet
 
