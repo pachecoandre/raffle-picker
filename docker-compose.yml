@@ -17,7 +17,7 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
       SERVICE_TAGS: prod
-      SERVICE_NAME: mysql_raffle
+      SERVICE_NAME: mysqldb
     networks:
       - rafflenet
 
