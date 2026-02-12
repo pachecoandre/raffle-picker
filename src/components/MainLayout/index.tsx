@@ -3,8 +3,8 @@ import { Layout, Menu, theme } from 'antd';
 import { PlusOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import AppHeader from '../AppHeader';
 import Logo from '../Logo';
-import './styles.css';
 import { Link } from 'react-router';
+import './styles.css';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -34,7 +34,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </Sider>
       <Layout>
         <AppHeader />
-        <Content className="content">
+        <Content>
           <div
             style={{
               background: colorBgContainer

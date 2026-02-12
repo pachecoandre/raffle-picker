@@ -7,7 +7,7 @@ import { CampaignPayload } from "../pages/NewCampaign/types";
 import { ICampaign } from "../pages/Campaign/types";
 import { DrawResult } from "./types";
 
-const client = axios.create({ baseURL: "http://localhost:8000/v1" });
+const client = axios.create({ baseURL: process.env.BACKEND_URL });
 
 client.interceptors.response.use(
   (res) => res,
