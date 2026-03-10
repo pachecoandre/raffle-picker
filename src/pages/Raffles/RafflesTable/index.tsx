@@ -68,11 +68,11 @@ const RafflesTable: React.FC = () => {
 
   const columns: ColumnsType<Raffle> = [
     {
-      title: 'Nome',
+      title: 'Participant Name',
       dataIndex: 'participantName'
     },
     {
-      title: 'Telefone',
+      title: 'Phone',
       dataIndex: 'participantPhone'
     },
     {

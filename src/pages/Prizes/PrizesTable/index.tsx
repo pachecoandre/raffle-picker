@@ -68,11 +68,11 @@ const PrizesTable: React.FC = () => {
 
   const columns: ColumnsType<Prize> = [
     {
-      title: 'Prêmio',
+      title: 'Prize Name',
       dataIndex: 'name'
     },
     {
-      title: 'Quantidade',
+      title: 'Quantity',
       dataIndex: 'quantity'
     },
     {

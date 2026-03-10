@@ -17,7 +17,7 @@ const NewRaffle: FC = () => {
       navigate(`/campaigns/${campaignId}/raffles`);
     } catch (error) {
       console.error(error);
-      alert('Erro ao criar rifas. Por favor, tente novamente.');
+      alert('Error creating raffles. Please try again.');
     }
   };
   const handleCancel = () => navigate(-1);
@@ -26,27 +26,27 @@ const NewRaffle: FC = () => {
       <Container>
         <Content justifyCenter>
           <Section>
-            <h1>Nova rifa</h1>
+            <h1>New Raffle</h1>
           </Section>
           <Section>
             <Form onFinish={handleSubmit}>
-              <Form.Item label="Nome do participante" name="name">
+              <Form.Item label="Participant Name" name="name">
                 <Input />
               </Form.Item>
-              <Form.Item label="Telefone" name="phone">
+              <Form.Item label="Phone" name="phone">
                 <Input />
               </Form.Item>
               <Form.Item label="E-mail" name="email">
                 <Input />
               </Form.Item>
-              <Form.Item label="Quantidade" name="quantity" initialValue={1}>
+              <Form.Item label="Quantity" name="quantity" initialValue={1}>
                 <Input type="number" />
               </Form.Item>
               <Button type="default" onClick={handleCancel} style={{ marginRight: 8 }}>
-                Cancelar
+                Cancel
               </Button>
               <Button type="primary" htmlType="submit">
-                Criar
+                Create
               </Button>
             </Form>
           </Section>

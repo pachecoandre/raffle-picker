@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "build:dev": "./node_modules/.bin/webpack -w",
     "build:webpack": "webpack",
-    "dev": "npm run build & node index.js",
+    "dev": "npm run build:dev & node index.js",
     "predeploy": "npm run build" ,
     "deploy": "gh-pages -d public/raffle-picker/build",
     "start": "node index.js"

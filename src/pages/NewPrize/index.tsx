@@ -23,7 +23,7 @@ const NewPrize: FC = () => {
       }, 1500);
     } catch (error) {
       console.error('Error creating prize:', error);
-      alert('Erro ao cadastrar prêmio. Por favor, tente novamente.');
+      alert('Error creating prize. Please try again.');
     }
   };
   const handleCancel = () => navigate(-1);
@@ -33,7 +33,7 @@ const NewPrize: FC = () => {
       <Container>
         <Section>
           <Title backLink={`/campaigns/${campaignId}/prizes`}>
-            Cadastrar novo prêmio na campanha {campaignId}
+            Register new prize in campaign {campaignId}
           </Title>
         </Section>
         <Content justifyCenter>
@@ -47,37 +47,37 @@ const NewPrize: FC = () => {
               }}
             >
               <Form.Item
-                label="Nome"
+                label="Name"
                 name="name"
-                rules={[{ required: true, message: 'Por favor, insira o nome' }]}
+                rules={[{ required: true, message: 'Please enter the name' }]}
               >
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Descrição" name="description">
+              <Form.Item label="Description" name="description">
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Foto" name="image">
+              <Form.Item label="Photo" name="image">
                 <Upload beforeUpload={() => false} accept="image/*">
-                  <Button icon={<UploadOutlined />}>Selecionar imagem</Button>
+                  <Button icon={<UploadOutlined />}>Select Image</Button>
                 </Upload>
               </Form.Item>
 
               <Form.Item
-                label="Quantidade"
+                label="Quantity"
                 name="quantity"
-                rules={[{ required: true, message: 'Por favor, insira a quantidade' }]}
+                rules={[{ required: true, message: 'Please enter the quantity' }]}
               >
                 <InputNumber min={1} style={{ width: '100%' }} />
               </Form.Item>
 
               <Form.Item>
                 <Button type="default" onClick={handleCancel} style={{ marginRight: 8 }}>
-                  Cancelar
+                  Cancel
                 </Button>
                 <Button type="primary" htmlType="submit">
-                  Cadastrar
+                  Create
                 </Button>
               </Form.Item>
             </Form>
