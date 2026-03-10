@@ -13,8 +13,8 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './public/raffle-picker/build'),
-    publicPath: '/raffle-picker/build/',
+    path: path.resolve(__dirname, 'public'),
+    publicPath: '/raffle-picker/',
   },
   mode: 'production',
   module: {
