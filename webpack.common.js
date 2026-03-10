@@ -13,10 +13,9 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
-    publicPath: '/raffle-picker/',
+    path: path.resolve(__dirname, 'public/raffle-picker'),
+    publicPath: '/raffle-picker/'
   },
-  mode: 'production',
   module: {
     rules: [
       {
@@ -27,23 +26,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/react'],
-          },
-        },
+            presets: ['@babel/react']
+          }
+        }
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader']
       }
-    ],
+    ]
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
-  plugins: [
-    new webpack.DefinePlugin(envKeys)
-  ]
+  plugins: [new webpack.DefinePlugin(envKeys)]
 };

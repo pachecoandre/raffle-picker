@@ -7,7 +7,6 @@ import Content from '../../components/Content';
 import MainLayout from '../../components/MainLayout';
 import { Breadcrumb, Button, Form, Input } from 'antd';
 import { ICampaign } from '../Campaign/types';
-import { title } from 'process';
 
 const NewRaffle: FC = () => {
   const navigate = useNavigate();
