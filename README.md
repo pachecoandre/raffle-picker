@@ -1,2 +1,2 @@
-# basic-react-app
-Basic react app built from scratch
+# Raffle Picker
+Frontend of Raffle Picker project.

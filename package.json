@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://pachecoandre.github.io/raffle-picker",
   "scripts": {
     "build": "./node_modules/.bin/webpack -w",
     "build:webpack": "webpack",
     "dev": "npm run build & node index.js",
+    "predeploy": "npm run build" ,
+    "deploy": "gh-pages -d public/raffle-picker/build",
     "start": "node index.js"
   },
   "keywords": [],
@@ -34,6 +37,7 @@
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
     "dotenv": "^17.2.3",
+    "gh-pages": "^6.3.0",
     "nodemon": "^3.1.9",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.4",
