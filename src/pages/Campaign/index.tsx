@@ -100,7 +100,7 @@ const Campaign: FC = () => {
             {campaign.drawDate ? (
               <Button onClick={handleViewDrawResult}>See Results</Button>
             ) : (
-              <Button onClick={handleDraw}>Run Lottery</Button>
+              <Button onClick={handleDraw}>Draw Raffle</Button>
             )}
           </Section>
         </Content>
