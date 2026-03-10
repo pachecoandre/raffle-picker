@@ -47,7 +47,7 @@ const CampaignsTable: FC<Props> = ({ title, data, isLoading }) => {
           <Link to={`/campaigns/${record.id}/draw`}>See Results</Link>
         ) : (
           <Button onClick={() => navigate(`/campaigns/${record.id}/raffles/new`)}>
-            Register Raffle
+            Add Raffle
           </Button>
         )
     }

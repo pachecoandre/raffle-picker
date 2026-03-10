@@ -1,19 +1,31 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Form, Input, Button, InputNumber, Upload } from 'antd';
+import { Form, Input, Button, InputNumber, Upload, Breadcrumb } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
-import { createPrize } from '../../client';
+import { createPrize, getCampaign } from '../../client';
 import Container from '../../components/Container';
 import Content from '../../components/Content';
 import Section from '../../components/Section';
 import Title from '../../components/Title';
 import MainLayout from '../../components/MainLayout';
+import { ICampaign } from '../Campaign/types';
 
 const NewPrize: FC = () => {
   const { campaignId = '' } = useParams();
   const navigate = useNavigate();
   const [form] = Form.useForm();
+  const [campaign, setCampaign] = useState<ICampaign>({});
+
+  useEffect(() => {
+    getCampaign(campaignId)
+      .then((result: ICampaign) => {
+        setCampaign(result);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
+  }, [campaignId]);
 
   const onFinish = async (values: any) => {
     try {
@@ -30,6 +42,13 @@ const NewPrize: FC = () => {
 
   return (
     <MainLayout>
+      <Breadcrumb
+        items={[
+          { title: <a href="/">Campaigns</a> },
+          { title: <a href={`/campaigns/${campaignId}`}>{campaign?.name}</a> },
+          { title: 'New Prize' }
+        ]}
+      />
       <Container>
         <Section>
           <Title backLink={`/campaigns/${campaignId}/prizes`}>

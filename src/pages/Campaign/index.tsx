@@ -8,12 +8,24 @@ import Title from '../../components/Title';
 import Content from '../../components/Content';
 import { ICampaign } from './types';
 import MainLayout from '../../components/MainLayout';
-import { Descriptions, DescriptionsProps, Button, Space } from 'antd';
+import {
+  Descriptions,
+  DescriptionsProps,
+  Button,
+  Space,
+  Row,
+  Col,
+  Card,
+  Breadcrumb,
+  Spin
+} from 'antd';
+import Loader from '../../components/Loader';
 
 const Campaign: FC = () => {
   const { campaignId = '' } = useParams();
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(true);
   const [campaign, setCampaign] = useState<ICampaign>({});
 
   const handleViewDrawResult = () => {
@@ -33,6 +45,9 @@ const Campaign: FC = () => {
       })
       .catch((err: any) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [campaignId]);
 
@@ -51,59 +66,79 @@ const Campaign: FC = () => {
       label: 'Raffle Price',
       span: 'filled',
       children: currency(campaign.rafflePrice)
-    },
-    {
-      key: 'rafflesCount',
-      label: 'Sold Raffles',
-      span: 'filled',
-      children: (
-        <Space>
-          | {campaign.rafflesCount} |
-          {(campaign.rafflesCount || 0) > 0 && (
-            <>
-              <a href={`/campaigns/${campaignId}/raffles`}>See Raffles</a> |
-            </>
-          )}
-          <a href={`/campaigns/${campaignId}/raffles/new`}>Register Raffle</a> |
-        </Space>
-      )
-    },
-    {
-      key: 'prizesCount',
-      label: 'Prizes',
-      span: 'filled',
-      children: (
-        <Space>
-          | {campaign.prizesCount} |
-          {(campaign.prizesCount || 0) > 0 && (
-            <>
-              <a href={`/campaigns/${campaignId}/prizes`}>See Prizes</a> |
-            </>
-          )}
-          <a href={`/campaigns/${campaignId}/prizes/new`}>Register Prize</a> |
-        </Space>
-      )
     }
   ];
 
   return (
     <MainLayout>
+      <Breadcrumb items={[{ title: <a href="/">Campaigns</a> }, { title: campaign?.name }]} />
+
       <Container>
-        <Section>
-          <Title backLink={'/'} configUrl={`/campaigns/${campaignId}/edit`}>
-            {campaign.name}
-          </Title>
-        </Section>
-        <Descriptions items={getDescriptionItems(campaign, campaignId)} bordered />
-        <Content justifyCenter>
+        <Spin spinning={loading}>
           <Section>
-            {campaign.drawDate ? (
-              <Button onClick={handleViewDrawResult}>See Results</Button>
-            ) : (
-              <Button onClick={handleDraw}>Draw Raffle</Button>
-            )}
+            <Title backLink={'/'} configUrl={`/campaigns/${campaignId}/edit`}>
+              {campaign.name}
+            </Title>
           </Section>
-        </Content>
+          <Descriptions items={getDescriptionItems(campaign, campaignId)} bordered />
+          <Section>
+            <Row gutter={16}>
+              <Col md={24} lg={12}>
+                <Card>
+                  <div style={{ fontSize: 60, display: 'flex', justifyContent: 'center' }}>
+                    {campaign.rafflesCount}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <a href={`/campaigns/${campaignId}/raffles`}>See Raffles</a>
+                  </div>
+                </Card>
+                {campaign && !campaign.drawDate && (
+                  <Section>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      <Button
+                        type="primary"
+                        onClick={() => navigate(`/campaigns/${campaignId}/raffles/new`)}
+                      >
+                        Add Raffle
+                      </Button>
+                    </div>
+                  </Section>
+                )}
+              </Col>
+              <Col md={24} lg={12}>
+                <Card>
+                  <div style={{ fontSize: 60, display: 'flex', justifyContent: 'center' }}>
+                    {campaign.prizesCount}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <a href={`/campaigns/${campaignId}/prizes`}>See Prizes</a>
+                  </div>
+                </Card>
+                {campaign && !campaign.drawDate && (
+                  <Section>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      <Button
+                        type="primary"
+                        onClick={() => navigate(`/campaigns/${campaignId}/prizes/new`)}
+                      >
+                        Add Prize
+                      </Button>
+                    </div>
+                  </Section>
+                )}
+              </Col>
+            </Row>
+          </Section>
+          <Content justifyCenter>
+            <Section>
+              {campaign.drawDate ? (
+                <Button onClick={handleViewDrawResult}>See Results</Button>
+              ) : (
+                <Button onClick={handleDraw}>Draw Raffle</Button>
+              )}
+            </Section>
+          </Content>
+        </Spin>
       </Container>
     </MainLayout>
   );

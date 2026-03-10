@@ -37,15 +37,14 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <Content>
           <div
             style={{
-              background: colorBgContainer
+              background: colorBgContainer,
+              padding: 12
             }}
           >
             {children}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Raffle Picker ©{new Date().getFullYear()}
-        </Footer>
+        <Footer style={{ textAlign: 'center' }}>Raffle Picker ©{new Date().getFullYear()}</Footer>
       </Layout>
     </Layout>
   );

@@ -1,15 +1,29 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { createRaffles } from '../../client';
+import { createRaffles, getCampaign } from '../../client';
 import Container from '../../components/Container';
 import Section from '../../components/Section';
 import Content from '../../components/Content';
 import MainLayout from '../../components/MainLayout';
-import { Button, Form, Input } from 'antd';
+import { Breadcrumb, Button, Form, Input } from 'antd';
+import { ICampaign } from '../Campaign/types';
+import { title } from 'process';
 
 const NewRaffle: FC = () => {
   const navigate = useNavigate();
   const { campaignId = '' } = useParams();
+
+  const [campaign, setCampaign] = useState<ICampaign>({});
+
+  useEffect(() => {
+    getCampaign(campaignId)
+      .then((result: ICampaign) => {
+        setCampaign(result);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
+  }, [campaignId]);
 
   const handleSubmit = async (values: any) => {
     try {
@@ -23,6 +37,13 @@ const NewRaffle: FC = () => {
   const handleCancel = () => navigate(-1);
   return (
     <MainLayout>
+      <Breadcrumb
+        items={[
+          { title: <a href="/">Campaigns</a> },
+          { title: <a href={`/campaigns/${campaignId}`}>{campaign?.name}</a> },
+          { title: 'New Raffle' }
+        ]}
+      />
       <Container>
         <Content justifyCenter>
           <Section>
