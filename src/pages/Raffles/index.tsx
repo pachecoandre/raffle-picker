@@ -5,6 +5,7 @@ import Section from '../../components/Section';
 import Title from '../../components/Title';
 import MainLayout from '../../components/MainLayout';
 import RafflesTable from './RafflesTable';
+import { Breadcrumb, Button } from 'antd';
 
 const Raffles: FC = () => {
   const { campaignId } = useParams();
@@ -12,21 +13,26 @@ const Raffles: FC = () => {
 
   return (
     <MainLayout>
+      <Breadcrumb
+        items={[
+          { title: <a href="/campaigns">Campaigns</a> },
+          { title: <a href={`/campaigns/${campaignId}`}>Campaign {campaignId}</a> },
+          { title: 'Raffles' }
+        ]}
+      />
       <Container>
         <Section>
-          <Title backLink={`/campaigns/${campaignId}`}>
-            Rifas vendidas de campanha {campaignId}
-          </Title>
+          <Title backLink={`/campaigns/${campaignId}`}>Sold raffles of campaign {campaignId}</Title>
         </Section>
         <Section mb={1}>
           <div>
-            <button onClick={() => navigate(`/campaigns/${campaignId}/raffles/new`)}>
-              Cadastrar Rifa
-            </button>
+            <Button onClick={() => navigate(`/campaigns/${campaignId}/raffles/new`)}>
+              Register Raffle
+            </Button>
           </div>
         </Section>
         <Section>
-          <RafflesTable  />
+          <RafflesTable />
         </Section>
       </Container>
     </MainLayout>

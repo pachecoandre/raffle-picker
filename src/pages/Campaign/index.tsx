@@ -8,6 +8,7 @@ import Title from '../../components/Title';
 import Content from '../../components/Content';
 import { ICampaign } from './types';
 import MainLayout from '../../components/MainLayout';
+import { Descriptions, DescriptionsProps, Button, Space } from 'antd';
 
 const Campaign: FC = () => {
   const { campaignId = '' } = useParams();
@@ -35,6 +36,56 @@ const Campaign: FC = () => {
       });
   }, [campaignId]);
 
+  const getDescriptionItems = (
+    campaign: ICampaign,
+    campaignId: string
+  ): DescriptionsProps['items'] => [
+    {
+      key: 'revenue',
+      label: 'Revenue',
+      span: 'filled',
+      children: currency(campaign.revenue)
+    },
+    {
+      key: 'rafflePrice',
+      label: 'Raffle Price',
+      span: 'filled',
+      children: currency(campaign.rafflePrice)
+    },
+    {
+      key: 'rafflesCount',
+      label: 'Sold Raffles',
+      span: 'filled',
+      children: (
+        <Space>
+          | {campaign.rafflesCount} |
+          {(campaign.rafflesCount || 0) > 0 && (
+            <>
+              <a href={`/campaigns/${campaignId}/raffles`}>See Raffles</a> |
+            </>
+          )}
+          <a href={`/campaigns/${campaignId}/raffles/new`}>Register Raffle</a> |
+        </Space>
+      )
+    },
+    {
+      key: 'prizesCount',
+      label: 'Prizes',
+      span: 'filled',
+      children: (
+        <Space>
+          | {campaign.prizesCount} |
+          {(campaign.prizesCount || 0) > 0 && (
+            <>
+              <a href={`/campaigns/${campaignId}/prizes`}>See Prizes</a> |
+            </>
+          )}
+          <a href={`/campaigns/${campaignId}/prizes/new`}>Register Prize</a> |
+        </Space>
+      )
+    }
+  ];
+
   return (
     <MainLayout>
       <Container>
@@ -43,22 +94,13 @@ const Campaign: FC = () => {
             {campaign.name}
           </Title>
         </Section>
+        <Descriptions items={getDescriptionItems(campaign, campaignId)} bordered />
         <Content justifyCenter>
           <Section>
-            <span>{currency(campaign.revenue)} Arrecadados</span>
-          </Section>
-          <Section>Valor da rifa: {currency(campaign.rafflePrice)}</Section>
-          <Section>
-            <a href={`/campaigns/${campaignId}/raffles`}>Rifas vendidas: {campaign.rafflesCount}</a>
-          </Section>
-          <Section>
-            <a href={`/campaigns/${campaignId}/prizes`}>Prêmios: {campaign.prizesCount}</a>
-          </Section>
-          <Section>
             {campaign.drawDate ? (
-              <button onClick={handleViewDrawResult}>Ver premiação</button>
+              <Button onClick={handleViewDrawResult}>See Results</Button>
             ) : (
-              <button onClick={handleDraw}>Realizar sorteio</button>
+              <Button onClick={handleDraw}>Run Lottery</Button>
             )}
           </Section>
         </Content>

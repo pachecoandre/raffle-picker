@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Breadcrumb } from 'antd';
 import Container from '../../components/Container';
 import Section from '../../components/Section';
 import Title from '../../components/Title';
@@ -12,14 +13,21 @@ const Prizes: FC = () => {
 
   return (
     <MainLayout>
+      <Breadcrumb
+        items={[
+          { title: <a href="/campaigns">Campaigns</a> },
+          { title: <a href={`/campaigns/${campaignId}`}>Campaign {campaignId}</a> },
+          { title: 'Prizes' }
+        ]}
+      />
       <Container>
         <Section>
-          <Title backLink={`/campaigns/${campaignId}`}>Prêmios da campanha {campaignId}</Title>
+          <Title backLink={`/campaigns/${campaignId}`}>Prizes of campaign {campaignId}</Title>
         </Section>
         <Section mb={1}>
           <div>
             <button onClick={() => navigate(`/campaigns/${campaignId}/prizes/new`)}>
-              Cadastrar Prêmio
+              Register Prize
             </button>
           </div>
         </Section>

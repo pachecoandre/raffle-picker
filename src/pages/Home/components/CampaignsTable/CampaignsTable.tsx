@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import Content from '../../../../components/Content';
+import { Button, Table } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
 
 interface Campaign {
   id: number;
@@ -20,36 +22,43 @@ interface Props {
 
 const CampaignsTable: FC<Props> = ({ title, data }) => {
   const navigate = useNavigate();
+
+  const columns: ColumnsType<Campaign> = [
+    {
+      title: 'Campaigns',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text, record) => <Link to={`/campaigns/${record.id}`}>{text}</Link>
+    },
+    {
+      title: 'Draw Date',
+      dataIndex: 'estimated_draw_date',
+      key: 'estimated_draw_date',
+      align: 'center',
+      render: (date) => format(new Date(date), 'dd/MM/yyyy')
+    },
+    {
+      title: '',
+      key: 'actions',
+      align: 'right',
+      render: (_, record) =>
+        record.draw_date ? (
+          <Link to={`/campaigns/${record.id}/draw`}>See Results</Link>
+        ) : (
+          <Button onClick={() => navigate(`/campaigns/${record.id}/raffles/new`)}>
+            Register Raffle
+          </Button>
+        )
+    }
+  ];
+
   return (
     <Content>
       {title && <span>{title}</span>}
-      <table>
-        <thead>
-          <tr>
-            <th align="left">Campanhas</th>
-            <th align="center">Data do sorteio</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row) => (
-            <tr key={row.id}>
-              <td align="left">
-                <Link to={`/campaigns/${row.id}`}>{row.name}</Link>
-              </td>
-              <td align="center">{format(new Date(row.estimated_draw_date), 'dd/MM/yyyy')}</td>
-              <td align="right">
-                {row.draw_date ? (
-                  <Link to={`/campaigns/${row.id}/draw`}>Ver premiação</Link>
-                ) : (
-                  <button onClick={() => navigate(`/campaigns/${row.id}/raffles/new`)}>
-                    Cadastrar rifa
-                  </button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Content>
+        {title && <span>{title}</span>}
+        <Table columns={columns} dataSource={data} rowKey="id" />
+      </Content>
     </Content>
   );
 };
