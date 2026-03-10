@@ -7,7 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import NotFound from "../pages/NotFound";
 
 const LoginPage = lazy(() => import("../pages/Login"));
-const HomePage = lazy(() => import("../pages/Home"));
+const CampaignsPage = lazy(() => import("../pages/Campaigns"));
 const NewCampaignPage = lazy(() => import("../pages/NewCampaign"));
 const CampaignPage = lazy(() => import("../pages/Campaign"));
 const SellersPage = lazy(() => import("../pages/Sellers"));
@@ -32,7 +32,7 @@ function AppRouter() {
           path={"/"}
           element={
             <PrivateRoute allowedRoles={["user", "admin"]}>
-              <HomePage />
+              <CampaignsPage />
             </PrivateRoute>
           }
         />

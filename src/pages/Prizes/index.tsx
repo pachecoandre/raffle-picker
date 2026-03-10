@@ -15,7 +15,7 @@ const Prizes: FC = () => {
     <MainLayout>
       <Breadcrumb
         items={[
-          { title: <a href="/campaigns">Campaigns</a> },
+          { title: <a href="/">Campaigns</a> },
           { title: <a href={`/campaigns/${campaignId}`}>Campaign {campaignId}</a> },
           { title: 'Prizes' }
         ]}

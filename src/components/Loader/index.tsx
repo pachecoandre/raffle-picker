@@ -4,7 +4,7 @@ import Container from '../Container';
 const Loader: FC = () => {
   return (
     <Container>
-      <div>Carregando...</div>
+      <div>Loading...</div>
     </Container>
   );
 };

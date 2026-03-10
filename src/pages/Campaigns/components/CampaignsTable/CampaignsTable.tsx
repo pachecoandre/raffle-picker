@@ -18,9 +18,10 @@ interface Campaign {
 interface Props {
   title?: string;
   data: Campaign[];
+  isLoading?: boolean;
 }
 
-const CampaignsTable: FC<Props> = ({ title, data }) => {
+const CampaignsTable: FC<Props> = ({ title, data, isLoading }) => {
   const navigate = useNavigate();
 
   const columns: ColumnsType<Campaign> = [
@@ -57,7 +58,7 @@ const CampaignsTable: FC<Props> = ({ title, data }) => {
       {title && <span>{title}</span>}
       <Content>
         {title && <span>{title}</span>}
-        <Table columns={columns} dataSource={data} rowKey="id" />
+        <Table columns={columns} dataSource={data} rowKey="id" loading={isLoading} />
       </Content>
     </Content>
   );

@@ -1,3 +1,4 @@
+import { Space } from 'antd';
 import React, { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,11 +10,11 @@ interface Props {
 
 const Title: FC<Props> = ({ backLink, children, configUrl }) => {
   return (
-    <div>
+    <Space>
       {backLink && <a href={backLink} />}
-      <h1>{children}</h1>
+      <div><h1>{children}</h1></div>
       {configUrl && <Link to={configUrl}>edit</Link>}
-    </div>
+    </Space>
   );
 };
 
