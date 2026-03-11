@@ -26,6 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Debug env
+        run: |
+          echo "BACKEND_URL=$BACKEND_URL"
+          echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID"
+
       - name: Build project
         run: npm run build
         env:
