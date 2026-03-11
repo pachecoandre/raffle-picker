@@ -36,7 +36,7 @@ const NewCampaign: FC<Props> = ({ isEdit = false }) => {
 
   const handleSubmit: FormProps['onFinish'] = (values) => {
     if (isNaN(Number(values.price))) {
-      return alert('Por favor, informe um preço válido');
+      return alert('Please enter a valid price');
     }
     setIsLoading(true);
     if (isEdit) {
@@ -65,24 +65,24 @@ const NewCampaign: FC<Props> = ({ isEdit = false }) => {
       <Container>
         <Content justifyCenter>
           <Section>
-            <h1>{isEdit ? 'Editar campanha' : 'Nova campanha'}</h1>
+            <h1>{isEdit ? 'Edit campaign' : 'New campaign'}</h1>
           </Section>
           <Section>
             <Form form={form} onFinish={handleSubmit}>
-              <Form.Item label="Nome" name="name">
+              <Form.Item label="Name" name="name">
                 <Input />
               </Form.Item>
-              <Form.Item label="Valor da rifa" name="price">
+              <Form.Item label="Raffle Price" name="price">
                 <Input disabled={isEdit} />
               </Form.Item>
-              <Form.Item label="Data prevista para o sorteio" name="drawDate">
+              <Form.Item label="Estimated Draw Date" name="drawDate">
                 <Input type="date" />
               </Form.Item>
               <Button onClick={handleCancel} style={{ marginRight: 8 }}>
-                Cancelar
+                Cancel
               </Button>
               <Button type="primary" htmlType="submit" disabled={isLoading} loading={isLoading}>
-                {isEdit ? 'Salvar' : 'Criar'}
+                {isEdit ? 'Save' : 'Create'}
               </Button>
             </Form>
           </Section>

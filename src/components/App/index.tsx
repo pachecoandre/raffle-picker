@@ -6,7 +6,7 @@ import AppRouter from '../../router/AppRouter.tsx';
 const App = () => {
   return (
     <ContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename='/raffle-picker'>
         <AppRouter />
       </BrowserRouter>
     </ContextProvider>
