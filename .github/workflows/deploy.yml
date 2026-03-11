@@ -29,8 +29,8 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          BACKEND_URL: ${{ secrets.BACKEND_URL }}
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          BACKEND_URL: ${{ vars.BACKEND_URL }}
+          GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
