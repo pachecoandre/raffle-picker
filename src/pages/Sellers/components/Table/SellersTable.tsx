@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import { getSellers } from 'client';
-import { TableCell, TableHead } from './styles';
+import { getSellers } from '../../../../client';
 
 const SellersTable = () => {
   const { campaignId = '' } = useParams();
@@ -15,26 +9,26 @@ const SellersTable = () => {
   const [sellers, setSellers] = React.useState<any>([]);
   const [totalRows, setTotalRows] = React.useState(0);
 
-  const handleChangePage = async (event: unknown, newPage: number) => {
-    const { data, totalRows } = await getSellers(campaignId, rowsPerPage, newPage);
-    setPage(newPage);
-    setSellers(data);
-    setTotalRows(totalRows);
-  };
+  // const handleChangePage = async (event: unknown, newPage: number) => {
+  //   const { data, totalRows } = await getSellers(campaignId, rowsPerPage, newPage);
+  //   setPage(newPage);
+  //   setSellers(data);
+  //   setTotalRows(totalRows);
+  // };
 
-  const handleChangeRowsPerPage = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newRowsPerPage = parseInt(event.target.value, 10);
-    setRowsPerPage(newRowsPerPage);
+  // const handleChangeRowsPerPage = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const newRowsPerPage = parseInt(event.target.value, 10);
+  //   setRowsPerPage(newRowsPerPage);
 
-    if (newRowsPerPage * page > totalRows) {
-      setPage(0);
-      const { data } = await getSellers(campaignId, newRowsPerPage, 0);
-      setSellers(data);
-    } else {
-      const { data } = await getSellers(campaignId, newRowsPerPage, page);
-      setSellers(data);
-    }
-  };
+  //   if (newRowsPerPage * page > totalRows) {
+  //     setPage(0);
+  //     const { data } = await getSellers(campaignId, newRowsPerPage, 0);
+  //     setSellers(data);
+  //   } else {
+  //     const { data } = await getSellers(campaignId, newRowsPerPage, page);
+  //     setSellers(data);
+  //   }
+  // };
 
   React.useEffect(() => {
     (async () => {
@@ -46,31 +40,27 @@ const SellersTable = () => {
 
   return (
     <>
-      <TableContainer>
-        <Table size="small" aria-label="a dense table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Vendedor</TableCell>
-              <TableCell align="center">Rifas vendidas</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sellers.map((row: any) => (
-              <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="center">{row.sales}</TableCell>
-                <TableCell align="right">
-                  <button>Remover</button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
+      <table aria-label="a dense table">
+        <thead>
+          <tr>
+            <th>Vendedor</th>
+            <th align="center">Rifas vendidas</th>
+            <th align="right"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {sellers.map((row: any) => (
+            <tr key={row.name}>
+              <th>{row.name}</th>
+              <td align="center">{row.sales}</td>
+              <td align="right">
+                <button>Remover</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* <TablePagination
         style={{ display: totalRows < 5 ? 'none' : '' }}
         rowsPerPageOptions={[3, 5, 7]}
         component="div"
@@ -79,7 +69,7 @@ const SellersTable = () => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      /> */}
     </>
   );
 };
