@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getCampaign, draw } from '../../client';
 import { currency } from '../../helpers/formatter';
 import Container from '../../components/Container';
@@ -71,7 +71,7 @@ const Campaign: FC = () => {
 
   return (
     <MainLayout>
-      <Breadcrumb items={[{ title: <a href="/">Campaigns</a> }, { title: campaign?.name }]} />
+      <Breadcrumb items={[{ title: <Link to="/">Campaigns</Link> }, { title: campaign?.name }]} />
 
       <Container>
         <Spin spinning={loading}>
@@ -89,7 +89,7 @@ const Campaign: FC = () => {
                     {campaign.rafflesCount}
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <a href={`/campaigns/${campaignId}/raffles`}>See Raffles</a>
+                    <Link to={`/campaigns/${campaignId}/raffles`}>See Raffles</Link>
                   </div>
                 </Card>
                 {campaign && !campaign.drawDate && (
@@ -111,7 +111,7 @@ const Campaign: FC = () => {
                     {campaign.prizesCount}
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <a href={`/campaigns/${campaignId}/prizes`}>See Prizes</a>
+                    <Link to={`/campaigns/${campaignId}/prizes`}>See Prizes</Link>
                   </div>
                 </Card>
                 {campaign && !campaign.drawDate && (

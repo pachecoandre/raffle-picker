@@ -4,6 +4,7 @@ import Section from '../../components/Section';
 import Title from '../../components/Title';
 import Content from '../../components/Content';
 import MainLayout from '../../components/MainLayout';
+import { Link } from 'react-router-dom';
 
 const NotFound: FC = () => {
   return (
@@ -14,7 +15,7 @@ const NotFound: FC = () => {
         </Section>
         <Content justifyCenter>
           <Section>
-            <a href="/">Voltar para a página principal</a>
+            <Link to="/">Voltar para a página principal</Link>
           </Section>
         </Content>
       </Container>

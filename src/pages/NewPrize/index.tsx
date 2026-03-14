@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Form, Input, Button, InputNumber, Upload, Breadcrumb } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
@@ -44,8 +44,8 @@ const NewPrize: FC = () => {
     <MainLayout>
       <Breadcrumb
         items={[
-          { title: <a href="/">Campaigns</a> },
-          { title: <a href={`/campaigns/${campaignId}`}>{campaign?.name}</a> },
+          { title: <Link to="/">Campaigns</Link> },
+          { title: <Link to={`/campaigns/${campaignId}`}>{campaign?.name}</Link> },
           { title: 'New Prize' }
         ]}
       />

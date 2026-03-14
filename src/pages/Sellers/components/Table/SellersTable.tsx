@@ -1,34 +1,28 @@
-import * as React from "react";
-import { useParams } from "react-router-dom";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import { getSellers } from "client";
-import { TableCell, TableHead } from "./styles";
+import * as React from 'react';
+import { useParams } from 'react-router-dom';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableContainer from '@mui/material/TableContainer';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import { getSellers } from 'client';
+import { TableCell, TableHead } from './styles';
 
 const SellersTable = () => {
-  const { campaignId = "" } = useParams();
+  const { campaignId = '' } = useParams();
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [page, setPage] = React.useState(0);
   const [sellers, setSellers] = React.useState<any>([]);
   const [totalRows, setTotalRows] = React.useState(0);
 
   const handleChangePage = async (event: unknown, newPage: number) => {
-    const { data, totalRows } = await getSellers(
-      campaignId,
-      rowsPerPage,
-      newPage
-    );
+    const { data, totalRows } = await getSellers(campaignId, rowsPerPage, newPage);
     setPage(newPage);
     setSellers(data);
     setTotalRows(totalRows);
   };
 
-  const handleChangeRowsPerPage = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChangeRowsPerPage = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newRowsPerPage = parseInt(event.target.value, 10);
     setRowsPerPage(newRowsPerPage);
 
@@ -44,11 +38,7 @@ const SellersTable = () => {
 
   React.useEffect(() => {
     (async () => {
-      const { data, totalRows } = await getSellers(
-        campaignId,
-        rowsPerPage,
-        page
-      );
+      const { data, totalRows } = await getSellers(campaignId, rowsPerPage, page);
       setSellers(data);
       setTotalRows(totalRows);
     })();
@@ -67,10 +57,7 @@ const SellersTable = () => {
           </TableHead>
           <TableBody>
             {sellers.map((row: any) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
+              <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
@@ -84,7 +71,7 @@ const SellersTable = () => {
         </Table>
       </TableContainer>
       <TablePagination
-        style={{ display: totalRows < 5 ? "none" : "" }}
+        style={{ display: totalRows < 5 ? 'none' : '' }}
         rowsPerPageOptions={[3, 5, 7]}
         component="div"
         count={totalRows}

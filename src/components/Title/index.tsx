@@ -11,7 +11,7 @@ interface Props {
 const Title: FC<Props> = ({ backLink, children, configUrl }) => {
   return (
     <Space>
-      {backLink && <a href={backLink} />}
+      {backLink && <Link to={backLink}>back</Link>}
       <div><h1>{children}</h1></div>
       {configUrl && <Link to={configUrl}>edit</Link>}
     </Space>

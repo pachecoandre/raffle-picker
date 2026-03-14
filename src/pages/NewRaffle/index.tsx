@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { createRaffles, getCampaign } from '../../client';
 import Container from '../../components/Container';
 import Section from '../../components/Section';
@@ -38,8 +38,8 @@ const NewRaffle: FC = () => {
     <MainLayout>
       <Breadcrumb
         items={[
-          { title: <a href="/">Campaigns</a> },
-          { title: <a href={`/campaigns/${campaignId}`}>{campaign?.name}</a> },
+          { title: <Link to="/">Campaigns</Link> },
+          { title: <Link to={`/campaigns/${campaignId}`}>{campaign?.name}</Link> },
           { title: 'New Raffle' }
         ]}
       />

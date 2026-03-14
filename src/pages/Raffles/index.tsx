@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Container from '../../components/Container';
 import Section from '../../components/Section';
 import Title from '../../components/Title';
@@ -29,8 +29,8 @@ const Raffles: FC = () => {
     <MainLayout>
       <Breadcrumb
         items={[
-          { title: <a href="/">Campaigns</a> },
-          { title: <a href={`/campaigns/${campaignId}`}>{campaign?.name}</a> },
+          { title: <Link to="/">Campaigns</Link> },
+          { title: <Link to={`/campaigns/${campaignId}`}>{campaign?.name}</Link> },
           { title: 'Raffles' }
         ]}
       />
