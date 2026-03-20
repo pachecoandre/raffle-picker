@@ -7,10 +7,10 @@ module.exports = merge(common, {
   devtool: 'source-map',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
-    publicPath: '/raffle-picker/'
+    path: path.resolve(__dirname, 'public')
   },
   optimization: {
     minimize: true
-  }
+  },
+  plugins: [new webpack.EnvironmentPlugin(['BACKEND_URL', 'GOOGLE_CLIENT_ID'])]
 });
