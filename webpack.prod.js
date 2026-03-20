@@ -5,6 +5,9 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'production',
+  output: {
+    publicPath: '/public/raffle-picker/'
+  },
   devtool: 'source-map',
   optimization: {
     minimize: true
