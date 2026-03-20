@@ -3,14 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://pachecoandre.github.io/raffle-picker",
   "scripts": {
     "build": "webpack --config webpack.prod.js --mode production",
     "build:dev": "webpack --config webpack.dev.js -w",
     "build:webpack": "webpack",
     "dev": "npm run build:dev & node index.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d public/raffle-picker/build",
     "start": "node index.js"
   },
   "keywords": [],
