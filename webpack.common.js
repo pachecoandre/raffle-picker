@@ -15,8 +15,8 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public/raffle-picker'),
-    publicPath: '/raffle-picker/'
+    path: path.resolve(__dirname, 'public'),
+    publicPath: '/'
   },
   module: {
     rules: [
