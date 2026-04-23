@@ -13,7 +13,11 @@
     "name": "Nome",
     "status": "Status",
     "createdAt": "Criado em",
-    "error": "Ocorreu um erro. Por favor, tente novamente."
+    "error": "Ocorreu um erro. Por favor, tente novamente.",
+    "yes": "Sim",
+    "no": "Não",
+    "remove": "Remover",
+    "confirmRemove": "Tem certeza que deseja remover este item?"
   },
   "nav": {
     "campaigns": "Campanhas",
@@ -43,25 +47,29 @@
     "sellers": "Vendedores",
     "newRaffle": "Novo sorteio",
     "newPrize": "Novo prêmio",
-    "inviteSeller": "Convidar vendedor"
+    "inviteSeller": "Convidar vendedor",
+    "revenue": "Receita",
+    "rafflePrice": "Preço da Rifa",
+    "seeTickets": "Ver Rifas",
+    "registerTicket": "Cadastrar Rifa",
+    "seePrizes": "Ver Prêmios",
+    "addPrize": "Adicionar Prêmio",
+    "seeResults": "Ver Resultados",
+    "drawRaffle": "Realizar Sorteio"
   },
-  "raffles": {
-    "title": "Sorteios",
-    "newRaffle": "Novo sorteio",
-    "empty": "Nenhum sorteio encontrado.",
-    "table": {
-      "name": "Nome",
-      "status": "Status",
-      "drawDate": "Data do sorteio",
-      "actions": "Ações"
-    }
+  "raffle-tickets": {
+    "breadcrumb": "Rifas",
+    "pageTitle": "Rifas vendidas de {{name}}",
+    "registerTicket": "Cadastrar Rifa"
   },
   "prizes": {
     "title": "Prêmios",
+    "pageTitle": "Prêmios de {{name}}",
     "newPrize": "Novo prêmio",
     "empty": "Nenhum prêmio encontrado.",
     "table": {
-      "name": "Nome",
+      "prizeName": "Nome do Prêmio",
+      "quantity": "Quantidade",
       "description": "Descrição",
       "actions": "Ações"
     }
@@ -78,16 +86,39 @@
   },
   "newCampaign": {
     "title": "Nova campanha",
-    "namePlaceholder": "Nome da campanha"
+    "editTitle": "Editar campanha",
+    "namePlaceholder": "Nome da campanha",
+    "estimatedDrawDate": "Data Estimada do Sorteio",
+    "create": "Criar",
+    "invalidPrice": "Por favor, insira um preço válido"
   },
   "newRaffle": {
     "title": "Novo sorteio",
     "namePlaceholder": "Nome do sorteio"
   },
+  "newRaffleTicket": {
+    "breadcrumb": "Nova Rifa",
+    "pageTitle": "Nova Rifa",
+    "participantName": "Nome do Participante",
+    "phone": "Telefone",
+    "email": "E-mail",
+    "quantity": "Quantidade",
+    "create": "Criar",
+    "errorCreating": "Erro ao criar rifas. Por favor, tente novamente."
+  },
   "newPrize": {
     "title": "Novo prêmio",
-    "namePlaceholder": "Nome do prêmio",
-    "descriptionPlaceholder": "Descrição"
+    "breadcrumb": "Novo Prêmio",
+    "pageTitle": "Cadastrar novo prêmio na campanha {{campaignId}}",
+    "name": "Nome",
+    "nameRequired": "Por favor, insira o nome",
+    "description": "Descrição",
+    "photo": "Foto",
+    "selectImage": "Selecionar Imagem",
+    "quantity": "Quantidade",
+    "quantityRequired": "Por favor, insira a quantidade",
+    "create": "Criar",
+    "errorCreating": "Erro ao criar prêmio. Por favor, tente novamente."
   },
   "sellerInvitation": {
     "title": "Você foi convidado",

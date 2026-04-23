@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { getCampaign, draw } from '../../client';
 import { currency } from '../../helpers/formatter';
 import Container from '../../components/Container';
@@ -24,6 +25,7 @@ import Loader from '../../components/Loader';
 const Campaign: FC = () => {
   const { campaignId = '' } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [loading, setLoading] = useState(true);
   const [campaign, setCampaign] = useState<ICampaign>({});
@@ -57,13 +59,13 @@ const Campaign: FC = () => {
   ): DescriptionsProps['items'] => [
     {
       key: 'revenue',
-      label: 'Revenue',
+      label: t('campaign.revenue'),
       span: 'filled',
       children: currency(campaign.revenue)
     },
     {
       key: 'rafflePrice',
-      label: 'Raffle Price',
+      label: t('campaign.rafflePrice'),
       span: 'filled',
       children: currency(campaign.rafflePrice)
     }
@@ -71,7 +73,7 @@ const Campaign: FC = () => {
 
   return (
     <MainLayout>
-      <Breadcrumb items={[{ title: <Link to="/">Campaigns</Link> }, { title: campaign?.name }]} />
+      <Breadcrumb items={[{ title: <Link to="/">{t('campaigns.title')}</Link> }, { title: campaign?.name }]} />
 
       <Container>
         <Spin spinning={loading}>
@@ -89,7 +91,7 @@ const Campaign: FC = () => {
                     {campaign.rafflesCount}
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Link to={`/campaigns/${campaignId}/raffle-tickets`}>See Raffles</Link>
+                    <Link to={`/campaigns/${campaignId}/raffle-tickets`}>{t('campaign.seeTickets')}</Link>
                   </div>
                 </Card>
                 {campaign && !campaign.drawDate && (
@@ -99,7 +101,7 @@ const Campaign: FC = () => {
                         type="primary"
                         onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
                       >
-                        Register Ticket
+                        {t('campaign.registerTicket')}
                       </Button>
                     </div>
                   </Section>
@@ -111,7 +113,7 @@ const Campaign: FC = () => {
                     {campaign.prizesCount}
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Link to={`/campaigns/${campaignId}/prizes`}>See Prizes</Link>
+                    <Link to={`/campaigns/${campaignId}/prizes`}>{t('campaign.seePrizes')}</Link>
                   </div>
                 </Card>
                 {campaign && !campaign.drawDate && (
@@ -121,7 +123,7 @@ const Campaign: FC = () => {
                         type="primary"
                         onClick={() => navigate(`/campaigns/${campaignId}/prizes/new`)}
                       >
-                        Add Prize
+                        {t('campaign.addPrize')}
                       </Button>
                     </div>
                   </Section>
@@ -132,9 +134,9 @@ const Campaign: FC = () => {
           <Content justifyCenter>
             <Section>
               {campaign.drawDate ? (
-                <Button onClick={handleViewDrawResult}>See Results</Button>
+                <Button onClick={handleViewDrawResult}>{t('campaign.seeResults')}</Button>
               ) : (
-                <Button onClick={handleDraw}>Draw Raffle</Button>
+                <Button onClick={handleDraw}>{t('campaign.drawRaffle')}</Button>
               )}
             </Section>
           </Content>

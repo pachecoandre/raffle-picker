@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { createCampaign, getCampaign, updateCampaign } from '../../client';
 import Container from '../../components/Container';
 import Content from '../../components/Content';
 import Section from '../../components/Section';
 import MainLayout from '../../components/MainLayout';
 import { Button, Form, FormProps, Input } from 'antd';
-Content;
 
 interface Props {
   isEdit?: boolean;
@@ -15,6 +15,7 @@ interface Props {
 const NewCampaign: FC<Props> = ({ isEdit = false }) => {
   const navigate = useNavigate();
   const { campaignId = '' } = useParams();
+  const { t } = useTranslation();
 
   const [form] = Form.useForm();
 
@@ -36,7 +37,7 @@ const NewCampaign: FC<Props> = ({ isEdit = false }) => {
 
   const handleSubmit: FormProps['onFinish'] = (values) => {
     if (isNaN(Number(values.price))) {
-      return alert('Please enter a valid price');
+      return alert(t('newCampaign.invalidPrice'));
     }
     setIsLoading(true);
     if (isEdit) {
@@ -65,24 +66,24 @@ const NewCampaign: FC<Props> = ({ isEdit = false }) => {
       <Container>
         <Content justifyCenter>
           <Section>
-            <h1>{isEdit ? 'Edit campaign' : 'New campaign'}</h1>
+            <h1>{isEdit ? t('newCampaign.editTitle') : t('newCampaign.title')}</h1>
           </Section>
           <Section>
             <Form form={form} onFinish={handleSubmit}>
-              <Form.Item label="Name" name="name">
+              <Form.Item label={t('common.name')} name="name">
                 <Input />
               </Form.Item>
-              <Form.Item label="Raffle Price" name="price">
+              <Form.Item label={t('campaign.rafflePrice')} name="price">
                 <Input disabled={isEdit} />
               </Form.Item>
-              <Form.Item label="Estimated Draw Date" name="drawDate">
+              <Form.Item label={t('newCampaign.estimatedDrawDate')} name="drawDate">
                 <Input type="date" />
               </Form.Item>
               <Button onClick={handleCancel} style={{ marginRight: 8 }}>
-                Cancel
+                {t('common.cancel')}
               </Button>
               <Button type="primary" htmlType="submit" disabled={isLoading} loading={isLoading}>
-                {isEdit ? 'Save' : 'Create'}
+                {isEdit ? t('common.save') : t('newCampaign.create')}
               </Button>
             </Form>
           </Section>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Table, Button, Space, Popconfirm, Spin, GetProp, TableProps } from 'antd';
 import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import type { SorterResult } from 'antd/es/table/interface';
@@ -16,6 +17,7 @@ interface TableParams {
 
 const RafflesTable: React.FC = () => {
   const { campaignId } = useParams();
+  const { t } = useTranslation();
 
   const [loading, setLoading] = useState<boolean>(true);
   const [tableParams, setTableParams] = useState<TableParams>({
@@ -68,11 +70,11 @@ const RafflesTable: React.FC = () => {
 
   const columns: ColumnsType<Raffle> = [
     {
-      title: 'Participant Name',
+      title: t('newRaffleTicket.participantName'),
       dataIndex: 'participantName'
     },
     {
-      title: 'Phone',
+      title: t('newRaffleTicket.phone'),
       dataIndex: 'participantPhone'
     },
     {
@@ -80,13 +82,13 @@ const RafflesTable: React.FC = () => {
 
       render: (_, record) => (
         <Popconfirm
-          title="Are you sure you want to remove this item?"
+          title={t('common.confirmRemove')}
           onConfirm={() => handleDelete(record.id)}
-          okText="Yes"
-          cancelText="No"
+          okText={t('common.yes')}
+          cancelText={t('common.no')}
         >
           <Button type="link" danger icon={<DeleteOutlined />}>
-            Remove
+            {t('common.remove')}
           </Button>
         </Popconfirm>
       )

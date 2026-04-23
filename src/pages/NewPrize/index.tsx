@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Form, Input, Button, InputNumber, Upload, Breadcrumb } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
@@ -14,6 +15,7 @@ import { ICampaign } from '../Campaign/types';
 const NewPrize: FC = () => {
   const { campaignId = '' } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [form] = Form.useForm();
   const [campaign, setCampaign] = useState<ICampaign>({});
 
@@ -35,7 +37,7 @@ const NewPrize: FC = () => {
       }, 1500);
     } catch (error) {
       console.error('Error creating prize:', error);
-      alert('Error creating prize. Please try again.');
+      alert(t('newPrize.errorCreating'));
     }
   };
   const handleCancel = () => navigate(-1);
@@ -44,15 +46,15 @@ const NewPrize: FC = () => {
     <MainLayout>
       <Breadcrumb
         items={[
-          { title: <Link to="/">Campaigns</Link> },
+          { title: <Link to="/">{t('campaigns.title')}</Link> },
           { title: <Link to={`/campaigns/${campaignId}`}>{campaign?.name}</Link> },
-          { title: 'New Prize' }
+          { title: t('newPrize.breadcrumb') }
         ]}
       />
       <Container>
         <Section>
           <Title backLink={`/campaigns/${campaignId}/prizes`}>
-            Register new prize in campaign {campaignId}
+            {t('newPrize.pageTitle', { campaignId })}
           </Title>
         </Section>
         <Content justifyCenter>
@@ -66,37 +68,42 @@ const NewPrize: FC = () => {
               }}
             >
               <Form.Item
-                label="Name"
+                label={t('newPrize.name')}
                 name="name"
-                rules={[{ required: true, message: 'Please enter the name' }]}
+                rules={[{ required: true, message: t('newPrize.nameRequired') }]}
               >
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Description" name="description">
+              <Form.Item label={t('newPrize.description')} name="description">
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Photo" name="image">
+              <Form.Item
+                label={t('newPrize.photo')}
+                name="image"
+                valuePropName="fileList"
+                getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
+              >
                 <Upload beforeUpload={() => false} accept="image/*">
-                  <Button icon={<UploadOutlined />}>Select Image</Button>
+                  <Button icon={<UploadOutlined />}>{t('newPrize.selectImage')}</Button>
                 </Upload>
               </Form.Item>
 
               <Form.Item
-                label="Quantity"
+                label={t('newPrize.quantity')}
                 name="quantity"
-                rules={[{ required: true, message: 'Please enter the quantity' }]}
+                rules={[{ required: true, message: t('newPrize.quantityRequired') }]}
               >
                 <InputNumber min={1} style={{ width: '100%' }} />
               </Form.Item>
 
               <Form.Item>
                 <Button type="default" onClick={handleCancel} style={{ marginRight: 8 }}>
-                  Cancel
+                  {t('common.cancel')}
                 </Button>
                 <Button type="primary" htmlType="submit">
-                  Create
+                  {t('newPrize.create')}
                 </Button>
               </Form.Item>
             </Form>

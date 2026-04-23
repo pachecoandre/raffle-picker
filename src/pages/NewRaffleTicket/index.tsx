@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { createRaffleTickets, getCampaign } from '../../client';
 import Container from '../../components/Container';
 import Section from '../../components/Section';
@@ -11,6 +12,7 @@ import { ICampaign } from '../Campaign/types';
 const NewRaffleTicket: FC = () => {
   const navigate = useNavigate();
   const { campaignId = '' } = useParams();
+  const { t } = useTranslation();
 
   const [campaign, setCampaign] = useState<ICampaign>({});
 
@@ -27,10 +29,10 @@ const NewRaffleTicket: FC = () => {
   const handleSubmit = async (values: any) => {
     try {
       await createRaffleTickets(campaignId, values);
-      navigate(`/campaigns/${campaignId}-tickets`);
+      navigate(`/campaigns/${campaignId}`);
     } catch (error) {
       console.error(error);
-      alert('Error creating raffle tickets. Please try again.');
+      alert(t('newRaffleTicket.errorCreating'));
     }
   };
   const handleCancel = () => navigate(-1);
@@ -38,35 +40,35 @@ const NewRaffleTicket: FC = () => {
     <MainLayout>
       <Breadcrumb
         items={[
-          { title: <Link to="/">Campaigns</Link> },
+          { title: <Link to="/">{t('campaigns.title')}</Link> },
           { title: <Link to={`/campaigns/${campaignId}`}>{campaign?.name}</Link> },
-          { title: 'New Raffle Ticket' }
+          { title: t('newRaffleTicket.breadcrumb') }
         ]}
       />
       <Container>
         <Content justifyCenter>
           <Section>
-            <h1>New Raffle</h1>
+            <h1>{t('newRaffleTicket.pageTitle')}</h1>
           </Section>
           <Section>
             <Form onFinish={handleSubmit}>
-              <Form.Item label="Participant Name" name="name">
+              <Form.Item label={t('newRaffleTicket.participantName')} name="name">
                 <Input />
               </Form.Item>
-              <Form.Item label="Phone" name="phone">
+              <Form.Item label={t('newRaffleTicket.phone')} name="phone">
                 <Input />
               </Form.Item>
-              <Form.Item label="E-mail" name="email">
+              <Form.Item label={t('newRaffleTicket.email')} name="email">
                 <Input />
               </Form.Item>
-              <Form.Item label="Quantity" name="quantity" initialValue={1}>
+              <Form.Item label={t('newRaffleTicket.quantity')} name="quantity" initialValue={1}>
                 <Input type="number" />
               </Form.Item>
               <Button type="default" onClick={handleCancel} style={{ marginRight: 8 }}>
-                Cancel
+                {t('common.cancel')}
               </Button>
               <Button type="primary" htmlType="submit">
-                Create
+                {t('newRaffleTicket.create')}
               </Button>
             </Form>
           </Section>

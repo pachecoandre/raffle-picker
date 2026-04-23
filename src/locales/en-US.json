@@ -13,7 +13,11 @@
     "name": "Name",
     "status": "Status",
     "createdAt": "Created at",
-    "error": "An error occurred. Please try again."
+    "error": "An error occurred. Please try again.",
+    "yes": "Yes",
+    "no": "No",
+    "remove": "Remove",
+    "confirmRemove": "Are you sure you want to remove this item?"
   },
   "nav": {
     "campaigns": "Campaigns",
@@ -43,25 +47,29 @@
     "sellers": "Sellers",
     "newRaffle": "New raffle",
     "newPrize": "New prize",
-    "inviteSeller": "Invite seller"
+    "inviteSeller": "Invite seller",
+    "revenue": "Revenue",
+    "rafflePrice": "Raffle Price",
+    "seeTickets": "See Raffles",
+    "registerTicket": "Register Ticket",
+    "seePrizes": "See Prizes",
+    "addPrize": "Add Prize",
+    "seeResults": "See Results",
+    "drawRaffle": "Draw Raffle"
   },
-  "raffles": {
-    "title": "Raffles",
-    "newRaffle": "New raffle",
-    "empty": "No raffles found.",
-    "table": {
-      "name": "Name",
-      "status": "Status",
-      "drawDate": "Draw date",
-      "actions": "Actions"
-    }
+  "raffle-tickets": {
+    "breadcrumb": "Raffle Tickets",
+    "pageTitle": "Sold tickets of {{name}}",
+    "registerTicket": "Register Ticket"
   },
   "prizes": {
     "title": "Prizes",
+    "pageTitle": "Prizes of {{name}}",
     "newPrize": "New prize",
     "empty": "No prizes found.",
     "table": {
-      "name": "Name",
+      "prizeName": "Prize Name",
+      "quantity": "Quantity",
       "description": "Description",
       "actions": "Actions"
     }
@@ -78,16 +86,39 @@
   },
   "newCampaign": {
     "title": "New campaign",
-    "namePlaceholder": "Campaign name"
+    "editTitle": "Edit campaign",
+    "namePlaceholder": "Campaign name",
+    "estimatedDrawDate": "Estimated Draw Date",
+    "create": "Create",
+    "invalidPrice": "Please enter a valid price"
   },
   "newRaffle": {
     "title": "New raffle",
     "namePlaceholder": "Raffle name"
   },
+  "newRaffleTicket": {
+    "breadcrumb": "New Raffle Ticket",
+    "pageTitle": "New Raffle",
+    "participantName": "Participant Name",
+    "phone": "Phone",
+    "email": "E-mail",
+    "quantity": "Quantity",
+    "create": "Create",
+    "errorCreating": "Error creating raffle tickets. Please try again."
+  },
   "newPrize": {
     "title": "New prize",
-    "namePlaceholder": "Prize name",
-    "descriptionPlaceholder": "Description"
+    "breadcrumb": "New Prize",
+    "pageTitle": "Register new prize in campaign {{campaignId}}",
+    "name": "Name",
+    "nameRequired": "Please enter the name",
+    "description": "Description",
+    "photo": "Photo",
+    "selectImage": "Select Image",
+    "quantity": "Quantity",
+    "quantityRequired": "Please enter the quantity",
+    "create": "Create",
+    "errorCreating": "Error creating prize. Please try again."
   },
   "sellerInvitation": {
     "title": "You've been invited",
