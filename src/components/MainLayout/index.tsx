@@ -44,7 +44,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {children}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Raffle Picker ©{new Date().getFullYear()}</Footer>
+        <Footer style={{ textAlign: 'center' }}>Raffle Fun ©{new Date().getFullYear()}</Footer>
       </Layout>
     </Layout>
   );

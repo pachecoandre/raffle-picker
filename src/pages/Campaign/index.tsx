@@ -89,7 +89,7 @@ const Campaign: FC = () => {
                     {campaign.rafflesCount}
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Link to={`/campaigns/${campaignId}/raffles`}>See Raffles</Link>
+                    <Link to={`/campaigns/${campaignId}/raffle-tickets`}>See Raffles</Link>
                   </div>
                 </Card>
                 {campaign && !campaign.drawDate && (
@@ -97,9 +97,9 @@ const Campaign: FC = () => {
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <Button
                         type="primary"
-                        onClick={() => navigate(`/campaigns/${campaignId}/raffles/new`)}
+                        onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
                       >
-                        Add Raffle
+                        Register Ticket
                       </Button>
                     </div>
                   </Section>

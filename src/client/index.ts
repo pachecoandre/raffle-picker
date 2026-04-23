@@ -1,7 +1,7 @@
 import axios from "axios";
 import { PrizesResult } from "../pages/Prizes/types";
-import { RafflesResult } from "../pages/Raffles/types";
-import { RafflePayload } from "../pages/NewRaffle/types";
+import { RafflesResult } from "../pages/RaffleTickets/types";
+import { RafflePayload } from "../pages/NewRaffleTicket/types";
 import { PrizePayload } from "../pages/NewPrize/types";
 import { CampaignPayload } from "../pages/NewCampaign/types";
 import { ICampaign } from "../pages/Campaign/types";
@@ -63,7 +63,7 @@ const getRaffles = async (
   return data;
 };
 
-const createRaffles = async (campaignId: string, payload: RafflePayload) => {
+const createRaffleTickets = async (campaignId: string, payload: RafflePayload) => {
   client.post(`/campaigns/${campaignId}/raffles`, payload);
 };
 
@@ -110,7 +110,7 @@ export {
   createCampaign,
   updateCampaign,
   getRaffles,
-  createRaffles,
+  createRaffleTickets,
   deleteRaffle,
   getPrizes,
   createPrize,

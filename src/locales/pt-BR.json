@@ -1,0 +1,110 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "search": "Buscar",
+    "actions": "Ações",
+    "name": "Nome",
+    "status": "Status",
+    "createdAt": "Criado em",
+    "error": "Ocorreu um erro. Por favor, tente novamente."
+  },
+  "nav": {
+    "campaigns": "Campanhas",
+    "logout": "Sair"
+  },
+  "login": {
+    "title": "Entrar",
+    "continueWithGoogle": "Continuar com o Google"
+  },
+  "campaigns": {
+    "title": "Campanhas",
+    "newCampaign": "Nova campanha",
+    "empty": "Nenhuma campanha encontrada.",
+    "seeResults": "Ver Resultados",
+    "addTicket": "Cadastrar Rifa",
+    "table": {
+      "campaign": "Campanhas",
+      "drawDate": "Data do Sorteio",
+      "status": "Status",
+      "createdAt": "Criado em",
+      "actions": "Ações"
+    }
+  },
+  "campaign": {
+    "raffles": "Sorteios",
+    "prizes": "Prêmios",
+    "sellers": "Vendedores",
+    "newRaffle": "Novo sorteio",
+    "newPrize": "Novo prêmio",
+    "inviteSeller": "Convidar vendedor"
+  },
+  "raffles": {
+    "title": "Sorteios",
+    "newRaffle": "Novo sorteio",
+    "empty": "Nenhum sorteio encontrado.",
+    "table": {
+      "name": "Nome",
+      "status": "Status",
+      "drawDate": "Data do sorteio",
+      "actions": "Ações"
+    }
+  },
+  "prizes": {
+    "title": "Prêmios",
+    "newPrize": "Novo prêmio",
+    "empty": "Nenhum prêmio encontrado.",
+    "table": {
+      "name": "Nome",
+      "description": "Descrição",
+      "actions": "Ações"
+    }
+  },
+  "sellers": {
+    "title": "Vendedores",
+    "invite": "Convidar vendedor",
+    "empty": "Nenhum vendedor encontrado.",
+    "table": {
+      "name": "Nome",
+      "email": "E-mail",
+      "actions": "Ações"
+    }
+  },
+  "newCampaign": {
+    "title": "Nova campanha",
+    "namePlaceholder": "Nome da campanha"
+  },
+  "newRaffle": {
+    "title": "Novo sorteio",
+    "namePlaceholder": "Nome do sorteio"
+  },
+  "newPrize": {
+    "title": "Novo prêmio",
+    "namePlaceholder": "Nome do prêmio",
+    "descriptionPlaceholder": "Descrição"
+  },
+  "sellerInvitation": {
+    "title": "Você foi convidado",
+    "accept": "Aceitar convite"
+  },
+  "drawResult": {
+    "title": "Resultado do sorteio",
+    "winner": "Vencedor",
+    "prize": "Prêmio"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "message": "A página que você está procurando não existe.",
+    "goHome": "Ir para o início"
+  },
+  "accessDenied": {
+    "title": "Acesso negado",
+    "message": "Você não tem permissão para acessar esta página."
+  }
+}

@@ -40,7 +40,7 @@ const Raffles: FC = () => {
         </Section>
         <Section mb={1}>
           <div>
-            <Button onClick={() => navigate(`/campaigns/${campaignId}/raffles/new`)}>
+            <Button onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}>
               Register Raffle
             </Button>
           </div>

@@ -1,2 +1,2 @@
-# Raffle Picker
-Frontend of Raffle Picker project.
+# Raffle Fun
+Frontend of Raffle Fun project.

@@ -1,0 +1,110 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "actions": "Actions",
+    "name": "Name",
+    "status": "Status",
+    "createdAt": "Created at",
+    "error": "An error occurred. Please try again."
+  },
+  "nav": {
+    "campaigns": "Campaigns",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Sign in",
+    "continueWithGoogle": "Continue with Google"
+  },
+  "campaigns": {
+    "title": "Campaigns",
+    "newCampaign": "New campaign",
+    "empty": "No campaigns found.",
+    "seeResults": "See Results",
+    "addTicket": "Register Ticket",
+    "table": {
+      "campaign": "Campaigns",
+      "drawDate": "Draw Date",
+      "status": "Status",
+      "createdAt": "Created at",
+      "actions": "Actions"
+    }
+  },
+  "campaign": {
+    "raffles": "Raffles",
+    "prizes": "Prizes",
+    "sellers": "Sellers",
+    "newRaffle": "New raffle",
+    "newPrize": "New prize",
+    "inviteSeller": "Invite seller"
+  },
+  "raffles": {
+    "title": "Raffles",
+    "newRaffle": "New raffle",
+    "empty": "No raffles found.",
+    "table": {
+      "name": "Name",
+      "status": "Status",
+      "drawDate": "Draw date",
+      "actions": "Actions"
+    }
+  },
+  "prizes": {
+    "title": "Prizes",
+    "newPrize": "New prize",
+    "empty": "No prizes found.",
+    "table": {
+      "name": "Name",
+      "description": "Description",
+      "actions": "Actions"
+    }
+  },
+  "sellers": {
+    "title": "Sellers",
+    "invite": "Invite seller",
+    "empty": "No sellers found.",
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "actions": "Actions"
+    }
+  },
+  "newCampaign": {
+    "title": "New campaign",
+    "namePlaceholder": "Campaign name"
+  },
+  "newRaffle": {
+    "title": "New raffle",
+    "namePlaceholder": "Raffle name"
+  },
+  "newPrize": {
+    "title": "New prize",
+    "namePlaceholder": "Prize name",
+    "descriptionPlaceholder": "Description"
+  },
+  "sellerInvitation": {
+    "title": "You've been invited",
+    "accept": "Accept invitation"
+  },
+  "drawResult": {
+    "title": "Draw result",
+    "winner": "Winner",
+    "prize": "Prize"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "The page you are looking for does not exist.",
+    "goHome": "Go home"
+  },
+  "accessDenied": {
+    "title": "Access denied",
+    "message": "You don't have permission to access this page."
+  }
+}

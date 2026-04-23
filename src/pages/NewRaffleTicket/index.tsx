@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { createRaffles, getCampaign } from '../../client';
+import { createRaffleTickets, getCampaign } from '../../client';
 import Container from '../../components/Container';
 import Section from '../../components/Section';
 import Content from '../../components/Content';
@@ -8,7 +8,7 @@ import MainLayout from '../../components/MainLayout';
 import { Breadcrumb, Button, Form, Input } from 'antd';
 import { ICampaign } from '../Campaign/types';
 
-const NewRaffle: FC = () => {
+const NewRaffleTicket: FC = () => {
   const navigate = useNavigate();
   const { campaignId = '' } = useParams();
 
@@ -26,11 +26,11 @@ const NewRaffle: FC = () => {
 
   const handleSubmit = async (values: any) => {
     try {
-      await createRaffles(campaignId, values);
-      navigate(`/campaigns/${campaignId}/raffles`);
+      await createRaffleTickets(campaignId, values);
+      navigate(`/campaigns/${campaignId}-tickets`);
     } catch (error) {
       console.error(error);
-      alert('Error creating raffles. Please try again.');
+      alert('Error creating raffle tickets. Please try again.');
     }
   };
   const handleCancel = () => navigate(-1);
@@ -40,7 +40,7 @@ const NewRaffle: FC = () => {
         items={[
           { title: <Link to="/">Campaigns</Link> },
           { title: <Link to={`/campaigns/${campaignId}`}>{campaign?.name}</Link> },
-          { title: 'New Raffle' }
+          { title: 'New Raffle Ticket' }
         ]}
       />
       <Container>
@@ -76,4 +76,4 @@ const NewRaffle: FC = () => {
   );
 };
 
-export default NewRaffle;
+export default NewRaffleTicket;

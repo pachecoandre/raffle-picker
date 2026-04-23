@@ -6,7 +6,7 @@ const Logo: React.FC = () => {
   return (
     <Link className="logo-text" to={'/'}>
       <div className="logo-wrapper">
-        <span>Raffle Picker</span>
+        <span>Raffle Fun</span>
       </div>
     </Link>
   );
