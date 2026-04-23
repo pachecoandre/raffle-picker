@@ -10,7 +10,7 @@ import db from "./db";
       await db.getConnection();
       console.log("connected to database");
     } catch (error) {
-      console.error(error);
+      console.error('Error connecting to database:', error.message);
     }
 })()
 

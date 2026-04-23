@@ -22,39 +22,44 @@ const postCampaignsController = async (req: CampaignsReq, res: Response) => {
     req.userId,
     name,
     estimatedDrawDate,
-    rafflePrice
+    rafflePrice,
   );
 
   res.status(201).send({ id: campaignId });
 };
 
 const getCampaignByIdController = async (req: CampaignsReq, res: Response) => {
-  const { campaignId } = req.params;
+  try {
+    const { campaignId } = req.params;
 
-  const campaignResult = await findById(campaignId);
-  const campaign = campaignResult[0];
-  const name = campaign?.name;
-  const estimatedDrawDate = campaign?.estimated_draw_date;
-  const drawDate = campaign?.draw_date;
-  const rafflePrice = campaign?.raffle_price || 0;
+    const campaignResult = await findById(campaignId);
+    const campaign = campaignResult[0];
+    const name = campaign?.name;
+    const estimatedDrawDate = campaign?.estimated_draw_date;
+    const drawDate = campaign?.draw_date;
+    const rafflePrice = campaign?.raffle_price || 0;
 
-  const rafflesCountResult = await RaffleModel.getRafflesCount(campaignId);
-  const rafflesCount = rafflesCountResult[0]?.count || 0;
+    const rafflesCountResult = await RaffleModel.getRafflesCount(campaignId);
+    const rafflesCount = rafflesCountResult[0]?.count || 0;
 
-  const revenue = rafflePrice * rafflesCount;
+    const revenue = rafflePrice * rafflesCount;
 
-  const prizesCountResult = await PrizeModel.getPrizeItemsCount(campaignId);
-  const prizesCount = prizesCountResult[0]?.count;
+    const prizesCountResult = await PrizeModel.getPrizeItemsCount(campaignId);
+    const prizesCount = prizesCountResult[0]?.count;
 
-  res.send({
-    name,
-    estimatedDrawDate,
-    drawDate,
-    rafflePrice,
-    rafflesCount,
-    revenue,
-    prizesCount,
-  });
+    res.send({
+      name,
+      estimatedDrawDate,
+      drawDate,
+      rafflePrice,
+      rafflesCount,
+      revenue,
+      prizesCount,
+    });
+  } catch (error) {
+    console.error(error)
+    res.sendStatus(400)
+  }
 };
 
 const updateCampaignController = async (req: CampaignsReq, res: Response) => {
