@@ -5,10 +5,11 @@ import Section from '../../components/Section';
 import Title from '../../components/Title';
 import MainLayout from '../../components/MainLayout';
 import RafflesTable from './RafflesTable';
-import { Breadcrumb, Button } from 'antd';
+import { Breadcrumb, Button, Space } from 'antd';
 import { ICampaign } from '../Campaign/types';
 import { getCampaign } from '../../client';
 import { useTranslation } from 'react-i18next';
+import './styles.css';
 
 const Raffles: FC = () => {
   const { campaignId } = useParams();
@@ -38,13 +39,23 @@ const Raffles: FC = () => {
       />
       <Container>
         <Section>
-          <Title backLink={`/campaigns/${campaignId}`}>{t('raffle-tickets.pageTitle', { name: campaign?.name })}</Title>
+          <Title backLink={`/campaigns/${campaignId}`}>
+            {t('raffle-tickets.pageTitle', { name: campaign?.name })}
+          </Title>
         </Section>
         <Section mb={1}>
-          <div>
-            <Button onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}>
-              {t('raffle-tickets.registerTicket')}
-            </Button>
+          <div className="flex-end">
+            <Space>
+              <Button onClick={() => navigate(`/campaigns/${campaignId}`)}>
+                {t('common.cancel')}
+              </Button>
+              <Button
+                type="primary"
+                onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
+              >
+                {t('raffle-tickets.registerTicket')}
+              </Button>
+            </Space>
           </div>
         </Section>
         <Section>

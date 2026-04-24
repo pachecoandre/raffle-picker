@@ -43,6 +43,7 @@
   },
   "campaign": {
     "raffles": "Raffles",
+    "tickets": "Tickets",
     "prizes": "Prizes",
     "sellers": "Sellers",
     "newRaffle": "New raffle",

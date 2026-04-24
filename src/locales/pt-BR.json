@@ -43,6 +43,7 @@
   },
   "campaign": {
     "raffles": "Sorteios",
+    "tickets": "Rifas",
     "prizes": "Prêmios",
     "sellers": "Vendedores",
     "newRaffle": "Novo sorteio",

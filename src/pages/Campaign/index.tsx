@@ -21,6 +21,7 @@ import {
   Spin
 } from 'antd';
 import Loader from '../../components/Loader';
+import './styles.css';
 
 const Campaign: FC = () => {
   const { campaignId = '' } = useParams();
@@ -73,11 +74,12 @@ const Campaign: FC = () => {
 
   return (
     <MainLayout>
-      <Breadcrumb items={[{ title: <Link to="/">{t('campaigns.title')}</Link> }, { title: campaign?.name }]} />
-
+      <Breadcrumb
+        items={[{ title: <Link to="/">{t('campaigns.title')}</Link> }, { title: campaign?.name }]}
+      />
       <Container>
         <Spin spinning={loading}>
-          <Section>
+          <Section mb={1}>
             <Title backLink={'/'} configUrl={`/campaigns/${campaignId}/edit`}>
               {campaign.name}
             </Title>
@@ -86,19 +88,20 @@ const Campaign: FC = () => {
           <Section>
             <Row gutter={16}>
               <Col md={24} lg={12}>
-                <Card>
-                  <div style={{ fontSize: 60, display: 'flex', justifyContent: 'center' }}>
+                <Card
+                  className="campaign-stat-card"
+                  onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets`)}
+                >
+                  <div className="card-content" style={{ fontSize: 60 }}>
                     {campaign.rafflesCount}
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Link to={`/campaigns/${campaignId}/raffle-tickets`}>{t('campaign.seeTickets')}</Link>
-                  </div>
+                  <div className="card-content link-color">{t('campaign.tickets')}</div>
                 </Card>
                 {campaign && !campaign.drawDate && (
                   <Section>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <Button
-                        type="primary"
+                        type="default"
                         onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
                       >
                         {t('campaign.registerTicket')}
@@ -108,19 +111,20 @@ const Campaign: FC = () => {
                 )}
               </Col>
               <Col md={24} lg={12}>
-                <Card>
-                  <div style={{ fontSize: 60, display: 'flex', justifyContent: 'center' }}>
+                <Card
+                  className="campaign-stat-card"
+                  onClick={() => navigate(`/campaigns/${campaignId}/prizes`)}
+                >
+                  <div className="card-content" style={{ fontSize: 60 }}>
                     {campaign.prizesCount}
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Link to={`/campaigns/${campaignId}/prizes`}>{t('campaign.seePrizes')}</Link>
-                  </div>
+                  <div className="card-content link-color">{t('campaign.prizes')}</div>
                 </Card>
                 {campaign && !campaign.drawDate && (
                   <Section>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <Button
-                        type="primary"
+                        type="default"
                         onClick={() => navigate(`/campaigns/${campaignId}/prizes/new`)}
                       >
                         {t('campaign.addPrize')}
@@ -132,12 +136,17 @@ const Campaign: FC = () => {
             </Row>
           </Section>
           <Content justifyCenter>
-            <Section>
-              {campaign.drawDate ? (
-                <Button onClick={handleViewDrawResult}>{t('campaign.seeResults')}</Button>
-              ) : (
-                <Button onClick={handleDraw}>{t('campaign.drawRaffle')}</Button>
-              )}
+            <Section mb={0}>
+              <div className="space-between">
+                <Button type="default" onClick={() => navigate(`/`)}>
+                  {t('common.back')}
+                </Button>
+                {campaign.drawDate ? (
+                  <Button onClick={handleViewDrawResult}>{t('campaign.seeResults')}</Button>
+                ) : (
+                  <Button onClick={handleDraw}>{t('campaign.drawRaffle')}</Button>
+                )}
+              </div>
             </Section>
           </Content>
         </Spin>
