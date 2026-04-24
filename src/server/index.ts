@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import ip from "ip";
 import v1Routes from "../router";
+import { errorHandler } from "./middlewares";
 
 export default class Server {
   private app: express.Application;
@@ -15,6 +16,7 @@ export default class Server {
   }
   route = () => {
     this.app.use("/v1", v1Routes);
+    this.app.use(errorHandler);
   };
   listen = (port: string | number) => {
     this.app.listen(Number(port), () =>
