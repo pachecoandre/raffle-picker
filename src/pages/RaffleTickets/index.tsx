@@ -44,20 +44,16 @@ const Raffles: FC = () => {
           </Title>
         </Section>
         <Section mb={1}>
-          <div className="flex-end">
-            <Space>
-              <Button onClick={() => navigate(`/campaigns/${campaignId}`)}>
-                {t('common.back')}
+          <div className="space-between">
+            <Button onClick={() => navigate(`/campaigns/${campaignId}`)}>{t('common.back')}</Button>
+            {!campaign?.drawDate && (
+              <Button
+                type="primary"
+                onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
+              >
+                {t('raffle-tickets.registerTicket')}
               </Button>
-              {!campaign?.drawDate && (
-                <Button
-                  type="primary"
-                  onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
-                >
-                  {t('raffle-tickets.registerTicket')}
-                </Button>
-              )}
-            </Space>
+            )}
           </div>
         </Section>
         <Section>
