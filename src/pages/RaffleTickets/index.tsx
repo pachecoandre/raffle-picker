@@ -47,19 +47,21 @@ const Raffles: FC = () => {
           <div className="flex-end">
             <Space>
               <Button onClick={() => navigate(`/campaigns/${campaignId}`)}>
-                {t('common.cancel')}
+                {t('common.back')}
               </Button>
-              <Button
-                type="primary"
-                onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
-              >
-                {t('raffle-tickets.registerTicket')}
-              </Button>
+              {!campaign?.drawDate && (
+                <Button
+                  type="primary"
+                  onClick={() => navigate(`/campaigns/${campaignId}/raffle-tickets/new`)}
+                >
+                  {t('raffle-tickets.registerTicket')}
+                </Button>
+              )}
             </Space>
           </div>
         </Section>
         <Section>
-          <RafflesTable />
+          <RafflesTable campaign={campaign} />
         </Section>
       </Container>
     </MainLayout>

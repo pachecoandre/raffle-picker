@@ -46,14 +46,16 @@ const Prizes: FC = () => {
           <div className="flex-end">
             <Space>
               <Button onClick={() => navigate(`/campaigns/${campaignId}`)}>
-                {t('common.cancel')}
+                {t('common.back')}
               </Button>
-              <Button
-                type="primary"
-                onClick={() => navigate(`/campaigns/${campaignId}/prizes/new`)}
-              >
-                {t('campaign.addPrize')}
-              </Button>
+              {!campaign.drawDate && (
+                <Button
+                  type="primary"
+                  onClick={() => navigate(`/campaigns/${campaignId}/prizes/new`)}
+                >
+                  {t('campaign.addPrize')}
+                </Button>
+              )}
             </Space>
           </div>
         </Section>

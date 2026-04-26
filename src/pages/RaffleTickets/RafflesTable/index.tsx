@@ -7,6 +7,11 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { deleteRaffle, getRaffles } from '../../../client';
 import { Raffle } from '../types';
 import { useParams } from 'react-router-dom';
+import { ICampaign } from '../../Campaign/types';
+
+interface Props {
+  campaign: ICampaign | null;
+}
 
 interface TableParams {
   pagination: TablePaginationConfig;
@@ -15,7 +20,7 @@ interface TableParams {
   filters?: Parameters<GetProp<TableProps, 'onChange'>>[1];
 }
 
-const RafflesTable: React.FC = () => {
+const RafflesTable: React.FC<Props> = ({ campaign }) => {
   const { campaignId } = useParams();
   const { t } = useTranslation();
 
@@ -76,8 +81,11 @@ const RafflesTable: React.FC = () => {
     {
       title: t('newRaffleTicket.phone'),
       dataIndex: 'participantPhone'
-    },
-    {
+    }
+  ];
+
+  if (!campaign?.drawDate) {
+    columns.push({
       title: '',
 
       render: (_, record) => (
@@ -92,8 +100,8 @@ const RafflesTable: React.FC = () => {
           </Button>
         </Popconfirm>
       )
-    }
-  ];
+    });
+  }
 
   const handleTableChange: TableProps<Raffle>['onChange'] = (pagination, filters, sorter) => {
     setTableParams({

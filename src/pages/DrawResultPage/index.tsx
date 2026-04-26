@@ -5,9 +5,16 @@ import Section from '../../components/Section';
 import Title from '../../components/Title';
 import useDrawItems from '../../hooks/useDrawItems';
 import MainLayout from '../../components/MainLayout';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Table } from 'antd';
 import { getCampaign } from '../../client';
 import { ICampaign } from '../Campaign/types';
+import { DrawResult } from '../../client/types';
+
+const columns = [
+  { title: 'Prize', dataIndex: 'prizeName', key: 'prizeName' },
+  { title: 'Name', dataIndex: 'winnerName', key: 'winnerName' },
+  { title: 'Phone', dataIndex: 'winnerPhone', key: 'winnerPhone' }
+];
 
 const Prizes: FC = () => {
   const { campaignId } = useParams();
@@ -36,29 +43,15 @@ const Prizes: FC = () => {
       />
       <Container>
         <Section>
-          <Title backLink={`/campaigns/${campaignId}`}>Raffle Draw {campaignId}</Title>
+          <Title backLink={`/campaigns/${campaignId}`}>Raffle Draw of {campaign?.name}</Title>
         </Section>
         <Section>
-          <table>
-            <thead>
-              <tr>
-                <td>Prize</td>
-                <td>Name</td>
-                <td>Phone</td>
-              </tr>
-            </thead>
-            <tbody>
-              {drawItems.length > 0
-                ? drawItems.map((drawItem) => (
-                    <tr key={drawItem.id}>
-                      <td>{drawItem?.prizeName}</td>
-                      <td>{drawItem?.winnerName}</td>
-                      <td>{drawItem?.winnerPhone}</td>
-                    </tr>
-                  ))
-                : null}
-            </tbody>
-          </table>
+          <Table<DrawResult>
+            columns={columns}
+            dataSource={drawItems}
+            rowKey="id"
+            pagination={false}
+          />
         </Section>
       </Container>
     </MainLayout>
