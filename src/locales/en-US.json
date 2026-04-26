@@ -127,6 +127,7 @@
   },
   "drawResult": {
     "title": "Draw result",
+    "pageTitle": "Raffle Draw of {{name}}",
     "winner": "Winner",
     "prize": "Prize"
   },

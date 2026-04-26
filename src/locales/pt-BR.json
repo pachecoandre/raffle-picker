@@ -127,6 +127,7 @@
   },
   "drawResult": {
     "title": "Resultado do sorteio",
+    "pageTitle": "Sorteio de {{name}}",
     "winner": "Vencedor",
     "prize": "Prêmio"
   },
