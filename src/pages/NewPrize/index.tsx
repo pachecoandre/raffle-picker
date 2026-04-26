@@ -18,6 +18,7 @@ const NewPrize: FC = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [campaign, setCampaign] = useState<ICampaign>({});
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     getCampaign(campaignId)
@@ -30,6 +31,7 @@ const NewPrize: FC = () => {
   }, [campaignId]);
 
   const onFinish = async (values: any) => {
+    setSubmitting(true);
     try {
       await createPrize(campaignId, values);
       setTimeout(() => {
@@ -38,6 +40,7 @@ const NewPrize: FC = () => {
     } catch (error) {
       console.error('Error creating prize:', error);
       alert(t('newPrize.errorCreating'));
+      setSubmitting(false);
     }
   };
   const handleCancel = () => navigate(-1);
@@ -102,7 +105,7 @@ const NewPrize: FC = () => {
                 <Button type="default" onClick={handleCancel} style={{ marginRight: 8 }}>
                   {t('common.cancel')}
                 </Button>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" disabled={submitting} loading={submitting}>
                   {t('newPrize.create')}
                 </Button>
               </Form.Item>

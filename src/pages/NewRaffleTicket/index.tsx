@@ -15,6 +15,7 @@ const NewRaffleTicket: FC = () => {
   const { t } = useTranslation();
 
   const [campaign, setCampaign] = useState<ICampaign>({});
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     getCampaign(campaignId)
@@ -27,12 +28,14 @@ const NewRaffleTicket: FC = () => {
   }, [campaignId]);
 
   const handleSubmit = async (values: any) => {
+    setSubmitting(true);
     try {
       await createRaffleTickets(campaignId, values);
       navigate(`/campaigns/${campaignId}`);
     } catch (error) {
       console.error(error);
       alert(t('newRaffleTicket.errorCreating'));
+      setSubmitting(false);
     }
   };
   const handleCancel = () => navigate(-1);
@@ -67,7 +70,7 @@ const NewRaffleTicket: FC = () => {
               <Button type="default" onClick={handleCancel} style={{ marginRight: 8 }}>
                 {t('common.cancel')}
               </Button>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" disabled={submitting} loading={submitting}>
                 {t('newRaffleTicket.create')}
               </Button>
             </Form>
