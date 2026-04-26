@@ -6,6 +6,11 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { deletePrize, getPrizes } from '../../../client';
 import { Prize } from '../types';
 import { useParams } from 'react-router-dom';
+import { ICampaign } from '../../Campaign/types';
+
+interface Props {
+  campaign: ICampaign;
+}
 
 interface TableParams {
   pagination: TablePaginationConfig;
@@ -14,7 +19,7 @@ interface TableParams {
   filters?: Parameters<GetProp<TableProps, 'onChange'>>[1];
 }
 
-const PrizesTable: React.FC = () => {
+const PrizesTable: React.FC<Props> = ({ campaign }) => {
   const { campaignId } = useParams();
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -74,8 +79,11 @@ const PrizesTable: React.FC = () => {
     {
       title: 'Quantity',
       dataIndex: 'quantity'
-    },
-    {
+    }
+  ];
+
+  if (!campaign?.drawDate) {
+    columns.push({
       title: '',
 
       render: (_, record) => (
@@ -90,8 +98,8 @@ const PrizesTable: React.FC = () => {
           </Button>
         </Popconfirm>
       )
-    }
-  ];
+    });
+  }
 
   const handleTableChange: TableProps<Prize>['onChange'] = (pagination, filters, sorter) => {
     setTableParams({

@@ -59,7 +59,7 @@ const Prizes: FC = () => {
             </Space>
           </div>
         </Section>
-        <PrizesTable />
+        <PrizesTable campaign={campaign} />
       </Container>
     </MainLayout>
   );
