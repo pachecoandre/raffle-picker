@@ -38,8 +38,7 @@ const attachCampaign = async (req: CampaignsReq, res: Response, next: NextFuncti
   );
 
   if (uRelationships.length === 0) {
-    res.statusCode = 404
-    next(new Error("Campaign does not belong to user"));
+    return res.status(404).json({ message: "Campaign not found" });
   }
   req.campaignId = campaignId;
 
