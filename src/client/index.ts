@@ -1,11 +1,11 @@
-import axios from "axios";
-import { PrizesResult } from "../pages/Prizes/types";
-import { RafflesResult } from "../pages/RaffleTickets/types";
-import { RafflePayload } from "../pages/NewRaffleTicket/types";
-import { PrizePayload } from "../pages/NewPrize/types";
-import { CampaignPayload } from "../pages/NewCampaign/types";
-import { ICampaign } from "../pages/Campaign/types";
-import { DrawResult } from "./types";
+import axios from 'axios';
+import { PrizesResult } from '../pages/Prizes/types';
+import { RafflesResult } from '../pages/RaffleTickets/types';
+import { RafflePayload } from '../pages/NewRaffleTicket/types';
+import { PrizePayload } from '../pages/NewPrize/types';
+import { CampaignPayload } from '../pages/NewCampaign/types';
+import { ICampaign } from '../pages/Campaign/types';
+import { DrawResult } from './types';
 
 const client = axios.create({ baseURL: process.env.BACKEND_URL });
 
@@ -13,7 +13,7 @@ client.interceptors.response.use(
   (res) => res,
   (error) => {
     if (error.response.status === 404) {
-      window.location.href = "/not-found";
+      window.location.href = '/not-found';
     }
     if (error.response.status === 401) {
       throw error;
@@ -22,28 +22,26 @@ client.interceptors.response.use(
 );
 
 const login = async (googleToken: string) => {
-  const { data } = await client.post("/users/login", { googleToken });
-  client.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
-  localStorage.setItem("t", data.token);
+  const { data } = await client.post('/users/login', { googleToken });
+  client.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+  localStorage.setItem('t', data.token);
   return data;
 };
 
-const verifyToken = async (token: string) => {
-  return client.post("/users/verify-token", { token });
-};
+const verifyToken = async (token: string) => client.post('/users/verify-token', { token });
 
 const getCampaigns = async () => {
-  const { data } = await client.get("/campaigns");
+  const { data } = await client.get('/campaigns');
   return data;
 };
 
-const getCampaign = async (campaignId: string = ""): Promise<ICampaign> => {
+const getCampaign = async (campaignId: string = ''): Promise<ICampaign> => {
   const { data } = await client.get(`/campaigns/${campaignId}`);
   return data;
 };
 
 const createCampaign = async (payload: CampaignPayload) => {
-  const { data } = await client.post("/campaigns", payload);
+  const { data } = await client.post('/campaigns', payload);
   return data;
 };
 
@@ -57,42 +55,32 @@ const getRaffles = async (
   page: number,
   limit: number
 ): Promise<RafflesResult> => {
-  const { data } = await client.get(
-    `/campaigns/${campaignId}/raffles?page=${page}&limit=${limit}`
-  );
+  const { data } = await client.get(`/campaigns/${campaignId}/raffles?page=${page}&limit=${limit}`);
   return data;
 };
 
-const createRaffleTickets = async (campaignId: string, payload: RafflePayload) => {
+const createRaffleTickets = async (campaignId: string, payload: RafflePayload) =>
   client.post(`/campaigns/${campaignId}/raffles`, payload);
-};
 
-const deleteRaffle = async (campaignId: string, id: number) => {
+const deleteRaffle = async (campaignId: string, id: number) =>
   client.delete(`/campaigns/${campaignId}/raffles/${id}`);
-};
 
 const getPrizes = async (
   campaignId: string,
   page: number,
   limit: number
 ): Promise<PrizesResult> => {
-  const { data } = await client.get(
-    `/campaigns/${campaignId}/prizes?page=${page}&limit=${limit}`
-  );
+  const { data } = await client.get(`/campaigns/${campaignId}/prizes?page=${page}&limit=${limit}`);
   return data;
 };
 
-const createPrize = async (campaignId: string, payload: PrizePayload) => {
+const createPrize = async (campaignId: string, payload: PrizePayload) =>
   client.post(`/campaigns/${campaignId}/prizes`, payload);
-};
 
-const deletePrize = async (campaignId: string, prizeId: number) => {
+const deletePrize = async (campaignId: string, prizeId: number) =>
   client.delete(`/campaigns/${campaignId}/prizes/${prizeId}`);
-};
 
-const draw = async (campaignId: string) => {
-  client.post(`/campaigns/${campaignId}/draw`);
-};
+const draw = async (campaignId: string) => client.post(`/campaigns/${campaignId}/draw`);
 
 const getDrawResult = async (campaignId: string): Promise<DrawResult[]> => {
   const { data } = await client.get(`/campaigns/${campaignId}/draw`);
@@ -117,5 +105,5 @@ export {
   deletePrize,
   getSellers,
   draw,
-  getDrawResult,
+  getDrawResult
 };
