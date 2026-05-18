@@ -54,11 +54,16 @@ const NewCampaign: FC<Props> = ({ isEdit = false }) => {
       name: values.name,
       rafflePrice: Number(values.price),
       estimatedDrawDate: values.drawDate
-    }).then(({ id }) =>
-      setTimeout(() => {
-        navigate(`/campaigns/${id}`);
-      }, 500)
-    );
+    })
+      .then(({ id }) =>
+        setTimeout(() => {
+          navigate(`/campaigns/${id}`);
+        }, 500)
+      )
+      .catch((error) => {
+        alert(error.message);
+        setIsLoading(false)
+      });
   };
 
   return (
